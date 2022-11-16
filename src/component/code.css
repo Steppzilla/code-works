@@ -5,9 +5,14 @@
     border-radius: 5px;
     width:98vw;
     max-width:800px;
+    font-size:13px;
+    background-color:green;
+}
+.codeBox p{
+    background-color:green;
 }
 
-.vs{
+.light{
     box-shadow: 0 0 2px 2px #e3e3e3;
 }
 

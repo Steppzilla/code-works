@@ -1,21 +1,27 @@
 import {CSSProperties} from "react";
-import {coldarkDark, dracula, okaidia, tomorrow, vs, vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {
+    coldarkDark,
+    materialDark,
+    materialLight,
+    okaidia,
+    tomorrow
+} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 export const styleArray: { [key: string]: CSSProperties; }[] = [
-    vs,
+    materialLight,
     tomorrow,
     okaidia,
     coldarkDark,
-    dracula,
-    vscDarkPlus,
+    materialDark,
 ]
 
 export const styleNames: string [] = [
-    "vs",
+    "light",
     "tomorrow",
     "okaidia",
     "coldarkDark",
-    "dracula",
-    "vscDarkPlus",
+    "materialDark",
 ];
+
+
 
