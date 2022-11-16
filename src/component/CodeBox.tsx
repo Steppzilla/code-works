@@ -1,5 +1,5 @@
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
-import "./CodeBoxEditor.css";
+import "./codeEditor/CodeBoxEditor.css";
 import {CSSProperties} from "react";
 
 type CodeBoxProps = {

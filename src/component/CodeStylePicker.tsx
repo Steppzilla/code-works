@@ -32,7 +32,8 @@ export default function CodeStylePicker(props: DropDownMenuButtonsProperties) {
                 {
                     styles.map(
                         (singleStyle, index) => {
-                            return <button className={"colorPickButton"}
+                            return <button
+                                key={styleNames[index]} className={"colorPickButton"}
                                            onClick={() => changeStyle(singleStyle, styleNames[index])}>
                                 {styleNames[index]}
                             </button>;

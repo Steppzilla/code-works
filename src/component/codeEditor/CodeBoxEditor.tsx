@@ -1,6 +1,8 @@
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {ChangeEvent, CSSProperties, KeyboardEventHandler, useState} from "react";
 import "./CodeBoxEditor.css";
+import {languagesStringArray} from "../../static/codeLanguage";
+import CodeLanguagePicker from "./CodeLanguagePicker";
 
 type CodeBoxProps = {
     actualStyleName: string,
@@ -9,6 +11,8 @@ type CodeBoxProps = {
 
 export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxProps) {
     const [actualString, setActualString] = useState<string>("")
+    const [actualLanguage, setActualLanguage] = useState<string>(languagesStringArray[0])
+
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const element: HTMLTextAreaElement = event.target;
@@ -24,6 +28,8 @@ export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxPro
 
     return (
         <div className={"editBox "}>
+            <CodeLanguagePicker setActualLanguage={setActualLanguage}
+                                actualLanguage={actualLanguage}/>
             <div className={"codeBox " + actualStyleName}>
                 <SyntaxHighlighter language={"java"} style={actualStyle} wrapLines={true} showLineNumbers={true}>
                     {actualString}

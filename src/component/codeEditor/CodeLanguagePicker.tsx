@@ -1,6 +1,6 @@
 import {useState} from "react";
-import "./CodeStylePicker.css";
-import {languagesStringArray} from "../static/codeLanguage";
+import "../CodeStylePicker.css";
+import {languagesStringArray} from "../../static/codeLanguage";
 
 type CodeLanguagePickerProps = {
     setActualLanguage: (name: string) => void,
@@ -29,8 +29,10 @@ export default function CodeLanguagePicker(props: CodeLanguagePickerProps) {
                 {
                     languagesStringArray.map(
                         (singleLanguage) => {
-                            return <button className={"colorPickButton"}
-                                           onClick={() => changeLanguage(singleLanguage)}>
+                            return <button
+                                key={singleLanguage}
+                                className={"colorPickButton"}
+                                onClick={() => changeLanguage(singleLanguage)}>
                                 {singleLanguage}
                             </button>;
                         }
