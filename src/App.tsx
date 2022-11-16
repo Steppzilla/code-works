@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Code from "./component/Code";
+import Article from "./component/Article";
+import ClassDiagramm from "./component/classDiagramm/ClassDiagramm";
 
 function App() {
   return (
     <div className="App">
-      <Code/>
+        <ClassDiagramm/>
+      <Article/>
     </div>
   );
 }

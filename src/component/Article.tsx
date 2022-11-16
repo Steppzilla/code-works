@@ -1,7 +1,7 @@
 import {styleArray, styleNames} from "../static/themes";
 import {CSSProperties, useState} from "react";
 import CodeStylePicker from './CodeStylePicker';
-import "./code.css";
+import "./Article.css";
 import {
     consoleExample,
     cssExample,
@@ -14,7 +14,7 @@ import CodeBox from "./CodeBox";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import {languagesStringArray} from "../static/codeLanguage";
 
-export default function Code() {
+export default function Article() {
 
     const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[0]);
     const [actualStyleName, setActualStyleName] = useState<string>(styleNames[0]);

@@ -36,4 +36,23 @@ export const consoleExample = "npm install bla\n" +
 
 export const jsonExample = "{name: 'hallo', ort: 'woanders', direction:{x:[],y:5}}";
 
+export const data = [
+    {title: "Klasse1", types: [
+            {attribute: "eins", type: "string"}
+        ]},
+    {title: "Klasse2", types: [
+            {attribute: "eins", type: "string"},
+            {attribute: "zwei", type: "number"},
+            {attribute: "drei", type: "Klasse3"}
+        ]},
+    {title: "Klasse3", types: [
+            {attribute: "eins", type: "string"}
+        ]},
+    {title: "Klasse4", types: [
+            {attribute: "eins", type: "string"},
+            {attribute: "zwei", type: "Klasse2"},
+            {attribute: "drei", type: "Klasse1"}
+        ]}
+]
+
 

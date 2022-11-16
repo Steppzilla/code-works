@@ -1,0 +1,20 @@
+.classDiagram {
+    background-color: steelblue;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.classDiagram h3 {
+    margin: 0;
+}
+
+.classDiagram p {
+    margin: 0;
+}
+
+.attribute{}
+.type{
+    font-style:italic;
+}
