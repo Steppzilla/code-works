@@ -22,6 +22,3 @@ export const styleNames: string [] = [
     "coldarkDark",
     "materialDark",
 ];
-
-
-

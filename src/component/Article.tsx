@@ -4,11 +4,30 @@ import CodeStylePicker from './CodeStylePicker';
 import "./Article.css";
 import {javaExample} from "../static/codeStringExamples";
 import CodeBox from "./CodeBox";
+import Table from "./tableandList/Table";
+import List from "./tableandList/List";
 
 export default function Article() {
 
     const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[0]);
     const [actualStyleName, setActualStyleName] = useState<string>(styleNames[0]);
+
+    const columns = [
+        {
+            name: "Cat",
+            title: "Mew",
+        },
+        {
+            name: "Director",
+            title: "Dog",
+        },
+        {
+            name: "Baby",
+            title: "Bru",
+        }
+    ];
+
+    const list = ["hallo du bla", "denk auch an das hier", "später vielleicht auch dies... "];
 
     return (
         <>
@@ -31,10 +50,9 @@ export default function Article() {
 
             <ol>
                 <li> ho</li>
-
             </ol>
-
-
+            <Table columns={columns}/>
+            <List data={list} sorted={false}/>
         </>
     )
 }
