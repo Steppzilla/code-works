@@ -1,3 +1,11 @@
+h1{
+    font-size: 14px;
+    border-bottom: 1px black solid;
+}
+
+h2{font-size: 16px;
+text-align: center}
+
 .codeBox {
     height: auto;
     margin: 0 auto 10px auto;

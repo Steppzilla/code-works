@@ -1,22 +1,23 @@
 import "./ClassDiagramm.css";
 import SingleBox from "./SingleBox";
-import {data} from "../../static/codeStringExamples";
 
-export default function ClassDiagramm() {
+type ClassDiagramProps={
+    data: {
+        color: string,
+        title: string,
+        types: { attribute: string, type: string | undefined }[]
+    }[],
+}
 
-    const colorArray: string[] = ["red", "green", "orange", "blue"]
-
-    const newData = data.map((element, i) => {
-        return {color: colorArray[i], title: element.title, types: element.types}
-    })
+export default function ClassDiagramm(diagramData: ClassDiagramProps) {
 
     return (
         <div>
-            <h2>Klassen-Diagramm</h2>
-            {newData.map(element =>
+            <h3>Klassen-Diagramm</h3>
+            {diagramData.data.map(element =>
                 <SingleBox
                     key={element.title}
-                    data={newData}
+                    data={diagramData.data}
                     element={element}/>
             )}
         </div>

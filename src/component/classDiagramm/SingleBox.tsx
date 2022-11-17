@@ -4,12 +4,12 @@ type SingleBoxProps = {
     data: {
         color: string,
         title: string,
-        types: { attribute: string, type: string }[]
+        types: { attribute: string, type: string|undefined }[]
     }[],
     element: {
         color: string,
         title: string,
-        types: { attribute: string, type: string }[]
+        types: { attribute: string, type: string|undefined }[]
     }
 }
 
@@ -24,11 +24,9 @@ export default function SingleBox({data, element}: SingleBoxProps) {
                 <p key={type.attribute}>
                     <span className={"attribute"}> {type.attribute} </span>
                     :
-                    <TypeAnnotation type={type.type} data={data}/>
-
+                    {type.type&&<TypeAnnotation type={type.type} data={data}/>}
                 </p>
             )}
-
         </div>
     )
 }
