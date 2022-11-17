@@ -4,12 +4,15 @@ import "./Table.css";
 type TableProps = {
     columns: object[],
     titles: string[] | undefined,
+    title: string,
 }
 
-export default function Table({columns, titles}: TableProps) {
+export default function Table({columns, titles, title}: TableProps) {
 
     return (
-        <table>
+        <>
+            <h3>{title}</h3>
+        <table className={"codeTable"}>
             <tbody>
             <tr>
                 {
@@ -22,5 +25,6 @@ export default function Table({columns, titles}: TableProps) {
             }
             </tbody>
         </table>
+        </>
     )
 }

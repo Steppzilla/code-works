@@ -1,0 +1,40 @@
+.codeTable{
+    padding:5px;
+    max-width: 95vw;
+    margin: 0 auto 10px auto;
+    box-shadow: 0 0 2px 2px var(--verydarkblue),
+    0 0 3px 3px var(--mediumblue);
+    background-color: var(--verydarkblue);
+    border-radius: 5px;
+    border-collapse:collapse;
+}
+
+.codeTable th{
+    color:var(--grey);
+    font-weight: normal;
+    line-height:13px;
+    font-size:11px;
+    padding:1px 4px 1px 4px;
+    text-align: center;
+    border-bottom:1px var(--mediumblue) solid;
+    background-color: var(--darkdarkred);
+}
+
+.codeTable th:nth-child(1){
+    border-top-left-radius: 5px;
+}
+
+.codeTable th:nth-last-child(1){
+    border-top-right-radius: 5px;
+}
+
+.codeTable td{
+    border-top: 1px var(--codeBackground) solid;
+    padding: 0 4px;
+    text-align: center;
+    line-height:20px;
+}
+
+.codeTable td:nth-child(n+2){
+    border-left:1px var(--codeBackground) dotted;
+}

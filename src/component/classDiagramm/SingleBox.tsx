@@ -16,10 +16,10 @@ type SingleBoxProps = {
 export default function SingleBox({data, element}: SingleBoxProps) {
 
     return (
-        <div className={"classDiagram"}>
-            <h3 style={{color: element.color}}>
+        <div className={"classDiagram"} style={{boxShadow: "0 0 2px 2px "+ element.color}}>
+            <h4 style={{color: element.color}}>
                 {element.title}
-            </h3>
+            </h4>
             {element.types.map(type =>
                 <p key={type.attribute}>
                     <span className={"attribute"}> {type.attribute} </span>

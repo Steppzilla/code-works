@@ -24,7 +24,7 @@ export default function TypeAnnotation({data, type}: TypeAnnotationProps) {
 
     return (
         <span
-            className={"type"} style={usedClass ? {color: usedClass.color} : {color: "black"}}> {type}
+            className={"type"} style={usedClass && {color: usedClass.color} }> {type}
         </span>
     )
 }

@@ -1,4 +1,5 @@
 import {ArticleData} from "../model/ArticleData";
+import {colorStyles} from "../enum/colorStyles";
 
 export const cssExample = ".codeBox {\n" +
     "    margin: 0 auto 10px auto;\n" +
@@ -70,9 +71,10 @@ export const article: ArticleData = {
             "asföjsajöfasd fds fdsa fa fsad fsda fsa fsad fa fsda fsdasfda  fa afs fasd sfd fsda asfd" +
             "safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."]
         }, //TextBox
-        {type: "code", data: javaExample, language: "java"}, //Code
-        {type: "list", data: list, sorted: true}, //Liste
-        {type: "table", columns: columns, titles: titles}, //Tabelle
+        {type: "code", title: "main.js", data: javaExample, language: "java"}, //Code
+        {type: "list", data: list, sorted: true, title:"liste"}, //Liste
+        {type: "list", data: list, sorted: false, title: "liste2"}, //Liste ohne zahl,
+        {type: "table", columns: columns, titles: titles, title: "tableTitle"}, //Tabelle
         {
             type: "diagram", data: [
                 {
@@ -80,7 +82,7 @@ export const article: ArticleData = {
                     types: [
                         {attribute: "eins", type: "string"}
                     ],
-                    color: "green"
+                    color: colorStyles.GREEN
                 },
                 {
                     title: "Klasse2",
@@ -89,14 +91,14 @@ export const article: ArticleData = {
                         {attribute: "zwei", type: "number"},
                         {attribute: "drei", type: "Klasse3"}
                     ],
-                    color: "blue"
+                    color: colorStyles.BLUE
                 },
                 {
                     title: "Klasse3",
                     types: [
                         {attribute: "eins", type: "string"}
                     ],
-                    color: "yellow"
+                    color: colorStyles.YELLOW
                 },
                 {
                     title: "Klasse4",
@@ -105,7 +107,16 @@ export const article: ArticleData = {
                         {attribute: "zwei", type: "Klasse2"},
                         {attribute: "drei", type: "Klasse1"}
                     ],
-                    color: "pink"
+                    color: colorStyles.RED
+                },
+                {
+                    title: "Klasse5",
+                    types: [
+                        {attribute: "eins", type: "string"},
+                        {attribute: "zwei", type: "Klasse3"},
+                        {attribute: "drei", type: "Klasse1"}
+                    ],
+                    color: colorStyles.PURPLE
                 }
             ]
         } //Klassendiagramm

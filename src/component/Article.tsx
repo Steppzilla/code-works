@@ -1,19 +1,19 @@
 import {styleArray, styleNames} from "../static/themes";
 import {CSSProperties, useState} from "react";
-import CodeStylePicker from './CodeStylePicker';
+import CodeStylePicker from './codeBoxes/stylePicker/CodeStylePicker';
 import "./Article.css";
-import CodeBox from "./CodeBox";
+import CodeBox from "./codeBoxes/CodeBox";
 import Table from "./textBoxes/Table";
 import List from "./textBoxes/List";
 import TextBox from "./textBoxes/TextBox";
-import CodeBoxEditor from "./codeEditor/CodeBoxEditor";
+import CodeBoxEditor from "./codeBoxes/codeEditor/CodeBoxEditor";
 import {article} from "../static/codeStringExamples";
 import ClassDiagramm from "./classDiagramm/ClassDiagramm";
 
 export default function Article() {
 
-    const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[0]);
-    const [actualStyleName, setActualStyleName] = useState<string>(styleNames[0]);
+    const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[1]);
+    const [actualStyleName, setActualStyleName] = useState<string>(styleNames[1]);
 
     return (
         <>
@@ -24,14 +24,16 @@ export default function Article() {
                 if (block.type === "text") {
                     return <TextBox key={b} h3={block.h3} paragraphs={block.paragraphs}/>
                 } else if (block.type === "code") {
-                    return <CodeBox key={b} language={block.language}
+                    return <CodeBox key={b}
+                                    title={block.title}
+                                    language={block.language}
                                     actualStyle={actualStyle}
                                     actualStyleName={actualStyleName}
                                     inputString={block.data}/>
                 } else if (block.type === "list") {
-                    return <List  key={b} data={block.data} sorted={block.sorted}/>
+                    return <List  key={b} data={block.data} sorted={block.sorted} title={block.title}/>
                 } else if (block.type === "table") {
-                    return <Table key={b} columns={block.columns} titles={block.titles}/>
+                    return <Table key={b} columns={block.columns} titles={block.titles} title={block.title}/>
                 }else if (block.type==="diagram"){
                     return <ClassDiagramm data={block.data}/>
                 }

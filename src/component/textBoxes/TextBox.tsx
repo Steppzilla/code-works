@@ -9,9 +9,11 @@ export default function TextBox({h3, paragraphs}: TextBoxProps) {
     return (
         <>
             {h3 && <h3>{h3}</h3>}
+            <div className={"textBox"}>
             {paragraphs.map(str =>
                 <p className="textParagraph" key={crypto.randomUUID()} dangerouslySetInnerHTML={{__html: str}}/>)
             }
+            </div>
         </>
     )
 }

@@ -1,4 +1,3 @@
-import "./RowItem.css";
 type RowItemProbs = {
     rowObj: object,
 }
