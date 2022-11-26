@@ -1,14 +1,14 @@
 import "./TextBox.css"
 type TextBoxProps = {
-    h3: string | undefined,
+    title: string | undefined,
     paragraphs: string[],
 }
 
-export default function TextBox({h3, paragraphs}: TextBoxProps) {
+export default function TextBox({title, paragraphs}: TextBoxProps) {
 
     return (
         <>
-            {h3 && <h3>{h3}</h3>}
+            {title && <h3>{title}</h3>}
             <div className={"textBox"}>
             {paragraphs.map(str =>
                 <p className="textParagraph" key={crypto.randomUUID()} dangerouslySetInnerHTML={{__html: str}}/>)

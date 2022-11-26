@@ -32,7 +32,7 @@ export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxPro
             <CodeLanguagePicker setActualLanguage={setActualLanguage}
                                 actualLanguage={actualLanguage}/>
             <div className={"codeBox " + actualStyleName}>
-                <SyntaxHighlighter language={"java"} style={actualStyle} wrapLines={true} showLineNumbers={true}>
+                <SyntaxHighlighter language={actualLanguage} style={actualStyle} wrapLines={true} showLineNumbers={true}>
                     {actualString}
                 </SyntaxHighlighter>
             </div>

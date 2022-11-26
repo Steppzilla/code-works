@@ -20,9 +20,9 @@ export default function Article() {
             {article.h1 && <h1> {article.h1} </h1>}
             {article.h2 && <h2>{article.h2}</h2>}
 
-            {article.data.map((block,b) => {
+            {article.data.map((block, b) => {
                 if (block.type === "text") {
-                    return <TextBox key={b} h3={block.h3} paragraphs={block.paragraphs}/>
+                    return <TextBox key={b} title={block.title} paragraphs={block.paragraphs}/>
                 } else if (block.type === "code") {
                     return <CodeBox key={b}
                                     title={block.title}
@@ -31,11 +31,13 @@ export default function Article() {
                                     actualStyleName={actualStyleName}
                                     inputString={block.data}/>
                 } else if (block.type === "list") {
-                    return <List  key={b} data={block.data} sorted={block.sorted} title={block.title}/>
+                    return <List key={b} data={block.paragraphs} sorted={block.sorted} title={block.title}/>
                 } else if (block.type === "table") {
                     return <Table key={b} columns={block.columns} titles={block.titles} title={block.title}/>
-                }else if (block.type==="diagram"){
-                    return <ClassDiagramm data={block.data}/>
+                } else if (block.type === "diagram") {
+                    return <ClassDiagramm key={b} data={block.diagramData}/>
+                }else{
+                    return ""
                 }
             })}
 

@@ -1,6 +1,6 @@
 export type ClassDiagramData = {
     type: "diagram",
-    data: {
+    diagramData: {
         color: string,
         title: string,
         types: { attribute: string, type: string | undefined }[]

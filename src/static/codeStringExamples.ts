@@ -62,8 +62,8 @@ const titles = ["Name", "Titel"]
 
 export const article: ArticleData = {
     h1: "Java", h2: "Mein erstes Programm", data: [
-        {
-            type: "text", h3: "Beispiel", paragraphs: ["Das erste Beispiel bla saddf sfsdafadö sdff" +
+        {//text
+            type: "text", title: "Beispiel", paragraphs: ["Das erste Beispiel bla saddf sfsdafadö sdff" +
             "sadfjöasfjasf sfjöasdf fas jsadfö asjf sadfja ösdf asfö öjjöjjjöj jjkljkjö ökjöjköjköjk" +
             "öjöjkjk ööjkkjök jökjöjk öjökjökjköjk öjköjköjköjköj kö jöjköjk jjök ljök öj jöjö jö k jklö jkö jkl j kjö j " +
             " jkö j kjöjj ö j öjö j jj  jölj  jökl öjkj ökjö kj ö jöj ök jöjöj ö jöj ö jö öj öj öj jö" +
@@ -72,11 +72,11 @@ export const article: ArticleData = {
             "safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."]
         }, //TextBox
         {type: "code", title: "main.js", data: javaExample, language: "java"}, //Code
-        {type: "list", data: list, sorted: true, title:"liste"}, //Liste
-        {type: "list", data: list, sorted: false, title: "liste2"}, //Liste ohne zahl,
+        {type: "list", paragraphs: list, sorted: true, title:"liste"}, //Liste
+        {type: "list", paragraphs: list, sorted: false, title: "liste2"}, //Liste ohne zahl,
         {type: "table", columns: columns, titles: titles, title: "tableTitle"}, //Tabelle
         {
-            type: "diagram", data: [
+            type: "diagram", diagramData: [
                 {
                     title: "Klasse1",
                     types: [

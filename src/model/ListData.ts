@@ -1,6 +1,6 @@
 export type ListData = {
     type: "list",
-    data: string[] ,
+    paragraphs: string[] ,
     sorted: boolean,
     title: string,
 }

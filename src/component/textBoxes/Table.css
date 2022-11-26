@@ -18,6 +18,8 @@
     text-align: center;
     border-bottom:1px var(--mediumblue) solid;
     background-color: var(--darkdarkred);
+    min-height: 25px;
+    min-width:20px;
 }
 
 .codeTable th:nth-child(1){
@@ -33,8 +35,14 @@
     padding: 0 4px;
     text-align: center;
     line-height:20px;
+    min-height: 14px;
+    min-width: 20px;
 }
 
 .codeTable td:nth-child(n+2){
     border-left:1px var(--codeBackground) dotted;
 }
+
+form h3{min-height: 20px;}
+
+

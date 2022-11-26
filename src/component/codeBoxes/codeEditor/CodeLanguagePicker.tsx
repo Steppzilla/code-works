@@ -10,7 +10,6 @@ type CodeLanguagePickerProps = {
 export default function CodeLanguagePicker(props: CodeLanguagePickerProps) {
     const [show, setShow] = useState<boolean>(false);
 
-
     const toggleShow = () => {
         show ? setShow(false) : setShow(true);
     }
