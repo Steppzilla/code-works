@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Article from "./component/Article";
 import TableEditor from "./component/textBoxes/TableEditor";
-import ArticleEditor from "./component/ArticleEditor";
+import JSONView from "./component/JSON-view";
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
             <Article/>
             <p> TableEditor</p>
             <TableEditor/>
-            <ArticleEditor/>
+            <JSONView/>
         </div>
     );
 }

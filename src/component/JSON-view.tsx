@@ -4,7 +4,7 @@ import {article} from "../static/codeStringExamples";
 import {ArticleData} from "../model/ArticleData";
 import "./ArticleEditor.css";
 
-export default function ArticleEditor() {
+export default function JSONView() {
 
     const [article2, setArticle2] = useState<ArticleData>(article);
 
