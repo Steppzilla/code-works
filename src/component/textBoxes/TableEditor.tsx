@@ -1,5 +1,6 @@
 import "./Table.css";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent,MouseEvent, useState} from "react";
+import "./TableEditor.css";
 
 export default function TableEditor() {
 
@@ -12,7 +13,8 @@ export default function TableEditor() {
 
     const keysX = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
 
-    const handleTableRows = (add: boolean) => {
+    const handleTableRows = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
         if (add) {
             const firstObj = rows[0]
             let newObject = {};
@@ -26,7 +28,8 @@ export default function TableEditor() {
         }
     }
 
-    const handleTableCells = (add: boolean) => {
+    const handleTableCells = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
         const actualFirstObj = rows[0];
         const maxIndex = Object.keys(actualFirstObj).length;
         const actualKey = keysX[maxIndex - 1];
@@ -70,48 +73,54 @@ export default function TableEditor() {
     }
 
     return (
-        <>
-            Reihen:
-            <button onClick={() => {
-                handleTableRows(false)
-            }}> - </button>
-            <button onClick={() => {
-                handleTableRows(true)
-            }}> +
-            </button>
-            Spalten:
-            <button onClick={() => {
-                handleTableCells(false)
-            }}> - </button>
-            <button onClick={() => {
-                handleTableCells(true)
-            }}> +
-            </button>
-            <form>
-                <h3><input onChange={changeTitle} value={title}/></h3>
-                <table className={"codeTable"}>
-                    <tbody>
-                    <tr>
-                        {titles.map((oneTitle, t) => <td key={keysX[t]}>
-                            <input name={"header"} value={titles[t]} onChange={
-                                (event) => changeTitles(t, event)}/>
-                        </td>)
-                        }
-                    </tr>
+        <form id={"editTableForm"}>
+            <h3><input onChange={changeTitle} value={title}/></h3>
+            <div>
+                <div>
+                    <button onClick={(event) => {
+                        handleTableCells(false, event)
+                    }}> -
+                    </button>
+                    <button onClick={(event) => {
+                        handleTableCells(true,event)
+                    }}> +
+                    </button>
+                </div>
+                <div>
+                    <div>
+                        <button onClick={(event) =>
+                            handleTableRows(false, event)
+                        }> -
+                        </button>
+                        <button onClick={(event) =>
+                            handleTableRows(true, event)
+                        }> +
+                        </button>
+                    </div>
+                    <table className={"codeTable"}>
+                        <tbody>
+                        <tr>
+                            {titles.map((oneTitle, t) => <td key={keysX[t]}>
+                                <input name={"header"} value={titles[t]} onChange={
+                                    (event) => changeTitles(t, event)}/>
+                            </td>)
+                            }
+                        </tr>
 
-                    {rows.map((rowObj, r) =>
-                        <tr key={keysX[r]+r}>
-                            {Object.keys(rowObj).map((cell, c) =>
-                                <td key={""+r+c}>
-                                    <input value={Object.values(rows[r])[c]}
-                                           onChange={(event) => editTable(r, c, event)}/>
-                                </td>
-                            )}
-                        </tr>)
-                    }
-                    </tbody>
-                </table>
-            </form>
-        </>
+                        {rows.map((rowObj, r) =>
+                            <tr key={keysX[r] + r}>
+                                {Object.keys(rowObj).map((cell, c) =>
+                                    <td key={"" + r + c}>
+                                        <input value={Object.values(rows[r])[c]}
+                                               onChange={(event) => editTable(r, c, event)}/>
+                                    </td>
+                                )}
+                            </tr>)
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
     )
 }
