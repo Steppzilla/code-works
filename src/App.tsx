@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Article from "./component/Article";
 import TableEditor from "./component/editors/TableEditor";
-import JSONView from "./component/JSON-view/JSON-view";
+import JsonView from "./component/JsonView/JsonView";
 import ClassDiagrammEditor from "./component/editors/classDiagrammEditor/ClassDiagrammEditor";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
             <Article/>
             <p> TableEditor</p>
             <TableEditor/>
-            <JSONView/>
+            <JsonView/>
         </div>
     );
 }

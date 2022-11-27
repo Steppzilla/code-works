@@ -1,11 +1,7 @@
-import {CodeData} from "./CodeData";
-import {ListData} from "./ListData";
-import {TextBoxData} from "./TextBoxData";
-import {TableData} from "./TableData";
-import {ClassDiagramData} from "./ClassDiagramData";
+import {ComponentData} from "./ComponentData";
 
 export type ArticleData = {
     h1: string,
     h2: string,
-    data: (CodeData | ListData | TableData | TextBoxData | ClassDiagramData) [],
+    data: (ComponentData) [],
 }

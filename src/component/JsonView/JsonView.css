@@ -14,7 +14,7 @@
     border-radius: 6px;
     margin: 4px 0 0 25px;
     padding: 1px 0 0 15px;
-  /*  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.29);*/
+    /*  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.29);*/
 }
 
 #AE p {
@@ -27,17 +27,21 @@
     margin: 2px 0 0 0;
 }
 
-.key {
-    background-color: #3e3e7b;
-    border-radius: 15px;
-    padding: 0 2px 2px 5px;
-    box-shadow: 0 0 2px 2px rgba(113, 123, 113, 0.63);
-}
-
 #AE .structure {
     background-color: #396a39;
     border-radius: 15px;
     padding: 0 0 2px 0;
     margin: 0 2px 0 2px;
     box-shadow: 0 0 2px 2px rgba(113, 123, 113, 0.63);
+}
+
+ .data-prefix::before {
+    background-color: #3e3e7b;
+    border-radius: 15px;
+    padding: 0 2px 2px 5px;
+    box-shadow: 0 0 2px 2px rgba(113, 123, 113, 0.63);
+}
+
+.data-prefix::before{
+    content: attr(data-content);
 }

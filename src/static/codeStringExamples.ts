@@ -63,20 +63,43 @@ const titles = ["Name", "Titel"]
 export const article: ArticleData = {
     h1: "Java", h2: "Mein erstes Programm", data: [
         {//text
-            type: "text", title: "Beispiel", paragraphs: ["Das erste Beispiel bla saddf sfsdafadö sdff" +
+            type: "text",
+            title: "Beispiel",
+            paragraphs: ["Das erste Beispiel bla saddf sfsdafadö sdff" +
             "sadfjöasfjasf sfjöasdf fas jsadfö asjf sadfja ösdf asfö öjjöjjjöj jjkljkjö ökjöjköjköjk" +
             "öjöjkjk ööjkkjök jökjöjk öjökjökjköjk öjköjköjköjköj kö jöjköjk jjök ljök öj jöjö jö k jklö jkö jkl j kjö j " +
             " jkö j kjöjj ö j öjö j jj  jölj  jökl öjkj ökjö kj ö jöj ök jöjöj ö jöj ö jö öj öj öj jö" +
             "jl j öl öjlöj  jöj öj ökjök öj kj ökj ökj ökjök ", "Mit zweitem Absatzasfd asdf fs fas fasd" +
             "asföjsajöfasd fds fdsa fa fsad fsda fsa fsad fa fsda fsdasfda  fa afs fasd sfd fsda asfd" +
-            "safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."]
+            "safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."],
         }, //TextBox
-        {type: "code", title: "main.js", data: javaExample, language: "java"}, //Code
-        {type: "list", paragraphs: list, sorted: true, title:"liste"}, //Liste
-        {type: "list", paragraphs: list, sorted: false, title: "liste2"}, //Liste ohne zahl,
-        {type: "table", columns: columns, titles: titles, title: "tableTitle"}, //Tabelle
         {
-            type: "diagram", diagramData: [
+            type: "code",
+            title: "main.js",
+            data: javaExample,
+            language: "java",
+        }, //Code
+        {
+            type: "list",
+            title: "liste",
+            paragraphs: list,
+            sorted: true,
+        }, //Liste
+        {
+            type: "list",
+            title: "liste",
+            paragraphs: list,
+            sorted: false,
+        }, //Liste
+        {
+            type: "table",
+            title: "tableDings",
+            titles: titles,
+            columns: columns,
+        }, //Table
+        {
+            type: "diagram",
+            diagramData: [
                 {
                     title: "Klasse1",
                     attributes: [
@@ -119,6 +142,7 @@ export const article: ArticleData = {
                     color: colorStyles.PURPLE
                 }
             ]
-        } //Klassendiagramm
+         //Klassendiagramm
+        },
     ]
 }
