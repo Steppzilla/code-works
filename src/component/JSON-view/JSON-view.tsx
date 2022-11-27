@@ -27,7 +27,7 @@ export default function JSONView() {
                 <p><span className={"key"}>h2:</span> {article2.h2}</p>
                 <span className={"key"}>data:</span>&nbsp;<span className={"structure"}>[</span>
                 {article2.data.map((val, valI) =>
-                    <div className={"box"}>
+                    <div key={val.type+valI} className={"box"}>
                         <span className={"key"}>{valI}:</span> <span className={"structure"}>&#123;</span>
                         {(val.type === "text") &&
                             (showText ? <JsonText val={val}/> : "Text")

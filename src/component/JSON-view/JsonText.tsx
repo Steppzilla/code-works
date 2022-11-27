@@ -10,17 +10,17 @@ export default function JsonText({val}: JsonTextParam) {
 
     return (
         <div className={"box"}>
-            <p><span className={"key"}>type:</span> {val.type}</p>
-            <p><span className={"key"}>h3:</span> {val.title}</p>
-            <p><span className={"key"}>paragraphs:</span> <span
+            <div><span className={"key"}>type:</span> {val.type}</div>
+            <div><span className={"key"}>h3:</span> {val.title}</div>
+            <div><span className={"key"}>paragraphs:</span> <span
                 className={"structure"}>[</span>
                 {val.paragraphs.map((par, p) =>
-                    <div>
+                    <div key={par} className={"box"}>
                         <p><span className={"key"}>{p}:</span> {par}</p>
                     </div>
                 )}
                 <span className={"structure"}>]</span>
-            </p>
+            </div>
         </div>
     )
 }
