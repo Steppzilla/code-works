@@ -1,5 +1,5 @@
 import "../Article.css";
-import "../ArticleEditor.css";
+import "./JsonView.css";
 import {ClassDiagramData} from "../../model/ClassDiagramData";
 
 type JsonDiagramParam = {

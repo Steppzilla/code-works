@@ -2,7 +2,7 @@ import {useState} from "react";
 import "../Article.css";
 import {article} from "../../static/codeStringExamples";
 import {ArticleData} from "../../model/ArticleData";
-import "../ArticleEditor.css";
+import "./JsonView.css";
 import JsonText from "./JsonText";
 import JsonCode from "./JsonCode";
 import JsonList from "./JsonList";
@@ -12,11 +12,11 @@ import JsonDiagram from "./JsonDiagram";
 export default function JSONView() {
 
     const [article2, setArticle2] = useState<ArticleData>(article);
-    const showTable: boolean = false;
-    const showText: boolean = false;
-    const showCode: boolean = false;
-    const showList: boolean = false;
-    const showDiagram: boolean = false;
+    const showTable: boolean = true;
+    const showText: boolean = true;
+    const showCode: boolean = true;
+    const showList: boolean = true;
+    const showDiagram: boolean = true;
 
     return (
         <div id={"AE"}>

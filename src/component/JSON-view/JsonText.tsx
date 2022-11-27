@@ -1,5 +1,5 @@
 import "../Article.css";
-import "../ArticleEditor.css";
+import "./JsonView.css";
 import {TextBoxData} from "../../model/TextBoxData";
 
 type JsonTextParam = {
@@ -9,7 +9,7 @@ type JsonTextParam = {
 export default function JsonText({val}: JsonTextParam) {
 
     return (
-        <div>
+        <div className={"box"}>
             <p><span className={"key"}>type:</span> {val.type}</p>
             <p><span className={"key"}>h3:</span> {val.title}</p>
             <p><span className={"key"}>paragraphs:</span> <span
