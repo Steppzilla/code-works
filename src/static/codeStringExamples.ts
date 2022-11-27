@@ -79,14 +79,14 @@ export const article: ArticleData = {
             type: "diagram", diagramData: [
                 {
                     title: "Klasse1",
-                    types: [
+                    attributes: [
                         {attribute: "eins", type: "string"}
                     ],
                     color: colorStyles.GREEN
                 },
                 {
                     title: "Klasse2",
-                    types: [
+                    attributes: [
                         {attribute: "eins", type: "string"},
                         {attribute: "zwei", type: "number"},
                         {attribute: "drei", type: "Klasse3"}
@@ -95,14 +95,14 @@ export const article: ArticleData = {
                 },
                 {
                     title: "Klasse3",
-                    types: [
+                    attributes: [
                         {attribute: "eins", type: "string"}
                     ],
                     color: colorStyles.YELLOW
                 },
                 {
                     title: "Klasse4",
-                    types: [
+                    attributes: [
                         {attribute: "eins", type: "string"},
                         {attribute: "zwei", type: "Klasse2"},
                         {attribute: "drei", type: "Klasse1"}
@@ -111,7 +111,7 @@ export const article: ArticleData = {
                 },
                 {
                     title: "Klasse5",
-                    types: [
+                    attributes: [
                         {attribute: "eins", type: "string"},
                         {attribute: "zwei", type: "Klasse3"},
                         {attribute: "drei", type: "Klasse1"}

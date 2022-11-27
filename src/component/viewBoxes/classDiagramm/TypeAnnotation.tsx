@@ -4,7 +4,7 @@ type TypeAnnotationProps = {
     data: {
         color: string,
         title: string,
-        types: { attribute: string, type: string | undefined }[]
+        attributes: { attribute: string, type: string | undefined }[]
     }[],
     type: string,
 }
@@ -14,7 +14,7 @@ export default function TypeAnnotation({data, type}: TypeAnnotationProps) {
     const [usedClass, setUsedClass] = useState<{
         color: string,
         title: string,
-        types: { attribute: string, type: string | undefined }[]
+        attributes: { attribute: string, type: string | undefined }[]
     }>();
 
     useEffect(() => {

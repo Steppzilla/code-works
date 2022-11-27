@@ -20,7 +20,7 @@ export default function JsonDiagram({val}: JsonDiagramParam) {
                                 <p><span className={"key"}>color:</span> {ele.color}</p>
                                 <p><span className={"key"}>types:</span> <span
                                     className={"structure"}>[</span>
-                                    {ele.types.map((ele, eleI) => {
+                                    {ele.attributes.map((ele, eleI) => {
                                             return (<div>
                                                 <span className={"key"}>{eleI}</span>&nbsp;
                                                 <span className={"structure"}>&#123;</span>

@@ -3,6 +3,6 @@ export type ClassDiagramData = {
     diagramData: {
         color: string,
         title: string,
-        types: { attribute: string, type: string | undefined }[]
+        attributes: { attribute: string, type: string | undefined }[]
     }[],
 }

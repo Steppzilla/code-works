@@ -4,12 +4,12 @@ type SingleBoxProps = {
     data: {
         color: string,
         title: string,
-        types: { attribute: string, type: string|undefined }[]
+        attributes: { attribute: string, type: string|undefined }[]
     }[],
     element: {
         color: string,
         title: string,
-        types: { attribute: string, type: string|undefined }[]
+        attributes: { attribute: string, type: string|undefined }[]
     }
 }
 
@@ -20,7 +20,7 @@ export default function SingleBox({data, element}: SingleBoxProps) {
             <h4 style={{color: element.color}}>
                 {element.title}
             </h4>
-            {element.types.map(type =>
+            {element.attributes.map(type =>
                 <p key={type.attribute}>
                     <span className={"attribute"}> {type.attribute} </span>
                     :
