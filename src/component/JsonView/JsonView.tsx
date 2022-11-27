@@ -9,11 +9,11 @@ import {isCodeType, isDiagramType, isListType, isTableType, isTextType} from "..
 export default function JsonView() {
 
     const [article2, setArticle2] = useState<ArticleData>(article);
-    const showTable: boolean = false;
-    const showText: boolean = false;
+    const showTable: boolean = true;
+    const showText: boolean = true;
     const showCode: boolean = true;
-    const showList: boolean = false;
-    const showDiagram: boolean = false;
+    const showList: boolean = true;
+    const showDiagram: boolean = true;
 
     return (
         <div id={"AE"}>
@@ -25,7 +25,7 @@ export default function JsonView() {
                 <div className={"data-prefix"} data-content={"data:"}>
                     &nbsp; <span className={"structure"}>[</span>
                     {article2.data.map((val, valI) =>
-                        <div key={val.type + valI} className={"box data-prefix"} data-content={valI + ":"}>
+                        <div key={valI} className={"box data-prefix"} data-content={valI + ":"}>
                             &nbsp;<span className={"structure"}>&#123;</span>
                             {
                                 (

@@ -17,7 +17,7 @@ export type ComponentDataXXL = {
     language?: string,
     paragraphs?: string[],
     sorted?: boolean,
-    columns?: object[],
+    rows?: object[],
 }
 
 export type ComponentData = ClassDiagramData | CodeData | ListData | TableData | TextBoxData;

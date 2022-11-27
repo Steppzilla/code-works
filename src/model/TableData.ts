@@ -1,6 +1,6 @@
 export type TableData = {
     type: "table",
-    columns: object[],
+    rows: object[],
     titles: string[] | undefined,
     title: string,
 }

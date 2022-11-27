@@ -95,7 +95,7 @@ export const article: ArticleData = {
             type: "table",
             title: "tableDings",
             titles: titles,
-            columns: columns,
+            rows: columns,
         }, //Table
         {
             type: "diagram",

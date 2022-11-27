@@ -30,7 +30,7 @@ export default function Article() {
                                                    inputString={block.data}/>}
                     {isListType(block) && <List  data={block.paragraphs} sorted={block.sorted} title={block.title}/>}
                     {isTableType(block) &&
-                        <Table  columns={block.columns} titles={block.titles} title={block.title}/>}
+                        <Table  columns={block.rows} titles={block.titles} title={block.title}/>}
                     {isDiagramType(block) && <ClassDiagramm data={block.diagramData}/>}
                 </div>
             )}
