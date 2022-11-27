@@ -1,4 +1,4 @@
-import "./Table.css";
+import "../viewBoxes/Table.css";
 import {ChangeEvent,MouseEvent, useState} from "react";
 import "./TableEditor.css";
 

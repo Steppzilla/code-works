@@ -13,7 +13,6 @@ export default function ClassDiagramm(diagramData: ClassDiagramProps) {
 
     return (
         <>
-
             <h3>Klassen-Diagramm</h3>
             <div className={"diagramBox"} >
                 {diagramData.data.map(element =>

@@ -1,14 +1,14 @@
 import {styleArray, styleNames} from "../static/themes";
 import {CSSProperties, useState} from "react";
-import CodeStylePicker from './codeBoxes/stylePicker/CodeStylePicker';
+import CodeStylePicker from './editors/codeEditor/stylePicker/CodeStylePicker';
 import "./Article.css";
-import CodeBox from "./codeBoxes/CodeBox";
-import Table from "./textBoxes/Table";
-import List from "./textBoxes/List";
-import TextBox from "./textBoxes/TextBox";
-import CodeBoxEditor from "./codeBoxes/codeEditor/CodeBoxEditor";
+import CodeBox from "./viewBoxes/codeBoxes/CodeBox";
+import Table from "./viewBoxes/Table";
+import List from "./viewBoxes/List";
+import TextBox from "./viewBoxes/TextBox";
+import CodeBoxEditor from "./editors/codeEditor/CodeBoxEditor";
 import {article} from "../static/codeStringExamples";
-import ClassDiagramm from "./classDiagramm/ClassDiagramm";
+import ClassDiagramm from "./viewBoxes/classDiagramm/ClassDiagramm";
 
 export default function Article() {
 

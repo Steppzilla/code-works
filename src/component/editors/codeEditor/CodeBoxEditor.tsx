@@ -1,6 +1,6 @@
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {ChangeEvent, CSSProperties, KeyboardEventHandler, useState} from "react";
-import "../codeBox.css";
+import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import {codeLanguage} from "../../../enum/codeLanguages";
 

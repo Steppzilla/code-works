@@ -1,6 +1,6 @@
 import {CSSProperties, useState} from "react";
 import "./CodeStylePicker.css";
-import {styleArray, styleNames} from "../../../static/themes";
+import {styleArray, styleNames} from "../../../../static/themes";
 
 type DropDownMenuButtonsProperties = {
     setActualStyle: (style: { [key: string]: CSSProperties; }) => void,
