@@ -12,9 +12,8 @@ export default function EditTextBox() {
     const [title, setTitle] = useState<string>("");
 
     const handleEdit = (s: number, value: string) => {
-        console.log(s, text.length-1)
         const editText = text;
-        if(s==text.length-1){
+        if(s===text.length-1){
             editText.push("");
         }
         editText[s] = value;
@@ -23,7 +22,7 @@ export default function EditTextBox() {
 
     return (
         <>
-            <h3>
+            <h3 className={"titleTextEdit"}>
                 <input value={title} onChange={(event) => setTitle(event.target.value)}/>
             </h3>
             <div className={"textBoxEditor"}>

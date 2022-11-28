@@ -12,7 +12,7 @@ type CodeBoxProps = {
 export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxProps) {
     const [actualString, setActualString] = useState<string>("")
     const [actualLanguage, setActualLanguage] = useState<string>(Object.values(codeLanguage)[0])
-
+    const [showNumbers, setShowNumbers] = useState<boolean>(true)
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const element: HTMLTextAreaElement = event.target;
@@ -26,16 +26,23 @@ export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxPro
         }
     }
 
+    const toggleNumbers = () => {
+        showNumbers?setShowNumbers(false): setShowNumbers(true);
+    }
+
     return (
         <div className={"box"}>
+            <button onClick={() => toggleNumbers()}> {showNumbers?"Zahlen ausblenden": "Zahlen einblenden"}</button>
             <h3> Edit Code: </h3>
             <CodeLanguagePicker setActualLanguage={setActualLanguage}
                                 actualLanguage={actualLanguage}/>
             <div className={"codeBox " + actualStyleName}>
-                <SyntaxHighlighter language={actualLanguage} style={actualStyle} wrapLines={true} showLineNumbers={true}>
+                <SyntaxHighlighter language={actualLanguage} style={actualStyle} wrapLines={true}
+                                   showLineNumbers={showNumbers}>
                     {actualString}
                 </SyntaxHighlighter>
             </div>
-            <textarea className={"textEditField"} onChange={handleChange} onKeyDown={handleKeyDown} value={actualString}/>
+            <textarea className={"textEditField"} onChange={handleChange} onKeyDown={handleKeyDown}
+                      value={actualString}/>
         </div>)
 }
