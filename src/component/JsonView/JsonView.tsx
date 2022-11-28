@@ -5,6 +5,7 @@ import {ArticleData} from "../../model/ArticleData";
 import "./JsonView.css";
 import JsonComponent from "./JsonComponent";
 import {isCodeType, isDiagramType, isListType, isTableType, isTextType} from "../../model/ComponentData";
+import DateComp from "./DateComp";
 
 export default function JsonView() {
 
@@ -21,8 +22,16 @@ export default function JsonView() {
             <span className={"structure"}>&#123;</span>
             <div className={"box"}>
                 {Object.keys(article2).map((articleAttribute, artI) =>
-                    <>
+                    <div key={artI}>
                         <div className={"data-prefix"} data-content={articleAttribute + ":"}>
+                            {(articleAttribute === "date") &&
+                                <div key={articleAttribute}
+                                     className={"box data-prefix"}
+                                     data-content={articleAttribute + ":"}>
+                                    &nbsp;<DateComp date={article.date}/>
+                                </div>
+
+                            }
                             {(typeof Object.values(article2)[artI] === "string") ?
                                 <>&nbsp;{Object.values(article2)[artI]}</>
                                 :
@@ -46,7 +55,7 @@ export default function JsonView() {
                                 </>
                             }
                         </div>
-                    </>
+                    </div>
                 )}
             </div>
             <span className={"structure"}>&#125;</span>

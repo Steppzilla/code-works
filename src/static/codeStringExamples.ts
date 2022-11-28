@@ -59,9 +59,13 @@ const columns = [
     }
 ];
 const titles = ["Name", "Titel"]
+const date: Date = new Date(2018, 0, 32);
 
 export const article: ArticleData = {
-    h1: "Java", h2: "Mein erstes Programm", data: [
+    h1: "Java",
+    h2: "Mein erstes Programm",
+    date: date,
+    data: [
         {//text
             type: "text",
             title: "Beispiel",
@@ -142,7 +146,7 @@ export const article: ArticleData = {
                     color: colorStyles.PURPLE
                 }
             ]
-         //Klassendiagramm
+            //Klassendiagramm
         },
     ]
 }
