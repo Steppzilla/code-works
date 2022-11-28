@@ -2,7 +2,7 @@ import "../Article.css";
 import "./JsonView.css";
 
 type ObjectArrayParams = {
-    objects: object[],
+    objects: object[]|undefined,
 }
 
 export default function ObjectArray({objects}: ObjectArrayParams) {
@@ -10,7 +10,7 @@ export default function ObjectArray({objects}: ObjectArrayParams) {
     return (
         <>
             <span  className={"structure"}>[</span>
-            {objects.map((el, eleI) =>
+            {objects?.map((el, eleI) =>
                 <div key={eleI} className={"box data-prefix"}
                      data-content={eleI + ":"}>
                     &nbsp;

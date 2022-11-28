@@ -20,27 +20,34 @@ export default function JsonView() {
             <h1> JSON - Ansicht: </h1>
             <span className={"structure"}>&#123;</span>
             <div className={"box"}>
-                <div className={"data-prefix"} data-content={"h1:"}> {article2.h1}</div>
-                <div className={"data-prefix"} data-content={"h2:"}> {article2.h2}</div>
-                <div className={"data-prefix"} data-content={"data:"}>
-                    &nbsp; <span className={"structure"}>[</span>
-                    {article2.data.map((val, valI) =>
-                        <div key={valI} className={"box data-prefix"} data-content={valI + ":"}>
-                            &nbsp;<span className={"structure"}>&#123;</span>
-                            {
-                                (
-                                    (showTable && isTableType(val)) || (showText && isTextType(val))
-                                    || (showCode && isCodeType(val)) || (showList && isListType(val))
-                                    || (showDiagram && isDiagramType(val))) ?
-                                    <JsonComponent val={val}/>
-                                    :
-                                    "Object"
+                {Object.keys(article2).map((articleAttribute, artI) =>
+                    <>
+                        <div className={"data-prefix"} data-content={articleAttribute + ":"}>
+                            {(typeof Object.values(article2)[artI] === "string") ?
+                                <>&nbsp;{Object.values(article2)[artI]}</>
+                                :
+                                <> &nbsp; <span className={"structure"}>[</span>
+                                    {article2.data.map((val, valI) =>
+                                        <div key={valI} className={"box data-prefix"} data-content={valI + ":"}>
+                                            &nbsp;<span className={"structure"}>&#123;</span>
+                                            {
+                                                (
+                                                    (showTable && isTableType(val)) || (showText && isTextType(val))
+                                                    || (showCode && isCodeType(val)) || (showList && isListType(val))
+                                                    || (showDiagram && isDiagramType(val))) ?
+                                                    <JsonComponent val={val}/>
+                                                    :
+                                                    "Object"
+                                            }
+                                            <span className={"structure"}>&#125;</span>
+                                        </div>
+                                    )}
+                                    <span className={"structure"}>]</span>
+                                </>
                             }
-                            <span className={"structure"}>&#125;</span>
                         </div>
-                    )}
-                    <span className={"structure"}>]</span>
-                </div>
+                    </>
+                )}
             </div>
             <span className={"structure"}>&#125;</span>
         </div>
