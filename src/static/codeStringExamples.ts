@@ -155,6 +155,7 @@ const article2: ArticleData = {
     h1: "Java",
     h2: "Mein zweites Programm",
     date: date,
+    collections: ["teletuppies", "babybären"],
     data: [
         {//text
             type: "text",

@@ -8,11 +8,11 @@ type StringArrayParams = {
 export default function StringArray({strings}: StringArrayParams) {
 
     return (
-        <>&nbsp;
+        <>
             <span className={"structure"}>[</span>
             {strings?.map((par, p) =>
                 <div key={p} className={"box"}>
-                    <div className={"data-prefix"} data-content={p + ":"}> &nbsp;{par}</div>
+                    <div className={"data-prefix"} data-content={p + ":"}>&nbsp;{par}</div>
                 </div>
             )}
             <span className={"structure"}>]</span>

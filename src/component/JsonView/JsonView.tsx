@@ -4,6 +4,7 @@ import "./JsonView.css";
 import JsonComponent from "./JsonComponent";
 import {isCodeType, isDiagramType, isListType, isTableType, isTextType} from "../../model/ComponentData";
 import DateComp from "./DateComp";
+import StringArray from "./StringArray";
 
 type JsonViewProps = {
     article: ArticleData,
@@ -25,18 +26,22 @@ export default function JsonView({article}: JsonViewProps) {
                 {Object.keys(article).map((articleAttribute, artI) =>
                     <div key={artI}>
                         <div className={"data-prefix"} data-content={articleAttribute + ":"}>
+                            &nbsp;
                             {(articleAttribute === "date") &&
-                                <div key={articleAttribute}
-                                     className={"box data-prefix"}
-                                     data-content={articleAttribute + ":"}>
-                                    &nbsp;<DateComp date={article.date}/>
-                                </div>
-
+                                <DateComp date={article.date}/>
                             }
-                            {(typeof Object.values(article)[artI] === "string") ?
-                                <>&nbsp;{Object.values(article)[artI]}</>
-                                :
-                                <> &nbsp; <span className={"structure"}>[</span>
+                            {(articleAttribute === "collections") &&
+                                <StringArray strings={article.collections}/>
+                            }
+                            {(typeof Object.values(article)[artI] === "string") &&
+                                <>{Object.values(article)[artI]}</>
+                            }
+                            {(
+                                    !(typeof Object.values(article)[artI] === "string")
+                                    && !(articleAttribute === "collections")
+                                    && !(articleAttribute === "date")
+                                ) &&
+                                <>  <span className={"structure"}>[</span>
                                     {article.data.map((val, valI) =>
                                         <div key={valI} className={"box data-prefix"} data-content={valI + ":"}>
                                             &nbsp;<span className={"structure"}>&#123;</span>
