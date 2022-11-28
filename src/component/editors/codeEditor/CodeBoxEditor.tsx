@@ -3,13 +3,18 @@ import {ChangeEvent, CSSProperties, KeyboardEventHandler, useState} from "react"
 import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import {codeLanguage} from "../../../enum/codeLanguages";
+import {styleArray, styleNames} from "../../../static/themes";
+import CodeStylePicker from "./stylePicker/CodeStylePicker";
 
 type CodeBoxProps = {
-    actualStyleName: string,
-    actualStyle: { [key: string]: CSSProperties; },
+    actualCode: string,
+    setCode: (val: string) => void,
 }
 
-export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxProps) {
+export default function CodeBoxEditor() {
+    const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[1]);
+    const [actualStyleName, setActualStyleName] = useState<string>(styleNames[1]);
+
     const [actualString, setActualString] = useState<string>("")
     const [actualLanguage, setActualLanguage] = useState<string>(Object.values(codeLanguage)[0])
     const [showNumbers, setShowNumbers] = useState<boolean>(true)
@@ -27,15 +32,16 @@ export default function CodeBoxEditor({actualStyleName, actualStyle}: CodeBoxPro
     }
 
     const toggleNumbers = () => {
-        showNumbers?setShowNumbers(false): setShowNumbers(true);
+        showNumbers ? setShowNumbers(false) : setShowNumbers(true);
     }
 
     return (
         <div className={"box"}>
-            <button onClick={() => toggleNumbers()}> {showNumbers?"Zahlen ausblenden": "Zahlen einblenden"}</button>
+            <button onClick={() => toggleNumbers()}> {showNumbers ? "Zahlen ausblenden" : "Zahlen einblenden"}</button>
             <h3> Edit Code: </h3>
             <CodeLanguagePicker setActualLanguage={setActualLanguage}
                                 actualLanguage={actualLanguage}/>
+            <CodeStylePicker setActualStyle={setActualStyle} setActualStyleName={setActualStyleName} actualChosen={actualStyle}/>
             <div className={"codeBox " + actualStyleName}>
                 <SyntaxHighlighter language={actualLanguage} style={actualStyle} wrapLines={true}
                                    showLineNumbers={showNumbers}>

@@ -1,5 +1,5 @@
 import {styleArray, styleNames} from "../static/themes";
-import {CSSProperties, useState} from "react";
+import {CSSProperties} from "react";
 import "./Article.css";
 import CodeBox from "./viewBoxes/codeBoxes/CodeBox";
 import TextBox from "./viewBoxes/TextBox";
@@ -14,10 +14,10 @@ type ArticleProps = {
     article: ArticleData,
 }
 
-export default function Article({article}:ArticleProps) {
+export default function Article({article}: ArticleProps) {
 
-    const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[1]);
-    const [actualStyleName, setActualStyleName] = useState<string>(styleNames[1]);
+    const actualStyle: { [key: string]: CSSProperties; } = styleArray[1];
+    const actualStyleName: string = styleNames[1];
 
     return (
         <article>

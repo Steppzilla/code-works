@@ -3,11 +3,16 @@ import "./NavigationContent.css";
 
 type NavigationContentProps = {
     articles: ArticleData[],
-    setActualArticle: (index: number) => void,
+    setActualArticle: (index: number|undefined) => void,
+    showEditor: (showEdit: boolean) => void,
 }
 
-export default function NavigationContent({setActualArticle, articles}: NavigationContentProps) {
+export default function NavigationContent({setActualArticle, articles, showEditor}: NavigationContentProps) {
 
+    const handleEdit = () => {
+        setActualArticle(undefined);
+        showEditor(true)
+    }
 
     return (
         <nav>
@@ -18,13 +23,13 @@ export default function NavigationContent({setActualArticle, articles}: Navigati
                         return <button key={sI}
                                        onClick={() => setActualArticle(sI)}
                         >{singleArticle.h2}</button>
-                    }
-                    else{
+                    } else {
                         return <> unkategorisierter Artikel </>
                     }
                 }
             )
             }
+            <button onClick={() => handleEdit()}> Editor</button>
         </nav>
     )
 }
