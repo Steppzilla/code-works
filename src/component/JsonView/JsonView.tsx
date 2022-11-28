@@ -1,15 +1,16 @@
-import {useState} from "react";
 import "../Article.css";
-import {article} from "../../static/codeStringExamples";
 import {ArticleData} from "../../model/ArticleData";
 import "./JsonView.css";
 import JsonComponent from "./JsonComponent";
 import {isCodeType, isDiagramType, isListType, isTableType, isTextType} from "../../model/ComponentData";
 import DateComp from "./DateComp";
 
-export default function JsonView() {
+type JsonViewProps = {
+    article: ArticleData,
+}
 
-    const [article2, setArticle2] = useState<ArticleData>(article);
+export default function JsonView({article}: JsonViewProps) {
+
     const showTable: boolean = true;
     const showText: boolean = true;
     const showCode: boolean = true;
@@ -21,7 +22,7 @@ export default function JsonView() {
             <h1> JSON - Ansicht: </h1>
             <span className={"structure"}>&#123;</span>
             <div className={"box"}>
-                {Object.keys(article2).map((articleAttribute, artI) =>
+                {Object.keys(article).map((articleAttribute, artI) =>
                     <div key={artI}>
                         <div className={"data-prefix"} data-content={articleAttribute + ":"}>
                             {(articleAttribute === "date") &&
@@ -32,11 +33,11 @@ export default function JsonView() {
                                 </div>
 
                             }
-                            {(typeof Object.values(article2)[artI] === "string") ?
-                                <>&nbsp;{Object.values(article2)[artI]}</>
+                            {(typeof Object.values(article)[artI] === "string") ?
+                                <>&nbsp;{Object.values(article)[artI]}</>
                                 :
                                 <> &nbsp; <span className={"structure"}>[</span>
-                                    {article2.data.map((val, valI) =>
+                                    {article.data.map((val, valI) =>
                                         <div key={valI} className={"box data-prefix"} data-content={valI + ":"}>
                                             &nbsp;<span className={"structure"}>&#123;</span>
                                             {

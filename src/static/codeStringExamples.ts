@@ -150,3 +150,95 @@ export const article: ArticleData = {
         },
     ]
 }
+
+const article2: ArticleData = {
+    h1: "Java",
+    h2: "Mein zweites Programm",
+    date: date,
+    data: [
+        {//text
+            type: "text",
+            title: "Beispiel",
+            paragraphs: ["Das erste Beispiel bla saddf sfsdafadö sdff" +
+            "sadfjöasfjasf sfjöasdf fas jsadfö asjf sadfja ösdf asfö öjjöjjjöj jjkljkjö ökjöjköjköjk" +
+            "öjöjkjk ööjkkjök jökjöjk öjökjökjköjk öjköjköjköjköj kö jöjköjk jjök ljök öj jöjö jö k jklö jkö jkl j kjö j " +
+            " jkö j kjöjj ö j öjö j jj  jölj  jökl öjkj ökjö kj ö jöj ök jöjöj ö jöj ö jö öj öj öj jö" +
+            "jl j öl öjlöj  jöj öj ökjök öj kj ökj ökj ökjök ", "Mit zweitem Absatzasfd asdf fs fas fasd" +
+            "asföjsajöfasd fds fdsa fa fsad fsda fsa fsad fa fsda fsdasfda  fa afs fasd sfd fsda asfd" +
+            "safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."],
+        }, //TextBox
+        {
+            type: "code",
+            title: "main.js",
+            data: javaExample,
+            language: "java",
+        }, //Code
+        {
+            type: "list",
+            title: "liste",
+            paragraphs: list,
+            sorted: true,
+        }, //Liste
+        {
+            type: "list",
+            title: "liste",
+            paragraphs: list,
+            sorted: false,
+        }, //Liste
+        {
+            type: "table",
+            title: "tableDings",
+            titles: titles,
+            rows: columns,
+        }, //Table
+        {
+            type: "diagram",
+            diagramData: [
+                {
+                    title: "Klasse1",
+                    attributes: [
+                        {attribute: "eins", type: "string"}
+                    ],
+                    color: colorStyles.GREEN
+                },
+                {
+                    title: "Klasse2",
+                    attributes: [
+                        {attribute: "eins", type: "string"},
+                        {attribute: "zwei", type: "number"},
+                        {attribute: "drei", type: "Klasse3"}
+                    ],
+                    color: colorStyles.BLUE
+                },
+                {
+                    title: "Klasse3",
+                    attributes: [
+                        {attribute: "eins", type: "string"}
+                    ],
+                    color: colorStyles.YELLOW
+                },
+                {
+                    title: "Klasse4",
+                    attributes: [
+                        {attribute: "eins", type: "string"},
+                        {attribute: "zwei", type: "Klasse2"},
+                        {attribute: "drei", type: "Klasse1"}
+                    ],
+                    color: colorStyles.RED
+                },
+                {
+                    title: "Klasse5",
+                    attributes: [
+                        {attribute: "eins", type: "string"},
+                        {attribute: "zwei", type: "Klasse3"},
+                        {attribute: "drei", type: "Klasse1"}
+                    ],
+                    color: colorStyles.PURPLE
+                }
+            ]
+            //Klassendiagramm
+        },
+    ]
+}
+
+export const articles = [article, article2];

@@ -3,14 +3,18 @@ import {CSSProperties, useState} from "react";
 import "./Article.css";
 import CodeBox from "./viewBoxes/codeBoxes/CodeBox";
 import TextBox from "./viewBoxes/TextBox";
-import {article} from "../static/codeStringExamples";
 import ClassDiagramm from "./viewBoxes/classDiagramm/ClassDiagramm";
 import {isCodeType, isDiagramType, isListType, isTableType, isTextType} from "../model/ComponentData";
 import List from "./viewBoxes/List";
 import Table from "./viewBoxes/Table";
 import DateComp from "./JsonView/DateComp";
+import {ArticleData} from "../model/ArticleData";
 
-export default function Article() {
+type ArticleProps = {
+    article: ArticleData,
+}
+
+export default function Article({article}:ArticleProps) {
 
     const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[1]);
     const [actualStyleName, setActualStyleName] = useState<string>(styleNames[1]);
