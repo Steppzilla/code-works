@@ -25,14 +25,14 @@ export default function CodeStylePicker(props: DropDownMenuButtonsProperties) {
 
     return (
         <>
-            <button className={"popUpButton"} onClick={() => toggleShow()}>
+            <button type="button" className={"popUpButton"} onClick={() => toggleShow()}>
                 {props.actualChosen && styleNames[styles.indexOf(props.actualChosen)]}
             </button>
             {show && <div className={"ButtonBox"}>
                 {
                     styles.map(
                         (singleStyle, index) => {
-                            return <button
+                            return <button type={"button"}
                                 key={styleNames[index]} className={"colorPickButton"}
                                            onClick={() => changeStyle(singleStyle, styleNames[index])}>
                                 {styleNames[index]}

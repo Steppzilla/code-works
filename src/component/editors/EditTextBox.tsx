@@ -1,27 +1,43 @@
-import {article} from "../../static/codeStringExamples";
-import {ComponentData} from "../../model/ComponentData";
-import {TextBoxData} from "../../model/TextBoxData";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import "./EditTextBox.css";
+import {TextBoxData} from "../../model/TextBoxData";
 
-export default function EditTextBox() {
+type EditTextBoxProps = {
+    editData: (indeX: number | undefined, data: TextBoxData, event: FormEvent) => void,
+}
 
-    const textComponent: ComponentData = article.data.filter(ele => ele.type === "text")[0] as TextBoxData;
+export default function EditTextBox({editData}: EditTextBoxProps) {
 
     const [text, setText] = useState<string[]>([""]);
     const [title, setTitle] = useState<string>("");
 
     const handleEdit = (s: number, value: string) => {
         const editText = text;
-        if(s===text.length-1){
+        if (s === text.length - 1) {
             editText.push("");
         }
         editText[s] = value;
         setText([...editText])
     }
 
+    const handleSubmit = (event: FormEvent) => {
+        let cleanedEmptyParagraphs: string[] = text.filter(par => par.length !== 0);
+        const addedObject: TextBoxData = {title: title, type: "text", paragraphs: cleanedEmptyParagraphs}
+        if (cleanedEmptyParagraphs.length !== 0) {
+            editData(undefined,
+                addedObject, event
+            )
+        }
+        else{
+            event.preventDefault();
+        }
+        setTitle("");
+        setText([""])
+    }
+
     return (
-        <>
+        <form onSubmit={(event) =>
+            handleSubmit(event)}>
             <h3 className={"titleTextEdit"}>
                 <input value={title} onChange={(event) => setTitle(event.target.value)}/>
             </h3>
@@ -34,6 +50,7 @@ export default function EditTextBox() {
                     />
                 )}
             </div>
-        </>
+            <button type={"submit"} disabled={text[0].length===0}> übernehmen</button>
+        </form>
     )
 }

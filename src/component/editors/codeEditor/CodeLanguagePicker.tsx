@@ -21,7 +21,7 @@ export default function CodeLanguagePicker(props: CodeLanguagePickerProps) {
 
     return (
         <>
-            <button className={"popUpButton"} onClick={() => toggleShow()}>
+            <button type={"button"} className={"popUpButton"} onClick={() => toggleShow()}>
                 {props.actualLanguage ? props.actualLanguage : " "}
             </button>
             {show && <div className={"ButtonBox"}>

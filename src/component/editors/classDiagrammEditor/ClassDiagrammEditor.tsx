@@ -1,6 +1,6 @@
 import "./ClassDiagrammEditor.css";
 import SingleBoxEditor from "./SingleBoxEditor";
-import {ChangeEvent, MouseEvent, useState} from "react";
+import {ChangeEvent, FormEvent, MouseEvent, useState} from "react";
 import {article} from "../../../static/codeStringExamples";
 import {ClassDiagramData} from "../../../model/ClassDiagramData";
 
@@ -10,7 +10,11 @@ type SingleClassDiagram = {
     attributes: { attribute: string, type: string | undefined }[]
 }
 
-export default function ClassDiagrammEditor() {
+type ClassDiagramProps = {
+    editData: (indeX: number | undefined, data: ClassDiagramData, event: FormEvent) => void,
+}
+
+export default function ClassDiagrammEditor({editData}: ClassDiagramProps) {
     const diagramData: ClassDiagramData | undefined = article.data.filter(element => element.type === "diagram")[0] as ClassDiagramData;
     const [data, setData] = useState<SingleClassDiagram[] | undefined>(diagramData.diagramData)
     const [title, setTitle] = useState<string>("Klassen-Diagramm")
@@ -93,13 +97,23 @@ export default function ClassDiagrammEditor() {
         }
     }
 
+    const handleSubmit = (event: FormEvent) => {
+        if (data) {
+            const diagramData: ClassDiagramData = {
+                type: "diagram", diagramData: data}
+            editData(undefined, diagramData, event);
+            setTitle("");
+            setData(diagramData.diagramData);
+        }
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input onChange={(event) => changeTitle(event)} value={title} type={"input"}/>
             <div id={"classDiagramEditor"}>
                 Listenelemente hinzufügen / löschen: &nbsp;
-                <button onClick={(event) => handleDiagramCounter(false, event)}>-</button>
-                <button onClick={(event) => handleDiagramCounter(true, event)}>+</button>
+                <button type={"button"} onClick={(event) => handleDiagramCounter(false, event)}>-</button>
+                <button type={"button"} onClick={(event) => handleDiagramCounter(true, event)}>+</button>
 
                 <div className={"diagramBox"}>
                     {data?.map((element, eleIndex) =>
@@ -116,6 +130,9 @@ export default function ClassDiagrammEditor() {
                     )}
                 </div>
             </div>
+            <button type={"submit"}>
+                submit
+            </button>
         </form>
     )
 }

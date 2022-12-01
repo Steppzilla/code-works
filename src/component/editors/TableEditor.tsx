@@ -1,8 +1,13 @@
 import "../viewBoxes/Table.css";
-import {ChangeEvent,MouseEvent, useState} from "react";
+import {ChangeEvent, FormEvent, MouseEvent, useState} from "react";
 import "./TableEditor.css";
+import {TableData} from "../../model/TableData";
 
-export default function TableEditor() {
+type TableEditorProps = {
+    editData: (indeX: number | undefined, data: TableData, event: FormEvent) => void,
+}
+
+export default function TableEditor({editData}: TableEditorProps) {
 
     const [titles, setTitles] = useState<string[]>(["", ""]);
     const [title, setTitle] = useState<string>("");
@@ -72,27 +77,38 @@ export default function TableEditor() {
         setTitle(element.value);
     }
 
+    const handleSubmit = (event: FormEvent) => {
+        const tableData: TableData = {type: "table", title: title, titles: titles, rows: rows}
+        editData(undefined, tableData, event);
+        setTitle("");
+        setTitles(["", ""])
+        setRows([{"a": "", "b": ""}, {
+            "a": "",
+            "b": ""
+        }])
+    }
+
     return (
-        <form id={"editTableForm"}>
+        <form id={"editTableForm"} onSubmit={handleSubmit}>
             <h3><input onChange={changeTitle} value={title}/></h3>
             <div>
                 <div>
-                    <button onClick={(event) => {
+                    <button type={"button"} onClick={(event) => {
                         handleTableCells(false, event)
                     }}> -
                     </button>
-                    <button onClick={(event) => {
-                        handleTableCells(true,event)
+                    <button type={"button"} onClick={(event) => {
+                        handleTableCells(true, event)
                     }}> +
                     </button>
                 </div>
                 <div>
                     <div>
-                        <button onClick={(event) =>
+                        <button type={"button"} onClick={(event) =>
                             handleTableRows(false, event)
                         }> -
                         </button>
-                        <button onClick={(event) =>
+                        <button type={"button"} onClick={(event) =>
                             handleTableRows(true, event)
                         }> +
                         </button>
@@ -119,6 +135,7 @@ export default function TableEditor() {
                         }
                         </tbody>
                     </table>
+                    <button type={"submit"}> submit</button>
                 </div>
             </div>
         </form>

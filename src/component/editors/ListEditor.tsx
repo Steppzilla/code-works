@@ -1,7 +1,12 @@
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import "./ListEditor.css";
+import {ListData} from "../../model/ListData";
 
-export default function ListEditor() {
+type ListEditorProps = {
+    editData: (indeX: number | undefined, data: ListData, event: FormEvent) => void,
+}
+
+export default function ListEditor({editData}: ListEditorProps) {
 
     const [list, setList] = useState<string[]>([""]);
     const [sorted, setSorted] = useState<boolean>(true);
@@ -18,9 +23,22 @@ export default function ListEditor() {
         sorted ? setSorted(false) : setSorted(true);
     }
 
+    const handleSubmit = (event: FormEvent) => {
+        let trimmedList: string[] = list.filter(item => item.length !== 0);
+        if (trimmedList.length !== 0) {
+            const listData: ListData = {type: "list", title: title, sorted: sorted, paragraphs: trimmedList}
+            editData(undefined, listData, event);
+        } else {
+            event.preventDefault();
+        }
+        setTitle("");
+        setSorted(true);
+        setList([""])
+    }
+
     return (
-        <>
-            <button onClick={() => toggleSorted()}> {
+        <form onSubmit={handleSubmit}>
+            <button type="button" onClick={() => toggleSorted()}> {
                 sorted ? "unsortiert" : "sortieren"}
             </button>
             <h3 className={"listEditTitle"}><input value={title} onChange={(e) =>
@@ -46,6 +64,7 @@ export default function ListEditor() {
                     )}
                 </ul>
             }
-        </>
+            <button type={"submit"} disabled={list[0].length === 0}> übernehmen</button>
+        </form>
     )
 }

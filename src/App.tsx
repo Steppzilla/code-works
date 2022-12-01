@@ -23,7 +23,7 @@ function App() {
             <NavigationContent setActualArticle={changeActualArticle} articles={art} showEditor={setShowEditor}/>
             {actualArticle && <Article article={actualArticle}/>}
             {actualArticle && <JsonView article={actualArticle}/>}
-            {showEditor && <ArticleEditor article={art[0]}/>}
+            {showEditor && <ArticleEditor/>}
         </div>
     )
 }
