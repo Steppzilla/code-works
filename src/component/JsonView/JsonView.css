@@ -2,7 +2,9 @@
     text-align: left;
     margin-left: 10px;
     padding-left: 10px;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.05em;
+    line-height: 13px;
+    font-size: 12px;
 }
 
 #AE h1 {
@@ -12,9 +14,8 @@
 #AE .box {
     text-align: left;
     border-radius: 6px;
-    margin: 4px 0 0 25px;
+    margin: 4px 2px 2px 25px;
     padding: 1px 0 0 15px;
-    /*  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.29);*/
 }
 
 #AE p {
@@ -27,21 +28,33 @@
     margin: 2px 0 0 0;
 }
 
+#AE .box .box {
+   background-color: var(--mediumblue);
+}
+
+#AE .box .box .box {
+    background-color: var(--verydarkblue);
+}
+
+#AE .box .box .box .box {
+    background-color: var(--mediumblue);
+}
+
 #AE .structure {
-    background-color: #396a39;
-    border-radius: 15px;
-    padding: 0 0 2px 0;
-    margin: 0 2px 0 2px;
-    box-shadow: 0 0 2px 2px rgba(113, 123, 113, 0.63);
+    color: yellow;
 }
 
- .data-prefix::before {
-    background-color: #3e3e7b;
-    border-radius: 15px;
-    padding: 0 2px 2px 5px;
-    box-shadow: 0 0 2px 2px rgba(113, 123, 113, 0.63);
+.key {
 }
 
-.data-prefix::before{
-    content: attr(data-content);
+.key {
+    color: #7295cd;
+}
+
+.content {
+    color: green;
+}
+
+.boolean {
+    color: orange;
 }

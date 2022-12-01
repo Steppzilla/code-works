@@ -9,12 +9,12 @@ import TableEditor from "./editors/TableEditor";
 import ClassDiagrammEditor from "./editors/classDiagrammEditor/ClassDiagrammEditor";
 import {ComponentData} from "../model/ComponentData";
 import Article from "./Article";
+import JsonView from "./JsonView/JsonView";
 
 export default function ArticleEditor() {
 
     const typesString = ["Text", "Code", "Liste", "Tabelle", "Diagramm"];
     const [actualEditor, setActualEditor] = useState<string | undefined>(undefined)
-    const [editBoxIndex, setEditBoxIndex] = useState({index: undefined});
 
     const [actualArticle, setActualArticle] = useState<ArticleData>({
         h1: "",
@@ -34,7 +34,7 @@ export default function ArticleEditor() {
         let dataArray = editArticle.data;
         if (indeX) dataArray[indeX] = data;
         if (!indeX) dataArray.push(data);
-        setActualArticle({...actualArticle, ["data"]: dataArray});
+        setActualArticle({...actualArticle, "data": dataArray});
         setActualEditor(undefined);
     }
 
@@ -52,6 +52,7 @@ export default function ArticleEditor() {
             {actualEditor === "Liste" && <ListEditor editData={handleEditDataAttribute}/>}
             {actualEditor === "Tabelle" && <TableEditor editData={handleEditDataAttribute}/>}
             {actualEditor === "Diagramm" && <ClassDiagrammEditor editData={handleEditDataAttribute}/>}
+            <JsonView article={actualArticle}/>
         </article>
     )
 }

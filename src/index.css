@@ -14,7 +14,7 @@ code {
 }*/
 :root {
     --verydarkblue: #2c303f;
-    --mediumblue: #424970;
+    --mediumblue: rgba(66, 73, 112, 0.55);
     --blue: #2F3878;
     --light: #7991BD;
     --grey: #8c909C;
