@@ -39,7 +39,7 @@ export default function CodeBoxEditor({editData}: CodeBoxProps) {
 
     const handleSubmit = (event: FormEvent) => {
         let actualCodeString = getDataTrimmed();
-        const codeData: CodeData = {type: "code", title: title, data: actualCodeString, language: actualLanguage}
+        const codeData: CodeData = {type: "code", title: title, data: actualCodeString, language: actualLanguage, hasLineNumbers: showNumbers}
         editData(undefined, codeData, event);
         setTitle("");
         setActualString("")

@@ -32,7 +32,9 @@ export default function Article({article}: ArticleProps) {
                         language={block.language}
                         actualStyle={actualStyle}
                         actualStyleName={actualStyleName}
-                        inputString={block.data}/>}
+                        inputString={block.data}
+                        showLineNumbers={block.hasLineNumbers}
+                    />}
                     {isListType(block) && <List data={block.paragraphs} sorted={block.sorted} title={block.title}/>}
                     {isTableType(block) &&
                         <Table columns={block.rows} titles={block.titles} title={block.title}/>}

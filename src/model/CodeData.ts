@@ -3,4 +3,5 @@ export type CodeData = {
     title: string,
     data: string,
     language: string,
+    hasLineNumbers: boolean,
 }

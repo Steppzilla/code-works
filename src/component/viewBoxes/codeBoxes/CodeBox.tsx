@@ -8,9 +8,10 @@ type CodeBoxProps = {
     actualStyle: { [key: string]: CSSProperties; },
     inputString: string,
     language: string,
+    showLineNumbers: boolean,
 }
 
-export default function CodeBox({title,actualStyleName, actualStyle, inputString, language}: CodeBoxProps) {
+export default function CodeBox({title,actualStyleName, actualStyle, inputString, language, showLineNumbers}: CodeBoxProps) {
 
     return (
         <div className={"box"}>
@@ -20,7 +21,7 @@ export default function CodeBox({title,actualStyleName, actualStyle, inputString
                     language={language}
                     style={actualStyle}
                     wrapLines={true}
-                    showLineNumbers={true}>
+                    showLineNumbers={showLineNumbers}>
                     {inputString}
                 </SyntaxHighlighter>
             </div>
