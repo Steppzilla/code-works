@@ -2,6 +2,7 @@ import "./ClassDiagramm.css";
 import SingleBox from "./SingleBox";
 
 type ClassDiagramProps = {
+    title: string,
     data: {
         color: string,
         title: string,
@@ -9,16 +10,16 @@ type ClassDiagramProps = {
     }[],
 }
 
-export default function ClassDiagramm(diagramData: ClassDiagramProps) {
+export default function ClassDiagramm({data, title}: ClassDiagramProps) {
 
     return (
         <>
-            <h3>Klassen-Diagramm</h3>
+            <h3>{title}</h3>
             <div className={"diagramBox"} >
-                {diagramData.data.map(element =>
+                {data.map(element =>
                     <SingleBox
                         key={element.title}
-                        data={diagramData.data}
+                        data={data}
                         element={element}/>
                 )}
             </div>

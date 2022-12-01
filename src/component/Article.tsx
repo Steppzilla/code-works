@@ -36,7 +36,7 @@ export default function Article({article}: ArticleProps) {
                     {isListType(block) && <List data={block.paragraphs} sorted={block.sorted} title={block.title}/>}
                     {isTableType(block) &&
                         <Table columns={block.rows} titles={block.titles} title={block.title}/>}
-                    {isDiagramType(block) && <ClassDiagramm data={block.diagramData}/>}
+                    {isDiagramType(block) && <ClassDiagramm title={block.title} data={block.diagramData}/>}
                 </div>
             )}
         </article>

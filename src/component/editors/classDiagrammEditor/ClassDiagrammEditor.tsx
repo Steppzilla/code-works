@@ -100,7 +100,7 @@ export default function ClassDiagrammEditor({editData}: ClassDiagramProps) {
     const handleSubmit = (event: FormEvent) => {
         if (data) {
             const diagramData: ClassDiagramData = {
-                type: "diagram", diagramData: data}
+                type: "diagram", title: title, diagramData: data}
             editData(undefined, diagramData, event);
             setTitle("");
             setData(diagramData.diagramData);

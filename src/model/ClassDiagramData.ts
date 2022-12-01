@@ -1,5 +1,6 @@
 export type ClassDiagramData = {
     type: "diagram",
+    title: string,
     diagramData: {
         color: string,
         title: string,
