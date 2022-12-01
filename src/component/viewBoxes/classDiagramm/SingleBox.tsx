@@ -20,8 +20,8 @@ export default function SingleBox({data, element}: SingleBoxProps) {
             <h4 style={{color: element.color}}>
                 {element.title}
             </h4>
-            {element.attributes.map(type =>
-                <p key={type.attribute}>
+            {element.attributes.map((type,t) =>
+                <p key={t}>
                     <span className={"attribute"}> {type.attribute} </span>
                     :
                     {type.type&&<TypeAnnotation type={type.type} data={data}/>}

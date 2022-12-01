@@ -1,7 +1,6 @@
 import "./ClassDiagrammEditor.css";
 import SingleBoxEditor from "./SingleBoxEditor";
 import {ChangeEvent, FormEvent, MouseEvent, useState} from "react";
-import {article} from "../../../static/codeStringExamples";
 import {ClassDiagramData} from "../../../model/ClassDiagramData";
 
 type SingleClassDiagram = {
@@ -15,8 +14,14 @@ type ClassDiagramProps = {
 }
 
 export default function ClassDiagrammEditor({editData}: ClassDiagramProps) {
-    const diagramData: ClassDiagramData | undefined = article.data.filter(element => element.type === "diagram")[0] as ClassDiagramData;
-    const [data, setData] = useState<SingleClassDiagram[] | undefined>(diagramData.diagramData)
+    const emptySingleDiagram: SingleClassDiagram = {
+        color: "green",
+        title: "",
+        attributes: [{attribute: "", type: undefined}]
+    }
+    const [data, setData] = useState<SingleClassDiagram[] | undefined>(
+        [emptySingleDiagram]
+    )
     const [title, setTitle] = useState<string>("Klassen-Diagramm")
 
     const handleDiagramCounter = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
@@ -99,12 +104,27 @@ export default function ClassDiagrammEditor({editData}: ClassDiagramProps) {
 
     const handleSubmit = (event: FormEvent) => {
         if (data) {
-            const diagramData: ClassDiagramData = {
-                type: "diagram", title: title, diagramData: data}
-            editData(undefined, diagramData, event);
-            setTitle("");
-            setData(diagramData.diagramData);
+            const cleanedData = data.filter(ele => isValidClassElement(ele))
+            if(cleanedData.length>0) {
+                const diagramData: ClassDiagramData = {
+                    type: "diagram", title: title, diagramData: cleanedData
+                }
+                editData(undefined, diagramData, event);
+                setTitle("");
+                setData([emptySingleDiagram]);
+            }else{
+                event.preventDefault();
+            }
         }
+    }
+
+    const isValidClassElement = (classElement: SingleClassDiagram) => {
+        classElement.attributes = classElement.attributes.filter(attr => isValidRow(attr));
+        return (classElement.title.length > 0 && classElement.attributes.length > 0 && classElement.color.length > 0);
+    }
+
+    const isValidRow = (row: { attribute: string, type: string | undefined}) => {
+        return (row.attribute.length > 0);
     }
 
     return (
