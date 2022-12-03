@@ -19,7 +19,9 @@ export default function JsonView({article}: JsonViewProps) {
 
     return (
         <div id={"AE"}>
-            <h1> JSON - Ansicht: </h1>
+            <h2> JSON - Ansicht: </h2>
+
+            <div className={"box"}>
             <span className={"structure"}>&#123;</span>
             <div className={"box"}>
                 {Object.keys(article).map((articleAttribute, artI) =>
@@ -73,6 +75,7 @@ export default function JsonView({article}: JsonViewProps) {
                 )}
             </div>
             <span className={"structure"}>&#125;</span>
+            </div>
         </div>
     )
 }

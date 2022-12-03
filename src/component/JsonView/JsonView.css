@@ -3,7 +3,6 @@
     margin-left: 10px;
     padding-left: 10px;
     letter-spacing: 0.05em;
-    line-height: 13px;
     font-size: 12px;
 }
 
@@ -11,11 +10,16 @@
     border-bottom: 0;
 }
 
+#AE>span{
+    line-height: 13px;
+}
+
 #AE .box {
     text-align: left;
     border-radius: 6px;
     margin: 4px 2px 2px 25px;
     padding: 1px 0 0 15px;
+    line-height: 13px;
 }
 
 #AE p {
@@ -28,16 +32,23 @@
     margin: 2px 0 0 0;
 }
 
-#AE .box .box {
-   background-color: var(--mediumblue);
+#AE>.box {
+    background-color: var(--codeBackground);
+    margin:0;
+    padding:0;
 }
 
-#AE .box .box .box {
-    background-color: var(--verydarkblue);
+#AE .box  {
+    box-shadow:0 0 1px 1px rgba(255, 255, 255, 0.09);
+
 }
 
 #AE .box .box .box .box {
-    background-color: var(--mediumblue);
+    background-color: var(--codeBackground);
+}
+
+#AE .box .box .box .box .box{
+
 }
 
 #AE .structure {
