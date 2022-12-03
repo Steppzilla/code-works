@@ -8,7 +8,7 @@ import {articles} from "./static/codeStringExamples";
 import ArticleEditor from "./component/ArticleEditor";
 
 function App() {
-    const [art, setArt] = useState<ArticleData[]>(articles);
+    const art: ArticleData[] = articles;
 
     const [actualArticle, setActualArticle] = useState<ArticleData | undefined>(undefined)
     const [showEditor, setShowEditor] = useState<boolean>(false);

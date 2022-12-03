@@ -19,9 +19,12 @@ export default function ObjectArray({objects}: ObjectArrayParams) {
                     <div className={"box"}>
                         {Object.keys(el).map((key, k) =>
                             <div key={k} >
-                                <span className={"key"}>"{key}":</span>
+                                <span className={"notJsonPrefix"}>"{key}":</span>
                                 &nbsp;
-                                <span className={"content"}> "{Object.values(el)[k]}"</span>
+                                <span className={"content"}> "{Object.values(el)[k]}"
+                                </span>
+                                {k < Object.keys(el).length-1 &&
+                                    <span className={"structure"}>,</span>}
                             </div>
                         )}
                     </div>

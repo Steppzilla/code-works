@@ -58,3 +58,11 @@
 .boolean {
     color: orange;
 }
+
+.notJsonPrefix{
+}
+
+.notJsonPrefix:before{
+    color:grey;
+    content: attr(data-content);
+}

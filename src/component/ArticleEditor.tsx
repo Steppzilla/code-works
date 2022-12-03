@@ -1,7 +1,7 @@
 import "./Article.css";
 import "./articleEditor.css";
 import {ArticleData} from "../model/ArticleData";
-import {FormEvent, useState} from "react";
+import React, {FormEvent, useState} from "react";
 import EditTextBox from "./editors/EditTextBox";
 import CodeBoxEditor from "./editors/codeEditor/CodeBoxEditor";
 import ListEditor from "./editors/ListEditor";
@@ -10,6 +10,7 @@ import ClassDiagrammEditor from "./editors/classDiagrammEditor/ClassDiagrammEdit
 import {ComponentData} from "../model/ComponentData";
 import Article from "./Article";
 import JsonView from "./JsonView/JsonView";
+import JsonViewEditor from "./JsonView/JsonViewEditor";
 
 export default function ArticleEditor() {
 
@@ -40,8 +41,8 @@ export default function ArticleEditor() {
 
     return (
         <article id={"articleEditor"}>
-            <h1> h1: <input/> </h1>
-            <h2> h2: <input/> </h2>
+            <h1> h1: <input onChange={(event) => setActualArticle({...actualArticle, h1: event.target.value})}/></h1>
+            <h2> h2: <input onChange={(event) => setActualArticle({...actualArticle, h2: event.target.value})}/></h2>
             <Article article={actualArticle}/>
             <div>
                 Füge neues Element hinzu:
@@ -53,6 +54,7 @@ export default function ArticleEditor() {
             {actualEditor === "Tabelle" && <TableEditor editData={handleEditDataAttribute}/>}
             {actualEditor === "Diagramm" && <ClassDiagrammEditor editData={handleEditDataAttribute}/>}
             <JsonView article={actualArticle}/>
+            <JsonViewEditor setArticle={setActualArticle}/>
         </article>
     )
 }

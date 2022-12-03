@@ -13,10 +13,11 @@ export default function StringArray({strings}: StringArrayParams) {
             <div className={"box"}>
                 {strings?.map((par, p) =>
                     <div key={p}>
-                        <div>
-                            <span className={"key"}>"{p}":</span>
+                        <div className={"notJsonPrefix"} data-content={p + ":"}>
                             &nbsp;
                             <span className={"content"}>"{par}"</span>
+                                {p < strings.length-1 && <span className={"structure"}>,</span>
+                                }
                         </div>
                     </div>
                 )}

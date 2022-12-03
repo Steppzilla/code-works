@@ -3,14 +3,13 @@ import {ArticleData} from "../model/ArticleData";
 import siteJson1 from "../articles/site1.json";
 import siteJson2 from "../articles/site2.json";
 
-const newDateString = siteJson1.date;
-const newDate = new Date(Date.parse(newDateString));
-const newArticleObj = {...siteJson1,"date":newDate}
-export const article: ArticleData = newArticleObj as ArticleData;
+export const jSonToArticleData = (js:any) => {
+    const newDate = new Date(Date.parse(js.date));
+    const newArticleObj = {...js, "date": newDate}
+    return newArticleObj as ArticleData;
+}
 
-const newDateString2 = siteJson2.date;
-const newDate2 = new Date(Date.parse(newDateString2));
-const newArticleObj2 = {...siteJson2,"date":newDate2}
-const article2: ArticleData = newArticleObj2 as ArticleData;
+const article1: ArticleData = jSonToArticleData(siteJson1);
+const article2: ArticleData = jSonToArticleData(siteJson2);
 
-export const articles = [article, article2];
+export const articles = [article1, article2];
