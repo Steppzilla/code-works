@@ -3,13 +3,14 @@ import "./EditTextBox.css";
 import {TextBoxData} from "../../model/TextBoxData";
 
 type EditTextBoxProps = {
-    editData: (indeX: number | undefined, data: TextBoxData, event: FormEvent) => void,
+    editData: ( data: TextBoxData, event: FormEvent) => void,
+    data: TextBoxData | undefined,
 }
 
-export default function EditTextBox({editData}: EditTextBoxProps) {
+export default function EditTextBox(props: EditTextBoxProps) {
 
-    const [text, setText] = useState<string[]>([""]);
-    const [title, setTitle] = useState<string>("");
+    const [text, setText] = useState<string[]>(props.data?props.data.paragraphs:[""]);
+    const [title, setTitle] = useState<string>((props.data&&props.data.title)?props.data.title:"");
 
     const handleEdit = (s: number, value: string) => {
         const editText = text;
@@ -24,8 +25,7 @@ export default function EditTextBox({editData}: EditTextBoxProps) {
         let cleanedEmptyParagraphs: string[] = text.filter(par => par.length !== 0);
         const addedObject: TextBoxData = {title: title, type: "text", paragraphs: cleanedEmptyParagraphs}
         if (cleanedEmptyParagraphs.length !== 0) {
-            editData(undefined,
-                addedObject, event
+            props.editData(                addedObject, event
             )
         }
         else{

@@ -1,16 +1,17 @@
-import {FormEvent, useState} from "react";
+import { FormEvent, useState } from "react";
 import "./ListEditor.css";
-import {ListData} from "../../model/ListData";
+import { ListData } from "../../model/ListData";
 
 type ListEditorProps = {
-    editData: (indeX: number | undefined, data: ListData, event: FormEvent) => void,
+    editData: (data: ListData, event: FormEvent) => void,
+    data: ListData | undefined,
 }
 
-export default function ListEditor({editData}: ListEditorProps) {
+export default function ListEditor(props: ListEditorProps) {
 
-    const [list, setList] = useState<string[]>([""]);
-    const [sorted, setSorted] = useState<boolean>(true);
-    const [title, setTitle] = useState<string>("");
+    const [list, setList] = useState<string[]>(props.data ? props.data.paragraphs : [""]);
+    const [sorted, setSorted] = useState<boolean>(props.data ? props.data.sorted : true);
+    const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
 
     const handleChange = (index: number, input: string) => {
         const editArr = list;
@@ -26,8 +27,8 @@ export default function ListEditor({editData}: ListEditorProps) {
     const handleSubmit = (event: FormEvent) => {
         let trimmedList: string[] = list.filter(item => item.length !== 0);
         if (trimmedList.length !== 0) {
-            const listData: ListData = {type: "list", title: title, sorted: sorted, paragraphs: trimmedList}
-            editData(undefined, listData, event);
+            const listData: ListData = { type: "list", title: title, sorted: sorted, paragraphs: trimmedList }
+            props.editData(listData, event);
         } else {
             event.preventDefault();
         }
@@ -42,7 +43,7 @@ export default function ListEditor({editData}: ListEditorProps) {
                 sorted ? "unsortiert" : "sortieren"}
             </button>
             <h3 className={"listEditTitle"}><input value={title} onChange={(e) =>
-                setTitle(e.target.value)}/></h3>
+                setTitle(e.target.value)} /></h3>
             {sorted ?
                 <ol className={"sortedList edit"}>
                     {list.map((row, r) =>
@@ -50,7 +51,7 @@ export default function ListEditor({editData}: ListEditorProps) {
                         >
                             <input value={row} onChange={
                                 (event) =>
-                                    handleChange(r, event.target.value)}/>
+                                    handleChange(r, event.target.value)} />
                         </li>)}
                 </ol>
                 :
@@ -59,7 +60,7 @@ export default function ListEditor({editData}: ListEditorProps) {
                         <li key={r}
                         ><input value={row} onChange={
                             (event) =>
-                                handleChange(r, event.target.value)}/>
+                                handleChange(r, event.target.value)} />
                         </li>
                     )}
                 </ul>

@@ -6,4 +6,10 @@ export type ArticleData = {
     h2: string,
     collections?:string[],
     data: (ComponentData) [],
+    tasks?: {dataIndex: number, task: TaskSheet, answer: TaskSheet}
 }
+
+type TaskSheet =
+    {
+        data: ComponentData[],
+    }

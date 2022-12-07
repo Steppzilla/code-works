@@ -1,17 +1,18 @@
 import "../viewBoxes/Table.css";
-import {ChangeEvent, FormEvent, MouseEvent, useState} from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import "./TableEditor.css";
-import {TableData} from "../../model/TableData";
+import { TableData } from "../../model/TableData";
 
 type TableEditorProps = {
-    editData: (indeX: number | undefined, data: TableData, event: FormEvent) => void,
+    editData: (data: TableData, event: FormEvent) => void,
+    data: TableData | undefined,
 }
 
-export default function TableEditor({editData}: TableEditorProps) {
+export default function TableEditor(props: TableEditorProps) {
 
-    const [titles, setTitles] = useState<string[]>(["", ""]);
-    const [title, setTitle] = useState<string>("");
-    const [rows, setRows] = useState<object[]>([{"a": "", "b": ""}, {
+    const [titles, setTitles] = useState<string[]>((props.data && props.data.titles) ? props.data.titles : ["", ""]);
+    const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
+    const [rows, setRows] = useState<object[]>(props.data ? props.data.rows : [{ "a": "", "b": "" }, {
         "a": "",
         "b": ""
     }]);
@@ -24,7 +25,7 @@ export default function TableEditor({editData}: TableEditorProps) {
             const firstObj = rows[0]
             let newObject = {};
             Object.keys(firstObj).forEach(key => {
-                newObject = {...newObject, [key]: ""};
+                newObject = { ...newObject, [key]: "" };
             })
             setRows([...rows, newObject])
         } else {
@@ -41,7 +42,7 @@ export default function TableEditor({editData}: TableEditorProps) {
         const nextKey = keysX[maxIndex];
         if (add) {
             const newArray = rows.map(obj => {
-                return {...obj, [nextKey]: ""};
+                return { ...obj, [nextKey]: "" };
             });
             setRows(newArray);
             setTitles([...titles, ""])
@@ -62,7 +63,7 @@ export default function TableEditor({editData}: TableEditorProps) {
         const key = Object.keys(editRow)[c];
         const html = event.target as HTMLFormElement;
         // @ts-ignore
-        rows[r] = {...editRow, [key]: html.value};
+        rows[r] = { ...editRow, [key]: html.value };
         setRows([...rows])
     }
 
@@ -78,11 +79,11 @@ export default function TableEditor({editData}: TableEditorProps) {
     }
 
     const handleSubmit = (event: FormEvent) => {
-        const tableData: TableData = {type: "table", title: title, titles: titles, rows: rows}
-        editData(undefined, tableData, event);
+        const tableData: TableData = { type: "table", title: title, titles: titles, rows: rows }
+        props.editData(tableData, event);
         setTitle("");
         setTitles(["", ""])
-        setRows([{"a": "", "b": ""}, {
+        setRows([{ "a": "", "b": "" }, {
             "a": "",
             "b": ""
         }])
@@ -90,7 +91,7 @@ export default function TableEditor({editData}: TableEditorProps) {
 
     return (
         <form id={"editTableForm"} onSubmit={handleSubmit}>
-            <h3><input onChange={changeTitle} value={title}/></h3>
+            <h3><input onChange={changeTitle} value={title} /></h3>
             <div>
                 <div>
                     <button type={"button"} onClick={(event) => {
@@ -115,24 +116,24 @@ export default function TableEditor({editData}: TableEditorProps) {
                     </div>
                     <table className={"codeTable"}>
                         <tbody>
-                        <tr>
-                            {titles.map((oneTitle, t) => <td key={keysX[t]}>
-                                <input name={"header"} value={titles[t]} onChange={
-                                    (event) => changeTitles(t, event)}/>
-                            </td>)
-                            }
-                        </tr>
+                            <tr>
+                                {titles.map((oneTitle, t) => <td key={keysX[t]}>
+                                    <input name={"header"} value={titles[t]} onChange={
+                                        (event) => changeTitles(t, event)} />
+                                </td>)
+                                }
+                            </tr>
 
-                        {rows.map((rowObj, r) =>
-                            <tr key={keysX[r] + r}>
-                                {Object.keys(rowObj).map((cell, c) =>
-                                    <td key={"" + r + c}>
-                                        <input value={Object.values(rows[r])[c]}
-                                               onChange={(event) => editTable(r, c, event)}/>
-                                    </td>
-                                )}
-                            </tr>)
-                        }
+                            {rows.map((rowObj, r) =>
+                                <tr key={keysX[r] + r}>
+                                    {Object.keys(rowObj).map((cell, c) =>
+                                        <td key={"" + r + c}>
+                                            <input value={Object.values(rows[r])[c]}
+                                                onChange={(event) => editTable(r, c, event)} />
+                                        </td>
+                                    )}
+                                </tr>)
+                            }
                         </tbody>
                     </table>
                     <button type={"submit"}> submit</button>

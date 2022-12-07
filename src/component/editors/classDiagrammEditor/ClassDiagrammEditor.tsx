@@ -3,26 +3,27 @@ import SingleBoxEditor from "./SingleBoxEditor";
 import {ChangeEvent, FormEvent, MouseEvent, useState} from "react";
 import {ClassDiagramData} from "../../../model/ClassDiagramData";
 
+type ClassDiagramProps = {
+    editData: (data: ClassDiagramData, event: FormEvent) => void,
+    data: ClassDiagramData | undefined,
+}
+
 type SingleClassDiagram = {
     color: string,
     title: string,
-    attributes: { attribute: string, type: string | undefined }[]
+    attributes: { attribute: string, type: string | undefined }[],
 }
 
-type ClassDiagramProps = {
-    editData: (indeX: number | undefined, data: ClassDiagramData, event: FormEvent) => void,
-}
-
-export default function ClassDiagrammEditor({editData}: ClassDiagramProps) {
+export default function ClassDiagrammEditor(props: ClassDiagramProps) {
     const emptySingleDiagram: SingleClassDiagram = {
         color: "green",
         title: "",
         attributes: [{attribute: "", type: undefined}]
     }
     const [data, setData] = useState<SingleClassDiagram[] | undefined>(
-        [emptySingleDiagram]
+        props.data?props.data.diagramData:[emptySingleDiagram]
     )
-    const [title, setTitle] = useState<string>("Klassen-Diagramm")
+    const [title, setTitle] = useState<string>(props.data?props.data.title:"Klassen-Diagramm")
 
     const handleDiagramCounter = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -109,7 +110,7 @@ export default function ClassDiagrammEditor({editData}: ClassDiagramProps) {
                 const diagramData: ClassDiagramData = {
                     type: "diagram", title: title, diagramData: cleanedData
                 }
-                editData(undefined, diagramData, event);
+                props.editData(diagramData, event);
                 setTitle("");
                 setData([emptySingleDiagram]);
             }else{

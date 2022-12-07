@@ -1,60 +1,39 @@
 import "./Article.css";
 import "./articleEditor.css";
-import {ArticleData} from "../model/ArticleData";
-import React, {FormEvent, useState} from "react";
+import { FormEvent } from "react";
 import EditTextBox from "./editors/EditTextBox";
 import CodeBoxEditor from "./editors/codeEditor/CodeBoxEditor";
 import ListEditor from "./editors/ListEditor";
 import TableEditor from "./editors/TableEditor";
 import ClassDiagrammEditor from "./editors/classDiagrammEditor/ClassDiagrammEditor";
-import {ComponentData} from "../model/ComponentData";
-import Article from "./Article";
-import JsonView from "./JsonView/JsonView";
-import JsonViewEditor from "./JsonView/JsonViewEditor";
+import { ComponentData, isCodeType, isDiagramType, isListType, isTableType, isTextType } from "../model/ComponentData";
 
-export default function ArticleEditor() {
+type ArticleEditorProps = {
+    data: ComponentData | undefined,
+    changeComponent: (data: ComponentData, innerIndex: number | undefined) => void,
+    innerIndex: number | undefined,
+    actualEditor: string | undefined,
+}
 
-    const typesString = ["Text", "Code", "Liste", "Tabelle", "Diagramm"];
-    const [actualEditor, setActualEditor] = useState<string | undefined>(undefined)
+export default function ArticleEditor({ data, changeComponent, innerIndex, actualEditor }: ArticleEditorProps) {
 
-    const [actualArticle, setActualArticle] = useState<ArticleData>({
-        h1: "",
-        h2: "",
-        collections: [],
-        date: new Date(),
-        data: []
-    });
-
-    const choseEditor = (t: string) => {
-        setActualEditor(t);
-    }
-
-    const handleEditDataAttribute = (indeX: number | undefined, data: ComponentData, event: FormEvent) => {
+    const handleEditDataAttribute = (data: ComponentData, event: FormEvent) => {
         event.preventDefault();
-        const editArticle: ArticleData = actualArticle;
-        let dataArray = editArticle.data;
-        if (indeX) dataArray[indeX] = data;
-        if (!indeX) dataArray.push(data);
-        setActualArticle({...actualArticle, "data": dataArray});
-        setActualEditor(undefined);
+        if (data) {
+            changeComponent(data, innerIndex)
+        }
     }
 
-    return (
-        <article id={"articleEditor"}>
-            <h1> h1: <input onChange={(event) => setActualArticle({...actualArticle, h1: event.target.value})}/></h1>
-            <h2> h2: <input onChange={(event) => setActualArticle({...actualArticle, h2: event.target.value})}/></h2>
-            <Article article={actualArticle}/>
-            <div>
-                Füge neues Element hinzu:
-                {typesString.map((type, t) => <button key={t} onClick={() => choseEditor(type)}>{type}</button>)}
-            </div>
-            {actualEditor === "Text" && <EditTextBox editData={handleEditDataAttribute}/>}
-            {actualEditor === "Code" && <CodeBoxEditor editData={handleEditDataAttribute}/>}
-            {actualEditor === "Liste" && <ListEditor editData={handleEditDataAttribute}/>}
-            {actualEditor === "Tabelle" && <TableEditor editData={handleEditDataAttribute}/>}
-            {actualEditor === "Diagramm" && <ClassDiagrammEditor editData={handleEditDataAttribute}/>}
-            <JsonView article={actualArticle}/>
-            <JsonViewEditor setArticle={setActualArticle}/>
-        </article>
+    return (<>
+        {data &&
+            <article id={"articleEditor"}>
+                EDITOR
+                {isTextType(data) && <EditTextBox editData={handleEditDataAttribute} data={data} />}
+                {isCodeType(data) && <CodeBoxEditor editData={handleEditDataAttribute} data={data} />}
+                {isListType(data) && <ListEditor editData={handleEditDataAttribute} data={data} />}
+                {isTableType(data) && <TableEditor editData={handleEditDataAttribute} data={data} />}
+                {isDiagramType(data) && <ClassDiagrammEditor editData={handleEditDataAttribute} data={data} />}
+            </article>
+        }</>
     )
 }
