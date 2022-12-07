@@ -24,10 +24,8 @@ export default function Article({ articles }: ArticleProps) {
     };
 
     const [actualArticle, setActualArticle] = useState<ArticleData>(newArticle)
-    const [showEditor, setShowEditor] = useState<boolean>(false);
 
     const changeActualArticle = (index: number | undefined) => {
-        setShowEditor(false);
         (typeof index === "number") ? setActualArticle(articles[index]) : setActualArticle(newArticle);
     }
 
@@ -44,6 +42,13 @@ export default function Article({ articles }: ArticleProps) {
             setActualArticle({ ...actualArticle, "data": dataArray });
         }
     }
+
+    const deleteComponent = (index: number) => {
+        const editArray = actualArticle.data;
+        const filteredArray:ComponentData[] = editArray.filter(element=> editArray.indexOf(element)!==2)
+        setActualArticle({ ...actualArticle, data: [...filteredArray] })
+    }
+
     const [actualEditor, setActualEditor] = useState<string | undefined>(undefined)
 
     const choseEditor = (t: string) => {
@@ -55,7 +60,7 @@ export default function Article({ articles }: ArticleProps) {
             <ArticleNaviagator
                 articles={articles}
                 setActualArticle={changeActualArticle}
-                showEditor={setShowEditor} />
+                 />
             <article>
                 {(actualArticle.h1) ?
                     <h1> {actualArticle.h1}
@@ -72,17 +77,21 @@ export default function Article({ articles }: ArticleProps) {
                     </h2>
                 }
                 {actualArticle.data.map((block, b) =>
-                    <ArticleItem key={b} content={block} innerIndex={b} editComponent={editArticle} />
+                    <ArticleItem key={crypto.randomUUID()}
+                        content={block}
+                        innerIndex={b}
+                        editComponent={editArticle}
+                        deleteComponent={deleteComponent} />
                 )}
                 <div>
                     Füge neues Element hinzu:
                     {typesString.map((type, t) => <button key={t} onClick={() => choseEditor(type)}>{type}</button>)}
                 </div>
-                <ArticleEditor 
-                actualEditor={actualEditor}
-                data={undefined} 
-                changeComponent={editArticle} 
-                innerIndex={undefined} />
+                <ArticleEditor
+                    actualEditor={actualEditor}
+                    data={undefined}
+                    changeComponent={editArticle}
+                    innerIndex={undefined} />
             </article>
         </>
     )

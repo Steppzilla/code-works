@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { ComponentData, isCodeType, isDiagramType, isListType, isTableType, isTextType } from "../model/ComponentData";
 import { styleArray, styleNames } from "../static/themes";
 import ArticleEditor from "./ArticleEditor";
@@ -12,27 +12,25 @@ type ArticleItemProps = {
     content: ComponentData,
     innerIndex: number,
     editComponent: (data: ComponentData, innerIndex: number | undefined) => void,
+    deleteComponent: (index: number) => void,
 }
 
-export default function ArticleItem({ content, innerIndex, editComponent }: ArticleItemProps) {
+export default function ArticleItem({ content, innerIndex, editComponent, deleteComponent }: ArticleItemProps) {
 
     const actualStyle: { [key: string]: CSSProperties; } = styleArray[1];
     const actualStyleName: string = styleNames[1];
+    const [showEditor, setShowEditor] = useState<boolean>(false);
 
     const handleEdit = () => {
-
-    }
-
-    const handleSave = () => {
-
+        setShowEditor(true);
     }
 
     const handleDelete = () => {
-
+        deleteComponent(innerIndex)
     }
 
 
-    return (
+    return (<>
         <div>
             {isTextType(content) && <TextBox title={content.title} paragraphs={content.paragraphs} />}
             {
@@ -54,13 +52,13 @@ export default function ArticleItem({ content, innerIndex, editComponent }: Arti
                 <>
                     <button onClick={handleEdit} > edit</button>
                     <button onClick={handleDelete}> delete</button>
-                    <button onClick={handleSave}> save</button>
                 </>
             }
-            {<ArticleEditor actualEditor={content.type}
+            {showEditor && <ArticleEditor actualEditor={content.type}
                 changeComponent={editComponent}
                 data={content}
                 innerIndex={innerIndex} />}
         </div >
+    </>
     )
 }

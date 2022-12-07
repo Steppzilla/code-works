@@ -25,14 +25,44 @@ export default function ArticleEditor({ data, changeComponent, innerIndex, actua
     }
 
     return (<>
-        {data &&
+        {
             <article id={"articleEditor"}>
                 EDITOR
-                {isTextType(data) && <EditTextBox editData={handleEditDataAttribute} data={data} />}
-                {isCodeType(data) && <CodeBoxEditor editData={handleEditDataAttribute} data={data} />}
-                {isListType(data) && <ListEditor editData={handleEditDataAttribute} data={data} />}
-                {isTableType(data) && <TableEditor editData={handleEditDataAttribute} data={data} />}
-                {isDiagramType(data) && <ClassDiagrammEditor editData={handleEditDataAttribute} data={data} />}
+                {
+                    (data && isTextType(data)) &&
+                    <EditTextBox editData={handleEditDataAttribute} data={data} />}
+                {
+                    (!data && actualEditor === "Text") &&
+                    <EditTextBox editData={handleEditDataAttribute} data={undefined} />
+                }
+                {
+                    (data && isCodeType(data)) &&
+                    <CodeBoxEditor editData={handleEditDataAttribute} data={data} />}
+                {
+                    (!data && actualEditor === "Code") &&
+                    <CodeBoxEditor editData={handleEditDataAttribute} data={undefined} />
+                }
+                {
+                    (data && isListType(data)) &&
+                    <ListEditor editData={handleEditDataAttribute} data={data} />}
+                {
+                    (!data && actualEditor === "Liste") &&
+                    <ListEditor editData={handleEditDataAttribute} data={undefined} />
+                }
+                {
+                    (data && isTableType(data)) &&
+                    <TableEditor editData={handleEditDataAttribute} data={data} />}
+                {
+                    (!data && actualEditor === "Tabelle") &&
+                    <TableEditor editData={handleEditDataAttribute} data={undefined} />
+                }
+                {
+                    (data && isDiagramType(data)) &&
+                    <ClassDiagrammEditor editData={handleEditDataAttribute} data={data} />}
+                {
+                    (!data && actualEditor === "Diagramm") &&
+                    <ClassDiagrammEditor editData={handleEditDataAttribute} data={undefined} />
+                }
             </article>
         }</>
     )

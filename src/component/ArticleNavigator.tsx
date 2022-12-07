@@ -4,14 +4,14 @@ import "./ArticleNavigator.css";
 type ArticleNavigatorProps = {
     articles: ArticleData[],
     setActualArticle: (index: number | undefined) => void,
-    showEditor: (showEdit: boolean) => void,
+
 }
 
-export default function ArticleNaviagator({ setActualArticle, articles, showEditor }: ArticleNavigatorProps) {
+export default function ArticleNaviagator({ setActualArticle, articles }: ArticleNavigatorProps) {
 
     const handleEdit = () => {
         setActualArticle(undefined);
-        showEditor(true)
+
     }
 
     const chooseArticle = (articleIndex: number) => {
