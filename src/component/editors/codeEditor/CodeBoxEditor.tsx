@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState } from "react";
+import { ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState,MouseEvent } from "react";
 import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import { codeLanguage } from "../../../enum/codeLanguages";
@@ -10,6 +10,8 @@ import { CodeData } from "../../../model/CodeData";
 type CodeBoxProps = {
     editData: (data: CodeData, event: FormEvent) => void,
     data: CodeData | undefined,
+    cancel: ()=>void,
+    setShowEditor: (showEdit: boolean)=>void,
 }
 
 export default function CodeBoxEditor(props: CodeBoxProps) {
@@ -51,8 +53,13 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
         return actualString.trim();
     }
 
+    const handleReset = (event: MouseEvent) => {
+    event.preventDefault();
+        props.cancel();
+    }
+
     return (
-        <form onSubmit={handleSubmit} className={"box"}>
+        <form onSubmit={handleSubmit} className={"editorBox"}>
             <button type={"button"}
                 onClick={() => toggleNumbers()}> {showNumbers ? "Zahlen ausblenden" : "Zahlen einblenden"}</button>
             <h3><input value={title} onChange={(event) => setTitle(event.target.value)} /></h3>
@@ -69,5 +76,8 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
             <textarea className={"textEditField"} onChange={handleChange} onKeyDown={handleKeyDown}
                 value={actualString} />
             <button type="submit" disabled={actualString.length === 0}> submit</button>
+            <button type={"button"} onClick={(event) => handleReset(event)}>
+                abbruch
+            </button>
         </form>)
 }

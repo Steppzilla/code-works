@@ -6,18 +6,25 @@ import { TableData } from "../../model/TableData";
 type TableEditorProps = {
     editData: (data: TableData, event: FormEvent) => void,
     data: TableData | undefined,
+    cancel: ()=>void,
+    setShowEditor: (showEdit: boolean)=>void,
 }
 
 export default function TableEditor(props: TableEditorProps) {
 
-    const [titles, setTitles] = useState<string[]>((props.data && props.data.titles) ? props.data.titles : ["", ""]);
+    const [titles, setTitles] = useState<string[]>((props.data && props.data.titles) ? [...props.data.titles] : ["", ""]);
     const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
-    const [rows, setRows] = useState<object[]>(props.data ? props.data.rows : [{ "a": "", "b": "" }, {
+    const [rows, setRows] = useState<object[]>(props.data ? [...props.data.rows] : [{ "a": "", "b": "" }, {
         "a": "",
         "b": ""
     }]);
 
     const keysX = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+
+    const handleReset = (event: MouseEvent) => {
+        props.data&&props.cancel();
+        !props.data&&props.setShowEditor(false);
+    }
 
     const handleTableRows = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -90,7 +97,7 @@ export default function TableEditor(props: TableEditorProps) {
     }
 
     return (
-        <form id={"editTableForm"} onSubmit={handleSubmit}>
+        <form id={"editTableForm"} className={"editorBox"} onSubmit={handleSubmit}>
             <h3><input onChange={changeTitle} value={title} /></h3>
             <div>
                 <div>
@@ -137,6 +144,9 @@ export default function TableEditor(props: TableEditorProps) {
                         </tbody>
                     </table>
                     <button type={"submit"}> submit</button>
+                    <button type={"button"} onClick={(event) => handleReset(event)}>
+                abbruch
+            </button>
                 </div>
             </div>
         </form>

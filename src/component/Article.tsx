@@ -13,8 +13,6 @@ type ArticleProps = {
 
 export default function Article({ articles }: ArticleProps) {
 
-    const typesString = ["Text", "Code", "Liste", "Tabelle", "Diagramm"];
-
     const newArticle = {
         h1: "",
         h2: "",
@@ -49,12 +47,6 @@ export default function Article({ articles }: ArticleProps) {
         setActualArticle({ ...actualArticle, data: [...filteredArray] })
     }
 
-    const [actualEditor, setActualEditor] = useState<string | undefined>(undefined)
-
-    const choseEditor = (t: string) => {
-        setActualEditor(t);
-    }
-
     return (
         <>
             <ArticleNaviagator
@@ -83,15 +75,11 @@ export default function Article({ articles }: ArticleProps) {
                         editComponent={editArticle}
                         deleteComponent={deleteComponent} />
                 )}
-                <div>
-                    Füge neues Element hinzu:
-                    {typesString.map((type, t) => <button key={t} onClick={() => choseEditor(type)}>{type}</button>)}
-                </div>
-                <ArticleEditor
-                    actualEditor={actualEditor}
-                    data={undefined}
-                    changeComponent={editArticle}
-                    innerIndex={undefined} />
+                    <ArticleItem key={crypto.randomUUID()}
+                        content={undefined}
+                        innerIndex={undefined}
+                        editComponent={editArticle}
+                        deleteComponent={deleteComponent} />     
             </article>
         </>
     )

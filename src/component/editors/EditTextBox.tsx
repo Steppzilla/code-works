@@ -1,16 +1,25 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import "./EditTextBox.css";
 import { TextBoxData } from "../../model/TextBoxData";
 
 type EditTextBoxProps = {
     editData: (data: TextBoxData, event: FormEvent) => void,
     data: TextBoxData | undefined,
+    cancel: () => void,
+    setShowEditor: (showEdit: boolean)=>void,
 }
 
 export default function EditTextBox(props: EditTextBoxProps) {
 
-    const [text, setText] = useState<string[]>(props.data ? props.data.paragraphs : [""]);
-    const [title, setTitle] = useState<string>((props.data && props.data.title) ? props.data.title : "");
+    useEffect(() => {
+        if (props.data) {
+            setText([...props.data.paragraphs]);
+            props.data.title && setTitle(props.data.title);
+        }
+    }, [props.data])
+
+    const [text, setText] = useState<string[]>([""]);
+    const [title, setTitle] = useState<string>("");
 
     const handleEdit = (s: number, value: string) => {
         const editText = text;
@@ -35,9 +44,14 @@ export default function EditTextBox(props: EditTextBoxProps) {
         setText([""])
     }
 
+    const handleReset = (event: FormEvent) => {
+        props.data&&props.cancel();
+        !props.data&&props.setShowEditor(false);
+    }
+
     return (
-        <form onSubmit={(event) =>
-            handleSubmit(event)}>
+        <form className={"editorBox"}
+            onSubmit={handleSubmit} onReset={handleReset}>
             <h3 className={"titleTextEdit"}>
                 <input value={title} onChange={(event) => setTitle(event.target.value)} />
             </h3>
@@ -50,7 +64,10 @@ export default function EditTextBox(props: EditTextBoxProps) {
                     />
                 )}
             </div>
-            <button type={"submit"} disabled={text[0].length === 0}> übernehmen</button>
+            <button type={"submit"} disabled={text[0].length === 0}> übernehmen </button>
+            <button type={"reset"} >
+                abbruch
+            </button>
         </form>
     )
 }

@@ -1,15 +1,17 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState ,MouseEvent} from "react";
 import "./ListEditor.css";
 import { ListData } from "../../model/ListData";
 
 type ListEditorProps = {
     editData: (data: ListData, event: FormEvent) => void,
     data: ListData | undefined,
+    cancel: ()=>void,
+    setShowEditor: (showEdit: boolean)=>void,
 }
 
 export default function ListEditor(props: ListEditorProps) {
 
-    const [list, setList] = useState<string[]>(props.data ? props.data.paragraphs : [""]);
+    const [list, setList] = useState<string[]>(props.data ? [...props.data.paragraphs] : [""]);
     const [sorted, setSorted] = useState<boolean>(props.data ? props.data.sorted : true);
     const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
 
@@ -36,9 +38,16 @@ export default function ListEditor(props: ListEditorProps) {
         setSorted(true);
         setList([""])
     }
+    const handleReset = (event: MouseEvent) => {
+        props.cancel();
+
+        setTitle("");
+                setSorted(true);
+                setList([""])
+    }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={"editorBox"}>
             <button type="button" onClick={() => toggleSorted()}> {
                 sorted ? "unsortiert" : "sortieren"}
             </button>
@@ -66,6 +75,9 @@ export default function ListEditor(props: ListEditorProps) {
                 </ul>
             }
             <button type={"submit"} disabled={list[0].length === 0}> übernehmen</button>
+            <button type={"button"} onClick={(event) => handleReset(event)}>
+                abbruch
+            </button>
         </form>
     )
 }
