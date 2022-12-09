@@ -43,7 +43,8 @@ export default function Article({ articles }: ArticleProps) {
 
     const deleteComponent = (index: number) => {
         const editArray = actualArticle.data;
-        const filteredArray: ComponentData[] = editArray.filter(element => editArray.indexOf(element) !== 2)
+        const filteredArray: ComponentData[] = editArray.filter(
+            element => editArray.indexOf(element) !== index)
         setActualArticle({ ...actualArticle, data: [...filteredArray] })
     }
 
@@ -79,7 +80,7 @@ export default function Article({ articles }: ArticleProps) {
                     innerIndex={undefined}
                     editComponent={editArticle}
                     deleteComponent={deleteComponent} />
-                    <JsonView article={actualArticle}/>
+                <JsonView article={actualArticle} />
             </article>
         </>
     )

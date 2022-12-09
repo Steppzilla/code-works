@@ -29,7 +29,7 @@ export default function ArticleItem({ content, innerIndex, editComponent, delete
     }
 
     const handleDelete = () => {
-        if (innerIndex) deleteComponent(innerIndex)
+        if (innerIndex!==undefined) deleteComponent(innerIndex)
     }
 
     const cancel = () => {
