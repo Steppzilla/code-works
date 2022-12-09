@@ -21,6 +21,7 @@ export default function ArticleEditor({ data, changeComponent, innerIndex, actua
 
     const typesString = ["Text", "Code", "Liste", "Tabelle", "Diagramm"];
     const [chosenEditor, setChosenEditor] = useState<string | undefined>(undefined)
+    const [showChooser, setShowChooser] = useState<boolean>(false);
 
     const handleEditDataAttribute = (thisData: ComponentData, event: FormEvent) => {
         event.preventDefault();
@@ -34,53 +35,64 @@ export default function ArticleEditor({ data, changeComponent, innerIndex, actua
         setChosenEditor(t);
     }
 
-    return (<>
-        {!data &&
-            <div>
-                Füge neues Element hinzu:
-                {typesString.map(
-                    (type, t) => <button key={t} onClick={() =>
-                        chooseEditor(type)}>{type}</button>)}
-            </div>}
-        {
-            <article id={"articleEditor"}>
-                EDITOR - {actualEditor}
-                {
-                    (data && isTextType(data)) &&
-                    <EditTextBox editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
-                {
-                    (!data && chosenEditor === "Text") &&
-                    <EditTextBox editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
-                }
-                {
-                    (data && isCodeType(data)) &&
-                    <CodeBoxEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
-                {
-                    (!data && chosenEditor === "Code") &&
-                    <CodeBoxEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
-                }
-                {
-                    (data && isListType(data)) &&
-                    <ListEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
-                {
-                    (!data && chosenEditor === "Liste") &&
-                    <ListEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
-                }
-                {
-                    (data && isTableType(data)) &&
-                    <TableEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
-                {
-                    (!data && chosenEditor === "Tabelle") &&
-                    <TableEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
-                }
-                {
-                    (data && isDiagramType(data)) &&
-                    <ClassDiagrammEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
-                {
-                    (!data && chosenEditor === "Diagramm") &&
-                    <ClassDiagrammEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
-                }
-            </article>
-        }</>
+    const toggleShowChooser = () => {
+        showChooser ? setShowChooser(false) : setShowChooser(true);
+        console.log(showChooser)
+    }
+
+    return (
+        <>
+            {!data &&
+                <div className="editorChooser" onClick={toggleShowChooser}>
+                    {!showChooser &&
+                        <div className="toggleEditorButton"> + </div>
+                    }
+                    {showChooser && typesString.map(
+                        (type, t) =>
+                            <button key={t}
+                                onClick={() =>
+                                    chooseEditor(type)}>{type}</button>
+                    )}
+                </div>}
+            {
+                <article id={"articleEditor"}>
+                    {
+                        (data && isTextType(data)) &&
+                        <EditTextBox editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
+                    {
+                        (!data && chosenEditor === "Text") &&
+                        <EditTextBox editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
+                    }
+                    {
+                        (data && isCodeType(data)) &&
+                        <CodeBoxEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
+                    {
+                        (!data && chosenEditor === "Code") &&
+                        <CodeBoxEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
+                    }
+                    {
+                        (data && isListType(data)) &&
+                        <ListEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
+                    {
+                        (!data && chosenEditor === "Liste") &&
+                        <ListEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
+                    }
+                    {
+                        (data && isTableType(data)) &&
+                        <TableEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
+                    {
+                        (!data && chosenEditor === "Tabelle") &&
+                        <TableEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
+                    }
+                    {
+                        (data && isDiagramType(data)) &&
+                        <ClassDiagrammEditor editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
+                    {
+                        (!data && chosenEditor === "Diagramm") &&
+                        <ClassDiagrammEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
+                    }
+                </article>
+            }
+        </>
     )
 }

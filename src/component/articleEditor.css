@@ -12,3 +12,14 @@
     text-align: center;
     margin:4px;
  }
+
+ .editorChooser{
+    height:60px;
+    line-height:50px;
+ }
+
+ .toggleEditorButton{
+    border-top:1px var(--codeColor) solid;
+    font-size:60px;
+    padding: 0 0 10px 0;
+ }

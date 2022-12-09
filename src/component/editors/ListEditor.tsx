@@ -1,6 +1,7 @@
 import { FormEvent, useState, MouseEvent } from "react";
 import "./ListEditor.css";
 import { ListData } from "../../model/ListData";
+import SubmitResetButton from "./SubmitResetButton";
 
 type ListEditorProps = {
     editData: (data: ListData, event: FormEvent) => void,
@@ -47,7 +48,10 @@ export default function ListEditor(props: ListEditorProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={"editorBox"}>
+        <form
+            onSubmit={handleSubmit}
+            onClick={(event) => handleReset(event)}
+            className={"editorBox"}>
             <button type="button" onClick={() => toggleSorted()}> {
                 sorted ? "unsortiert" : "sortieren"}
             </button>
@@ -74,10 +78,7 @@ export default function ListEditor(props: ListEditorProps) {
                     )}
                 </ul>
             }
-            <button type={"submit"} disabled={list[0].length === 0}> übernehmen</button>
-            <button type={"button"} onClick={(event) => handleReset(event)}>
-                abbruch
-            </button>
+            <SubmitResetButton disabledReset={false} disabledSubmit={list[0].length === 0} />
         </form>
     )
 }

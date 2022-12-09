@@ -2,6 +2,7 @@ import "./ClassDiagrammEditor.css";
 import SingleBoxEditor from "./SingleBoxEditor";
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import { ClassDiagramData } from "../../../model/ClassDiagramData";
+import SubmitResetButton from "../SubmitResetButton";
 
 type ClassDiagramProps = {
     editData: (data: ClassDiagramData, event: FormEvent) => void,
@@ -121,7 +122,7 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
         }
     }
 
-    const handleReset = (event: MouseEvent) => {
+    const handleReset = (event: FormEvent) => {
         event.preventDefault();
         props.cancel();
     }
@@ -136,7 +137,10 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={"editorBox"} >
+        <form
+            onSubmit={handleSubmit}
+            className={"editorBox"}
+            onReset={(event) => handleReset(event)} >
             <input onChange={(event) => changeTitle(event)} value={title} type={"input"} />
             <div id={"classDiagramEditor"}>
                 Listenelemente hinzufügen / löschen: &nbsp;
@@ -158,12 +162,7 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
                     )}
                 </div>
             </div>
-            <button type={"submit"}>
-                submit
-            </button>
-            <button type={"button"} onClick={(event) => handleReset(event)}>
-                abbruch
-            </button>
+            <SubmitResetButton disabledReset={false} disabledSubmit={false} />
         </form>
     )
 }

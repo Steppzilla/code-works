@@ -1,17 +1,17 @@
 import "../Article.css";
-import {ArticleData} from "../../model/ArticleData";
+import { ArticleData } from "../../model/ArticleData";
 import "./JsonView.css";
 import JsonComponent from "./JsonComponent";
-import {isCodeType, isDiagramType, isListType, isTableType, isTextType} from "../../model/ComponentData";
+import { isCodeType, isDiagramType, isListType, isTableType, isTextType } from "../../model/ComponentData";
 import StringArray from "./StringArray";
-import {MouseEventHandler, useState} from "react";
-import {jSonFromArticleData} from "../../static/codeStringExamples";
+import { MouseEventHandler, useState } from "react";
+import { jSonFromArticleData } from "../../static/codeStringExamples";
 
 type JsonViewProps = {
     article: ArticleData,
 }
 
-export default function JsonView({article}: JsonViewProps) {
+export default function JsonView({ article }: JsonViewProps) {
 
     const showTable: boolean = true;
     const showText: boolean = true;
@@ -27,7 +27,7 @@ export default function JsonView({article}: JsonViewProps) {
 
     return (
         <div id={"AE"} aria-selected={selected}>
-            <button onClick={copyText}>JSON-String zwischenspeichern</button>
+            <button className="saveJsonButton" onClick={copyText}>JSON-String kopieren</button>
             <h2> JSON - Ansicht: </h2>
             <div className={"box"}>
                 <span className={"structure"}>&#123;</span>
@@ -37,13 +37,13 @@ export default function JsonView({article}: JsonViewProps) {
                             <span className={"key"}>"{articleAttribute}":</span>
                             &nbsp;
                             <span className={"content date"}>
-                        {(articleAttribute === "date") && <>
-                            "{(article.date).toISOString()}"
-                            <span className={"structure"}>,</span>
-                        </>
-                        }
+                                {(articleAttribute === "date") && <>
+                                    "{(article.date).toISOString()}"
+                                    <span className={"structure"}>,</span>
+                                </>
+                                }
                                 {(articleAttribute === "collections") &&
-                                    <><StringArray strings={article.collections}/>
+                                    <><StringArray strings={article.collections} />
                                         <span className={"structure"}>,</span>
                                     </>
                                 }
@@ -51,10 +51,10 @@ export default function JsonView({article}: JsonViewProps) {
                                     <>"{Object.values(article)[artI]}"<span className={"structure"}>,</span></>
                                 }
                                 {(
-                                        !(typeof Object.values(article)[artI] === "string")
-                                        && !(articleAttribute === "collections")
-                                        && !(articleAttribute === "date")
-                                    ) &&
+                                    !(typeof Object.values(article)[artI] === "string")
+                                    && !(articleAttribute === "collections")
+                                    && !(articleAttribute === "date")
+                                ) &&
                                     <>  <span className={"structure"}>[</span>
                                         <div className={"box"}>
                                             {article.data.map((val, valI) =>
@@ -65,7 +65,7 @@ export default function JsonView({article}: JsonViewProps) {
                                                             (showTable && isTableType(val)) || (showText && isTextType(val))
                                                             || (showCode && isCodeType(val)) || (showList && isListType(val))
                                                             || (showDiagram && isDiagramType(val))) ?
-                                                            <JsonComponent val={val}/>
+                                                            <JsonComponent val={val} />
                                                             :
                                                             "Object"
                                                     }
@@ -78,7 +78,7 @@ export default function JsonView({article}: JsonViewProps) {
                                         <span className={"structure"}>]</span>
                                     </>
                                 }
-                        </span>
+                            </span>
                         </div>
                     )}
                 </div>

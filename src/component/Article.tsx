@@ -5,6 +5,7 @@ import { ArticleData } from "../model/ArticleData";
 import ArticleItem from "./ArticleItem";
 import ArticleNaviagator from "./ArticleNavigator";
 import { ComponentData } from "../model/ComponentData";
+import JsonView from "./JsonView/JsonView";
 
 type ArticleProps = {
     articles: ArticleData[],
@@ -78,6 +79,7 @@ export default function Article({ articles }: ArticleProps) {
                     innerIndex={undefined}
                     editComponent={editArticle}
                     deleteComponent={deleteComponent} />
+                    <JsonView article={actualArticle}/>
             </article>
         </>
     )

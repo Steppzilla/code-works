@@ -6,6 +6,7 @@ import { codeLanguage } from "../../../enum/codeLanguages";
 import { styleArray, styleNames } from "../../../static/themes";
 import CodeStylePicker from "./stylePicker/CodeStylePicker";
 import { CodeData } from "../../../model/CodeData";
+import SubmitResetButton from "../SubmitResetButton";
 
 type CodeBoxProps = {
     editData: (data: CodeData, event: FormEvent) => void,
@@ -53,13 +54,16 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
         return actualString.trim();
     }
 
-    const handleReset = (event: MouseEvent) => {
+    const handleReset = (event: FormEvent) => {
         event.preventDefault();
         props.cancel();
     }
 
     return (
-        <form onSubmit={handleSubmit} className={"editorBox"}>
+        <form 
+        onSubmit={handleSubmit} 
+        className={"editorBox"}
+        onReset={(event) => handleReset(event)}>
             <button type={"button"}
                 onClick={() => toggleNumbers()}> {showNumbers ? "Zahlen ausblenden" : "Zahlen einblenden"}</button>
             <h3><input value={title} onChange={(event) => setTitle(event.target.value)} /></h3>
@@ -75,9 +79,6 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
             </div>
             <textarea className={"textEditField"} onChange={handleChange} onKeyDown={handleKeyDown}
                 value={actualString} />
-            <button type="submit" disabled={actualString.length === 0}> submit</button>
-            <button type={"button"} onClick={(event) => handleReset(event)}>
-                abbruch
-            </button>
+            <SubmitResetButton disabledReset={false} disabledSubmit={actualString.length === 0} />
         </form>)
 }

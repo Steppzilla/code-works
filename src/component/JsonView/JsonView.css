@@ -1,7 +1,5 @@
 #AE {
     text-align: left;
-    margin-left: 10px;
-    padding-left: 10px;
     letter-spacing: 0.05em;
     font-size: 12px;
 }
@@ -76,4 +74,17 @@
 .notJsonPrefix:before{
     color:grey;
     content: attr(data-content);
+}
+
+.saveJsonButton{
+    width:100vw;
+    background-color:inherit;
+    text-shadow: 1px 1px grey;
+    box-shadow: 0 0 2px 2px rgb(187, 171, 171);
+    border:none;
+    margin:0 0 0 0;
+    padding:0;
+    line-height:50px;
+    font-size:50px;
+    color:inherit;
 }

@@ -2,6 +2,7 @@ import "../viewBoxes/Table.css";
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import "./TableEditor.css";
 import { TableData } from "../../model/TableData";
+import SubmitResetButton from "./SubmitResetButton";
 
 type TableEditorProps = {
     editData: (data: TableData, event: FormEvent) => void,
@@ -21,7 +22,7 @@ export default function TableEditor(props: TableEditorProps) {
 
     const keysX = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
 
-    const handleReset = (event: MouseEvent) => {
+    const handleReset = (event: FormEvent) => {
         props.data && props.cancel();
         !props.data && props.setShowEditor(false);
     }
@@ -97,7 +98,9 @@ export default function TableEditor(props: TableEditorProps) {
     }
 
     return (
-        <form id={"editTableForm"} className={"editorBox"} onSubmit={handleSubmit}>
+        <form id={"editTableForm"} className={"editorBox"}
+            onSubmit={handleSubmit}
+            onReset={(event) => handleReset(event)}>
             <h3><input onChange={changeTitle} value={title} /></h3>
             <div>
                 <div>
@@ -143,12 +146,9 @@ export default function TableEditor(props: TableEditorProps) {
                             }
                         </tbody>
                     </table>
-                    <button type={"submit"}> submit</button>
-                    <button type={"button"} onClick={(event) => handleReset(event)}>
-                        abbruch
-                    </button>
+                            <SubmitResetButton disabledReset={false} disabledSubmit={false}/>
                 </div>
             </div>
-        </form>
+        </form >
     )
 }

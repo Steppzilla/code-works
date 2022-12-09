@@ -1,0 +1,47 @@
+.articleItem {
+
+}
+
+.articleItem button {
+    display: inline;
+    box-shadow: 0 0 3px 2px #5465a1;
+    border: none;
+    margin: 10px 5px 5px 10px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.articleItem button img {
+    height: 15px;
+    filter: brightness(0) saturate(100%) invert(90%) sepia(2%) saturate(0%) hue-rotate(99deg) brightness(91%) contrast(91%);
+}
+
+.articleItem button.deleteButton {
+    background-color: rgba(226, 38, 17, 0.277);
+}
+
+.articleItem button.editButton {
+    background-color: rgba(255, 255, 0, 0.204);
+}
+
+form button[type="submit"] {
+    font-weight: bold;
+    padding:0;
+    display: inline;
+    font-size: 25px;
+    color: rgb(126, 198, 153);
+    width: 100px;
+    text-shadow: 0 1px rgb(52, 96, 69), 0px 2px rgba(32, 34, 33, 0.766);
+    background-color: rgba(82, 154, 110, 0.559);
+}
+
+form button[type="reset"] {
+    font-weight: bold;
+    padding:0;
+    display: inline;
+    font-size: 25px;
+    color: red;
+    width: 100px;
+    text-shadow: 0 1px 1px rgb(145, 8, 8), 0px 2px 1px rgb(3, 0, 0);
+    background-color: rgba(145, 8, 8, 0.49);
+}

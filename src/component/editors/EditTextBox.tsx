@@ -1,6 +1,7 @@
 import { FormEvent, useState, useEffect } from "react";
 import "./EditTextBox.css";
 import { TextBoxData } from "../../model/TextBoxData";
+import SubmitResetButton from "./SubmitResetButton";
 
 type EditTextBoxProps = {
     editData: (data: TextBoxData, event: FormEvent) => void,
@@ -64,10 +65,7 @@ export default function EditTextBox(props: EditTextBoxProps) {
                     />
                 )}
             </div>
-            <button type={"submit"} disabled={text[0].length === 0}> übernehmen </button>
-            <button type={"reset"} >
-                abbruch
-            </button>
+            <SubmitResetButton disabledReset={false} disabledSubmit={text[0].length === 0} />
         </form>
     )
 }
