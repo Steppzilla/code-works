@@ -1,12 +1,12 @@
-import { FormEvent, useState ,MouseEvent} from "react";
+import { FormEvent, useState, MouseEvent } from "react";
 import "./ListEditor.css";
 import { ListData } from "../../model/ListData";
 
 type ListEditorProps = {
     editData: (data: ListData, event: FormEvent) => void,
     data: ListData | undefined,
-    cancel: ()=>void,
-    setShowEditor: (showEdit: boolean)=>void,
+    cancel: () => void,
+    setShowEditor: (showEdit: boolean) => void,
 }
 
 export default function ListEditor(props: ListEditorProps) {
@@ -42,8 +42,8 @@ export default function ListEditor(props: ListEditorProps) {
         props.cancel();
 
         setTitle("");
-                setSorted(true);
-                setList([""])
+        setSorted(true);
+        setList([""])
     }
 
     return (

@@ -4,7 +4,6 @@ import DateComp from "./JsonView/DateComp";
 import { ArticleData } from "../model/ArticleData";
 import ArticleItem from "./ArticleItem";
 import ArticleNaviagator from "./ArticleNavigator";
-import ArticleEditor from "./ArticleEditor";
 import { ComponentData } from "../model/ComponentData";
 
 type ArticleProps = {
@@ -43,7 +42,7 @@ export default function Article({ articles }: ArticleProps) {
 
     const deleteComponent = (index: number) => {
         const editArray = actualArticle.data;
-        const filteredArray:ComponentData[] = editArray.filter(element=> editArray.indexOf(element)!==2)
+        const filteredArray: ComponentData[] = editArray.filter(element => editArray.indexOf(element) !== 2)
         setActualArticle({ ...actualArticle, data: [...filteredArray] })
     }
 
@@ -51,8 +50,7 @@ export default function Article({ articles }: ArticleProps) {
         <>
             <ArticleNaviagator
                 articles={articles}
-                setActualArticle={changeActualArticle}
-                 />
+                setActualArticle={changeActualArticle} />
             <article>
                 {(actualArticle.h1) ?
                     <h1> {actualArticle.h1}
@@ -75,11 +73,11 @@ export default function Article({ articles }: ArticleProps) {
                         editComponent={editArticle}
                         deleteComponent={deleteComponent} />
                 )}
-                    <ArticleItem key={crypto.randomUUID()}
-                        content={undefined}
-                        innerIndex={undefined}
-                        editComponent={editArticle}
-                        deleteComponent={deleteComponent} />     
+                <ArticleItem key={crypto.randomUUID()}
+                    content={undefined}
+                    innerIndex={undefined}
+                    editComponent={editArticle}
+                    deleteComponent={deleteComponent} />
             </article>
         </>
     )

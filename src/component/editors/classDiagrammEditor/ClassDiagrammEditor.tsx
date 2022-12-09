@@ -6,8 +6,8 @@ import { ClassDiagramData } from "../../../model/ClassDiagramData";
 type ClassDiagramProps = {
     editData: (data: ClassDiagramData, event: FormEvent) => void,
     data: ClassDiagramData | undefined,
-    cancel: ()=>void,
-    setShowEditor: (showEdit: boolean)=>void,
+    cancel: () => void,
+    setShowEditor: (showEdit: boolean) => void,
 }
 
 type SingleClassDiagram = {

@@ -6,8 +6,8 @@ import { TableData } from "../../model/TableData";
 type TableEditorProps = {
     editData: (data: TableData, event: FormEvent) => void,
     data: TableData | undefined,
-    cancel: ()=>void,
-    setShowEditor: (showEdit: boolean)=>void,
+    cancel: () => void,
+    setShowEditor: (showEdit: boolean) => void,
 }
 
 export default function TableEditor(props: TableEditorProps) {
@@ -22,8 +22,8 @@ export default function TableEditor(props: TableEditorProps) {
     const keysX = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
 
     const handleReset = (event: MouseEvent) => {
-        props.data&&props.cancel();
-        !props.data&&props.setShowEditor(false);
+        props.data && props.cancel();
+        !props.data && props.setShowEditor(false);
     }
 
     const handleTableRows = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
@@ -145,8 +145,8 @@ export default function TableEditor(props: TableEditorProps) {
                     </table>
                     <button type={"submit"}> submit</button>
                     <button type={"button"} onClick={(event) => handleReset(event)}>
-                abbruch
-            </button>
+                        abbruch
+                    </button>
                 </div>
             </div>
         </form>

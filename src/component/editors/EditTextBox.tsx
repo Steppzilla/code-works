@@ -6,7 +6,7 @@ type EditTextBoxProps = {
     editData: (data: TextBoxData, event: FormEvent) => void,
     data: TextBoxData | undefined,
     cancel: () => void,
-    setShowEditor: (showEdit: boolean)=>void,
+    setShowEditor: (showEdit: boolean) => void,
 }
 
 export default function EditTextBox(props: EditTextBoxProps) {
@@ -45,8 +45,8 @@ export default function EditTextBox(props: EditTextBoxProps) {
     }
 
     const handleReset = (event: FormEvent) => {
-        props.data&&props.cancel();
-        !props.data&&props.setShowEditor(false);
+        props.data && props.cancel();
+        !props.data && props.setShowEditor(false);
     }
 
     return (

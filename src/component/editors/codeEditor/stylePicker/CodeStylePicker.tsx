@@ -1,6 +1,6 @@
-import {CSSProperties, useState} from "react";
+import { CSSProperties, useState } from "react";
 import "./CodeStylePicker.css";
-import {styleArray, styleNames} from "../../../../static/themes";
+import { styleArray, styleNames } from "../../../../static/themes";
 
 type DropDownMenuButtonsProperties = {
     setActualStyle: (style: { [key: string]: CSSProperties; }) => void,
@@ -34,7 +34,7 @@ export default function CodeStylePicker(props: DropDownMenuButtonsProperties) {
                         (singleStyle, index) => {
                             return <button type={"button"}
                                 key={styleNames[index]} className={"colorPickButton"}
-                                           onClick={() => changeStyle(singleStyle, styleNames[index])}>
+                                onClick={() => changeStyle(singleStyle, styleNames[index])}>
                                 {styleNames[index]}
                             </button>;
                         }

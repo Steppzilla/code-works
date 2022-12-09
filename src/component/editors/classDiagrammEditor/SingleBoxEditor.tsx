@@ -1,5 +1,5 @@
 import TypeAnnotationEditor from "./TypeAnnotationEditor";
-import {ChangeEvent, MouseEvent} from "react";
+import { ChangeEvent, MouseEvent } from "react";
 
 type SingleBoxProps = {
     data: {
@@ -20,24 +20,24 @@ type SingleBoxProps = {
 }
 
 export default function SingleBoxEditor({
-                                            element,
-                                            data,
-                                            changeAttribute,
-                                            index,
-                                            changeTitle,
-                                            handleRows,
-                                            setColor,
-                                        }: SingleBoxProps) {
+    element,
+    data,
+    changeAttribute,
+    index,
+    changeTitle,
+    handleRows,
+    setColor,
+}: SingleBoxProps) {
 
     return (
-        <div className={"classDiagram"} style={{boxShadow: "0 0 2px 2px " + element.color}}>
+        <div className={"classDiagram"} style={{ boxShadow: "0 0 2px 2px " + element.color }}>
             <button onClick={(event) => handleRows(index, false, event)}>-</button>
             <button onClick={(event) => handleRows(index, true, event)}>+</button>
-            <input value={element.color} onChange={(event) => setColor(index, event)}/>
+            <input value={element.color} onChange={(event) => setColor(index, event)} />
             <h4>
-                <input style={{color: element.color}}
-                       value={element.title}
-                       onChange={(event) => changeTitle(index, event)}/>
+                <input style={{ color: element.color }}
+                    value={element.title}
+                    onChange={(event) => changeTitle(index, event)} />
             </h4>
             {element.attributes.map((type, t) =>
                 <p key={t}>
@@ -47,10 +47,10 @@ export default function SingleBoxEditor({
                     :
 
                     <TypeAnnotationEditor type={type.type} data={data} changeAttribute={changeAttribute}
-                                          index={index} attributeIndex={t}/>
+                        index={index} attributeIndex={t} />
                 </p>
             )}<p key={"x"}>
-        </p>
+            </p>
         </div>
     )
 }

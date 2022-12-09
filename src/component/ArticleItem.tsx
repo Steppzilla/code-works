@@ -1,5 +1,4 @@
 import { CSSProperties, useState } from "react";
-import { isFunctionDeclaration } from "typescript";
 import { ComponentData, isCodeType, isDiagramType, isListType, isTableType, isTextType } from "../model/ComponentData";
 import { styleArray, styleNames } from "../static/themes";
 import ArticleEditor from "./ArticleEditor";
@@ -17,7 +16,7 @@ type ArticleItemProps = {
 }
 
 export default function ArticleItem({ content, innerIndex, editComponent, deleteComponent }: ArticleItemProps) {
-    
+
 
     const actualStyle: { [key: string]: CSSProperties; } = styleArray[1];
     const actualStyleName: string = styleNames[1];
@@ -35,7 +34,7 @@ export default function ArticleItem({ content, innerIndex, editComponent, delete
         console.log(content)
         setShowEditor(false)
     }
-   
+
 
     return (<>
         <div>
@@ -63,14 +62,14 @@ export default function ArticleItem({ content, innerIndex, editComponent, delete
             {(content && isDiagramType(content)) &&
                 <ClassDiagramm title={content.title} data={content.diagramData} />}
             {
-                (showEditor||!content) && <ArticleEditor
-                    actualEditor={content?content.type:undefined}
+                (showEditor || !content) && <ArticleEditor
+                    actualEditor={content ? content.type : undefined}
                     changeComponent={editComponent}
                     cancel={cancel}
                     data={content}
                     innerIndex={innerIndex}
                     setShowEditor={setShowEditor} />}
-                
+
             {(!showEditor && content) && <div>
                 <button onClick={handleEdit} > edit</button>
                 <button onClick={handleDelete}> delete</button>

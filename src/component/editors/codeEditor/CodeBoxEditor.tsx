@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState,MouseEvent } from "react";
+import { ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState, MouseEvent } from "react";
 import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import { codeLanguage } from "../../../enum/codeLanguages";
@@ -10,8 +10,8 @@ import { CodeData } from "../../../model/CodeData";
 type CodeBoxProps = {
     editData: (data: CodeData, event: FormEvent) => void,
     data: CodeData | undefined,
-    cancel: ()=>void,
-    setShowEditor: (showEdit: boolean)=>void,
+    cancel: () => void,
+    setShowEditor: (showEdit: boolean) => void,
 }
 
 export default function CodeBoxEditor(props: CodeBoxProps) {
@@ -54,7 +54,7 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
     }
 
     const handleReset = (event: MouseEvent) => {
-    event.preventDefault();
+        event.preventDefault();
         props.cancel();
     }
 

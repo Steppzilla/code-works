@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type TypeAnnotationProps = {
     data: {
@@ -13,12 +13,12 @@ type TypeAnnotationProps = {
 }
 
 export default function TypeAnnotationEditor({
-                                                 data,
-                                                 type,
-                                                 changeAttribute,
-                                                 index,
-                                                 attributeIndex
-                                             }: TypeAnnotationProps) {
+    data,
+    type,
+    changeAttribute,
+    index,
+    attributeIndex
+}: TypeAnnotationProps) {
 
     const [usedClass, setUsedClass] = useState<{
         color: string,
@@ -40,7 +40,7 @@ export default function TypeAnnotationEditor({
     return (
         <input
             onChange={(event) => changeAttribute(index, attributeIndex, true, event)}
-            className={"type"} style={usedClass && {color: usedClass.color}} value={type} type={"input"}>
+            className={"type"} style={usedClass && { color: usedClass.color }} value={type} type={"input"}>
         </input>
     )
 }
