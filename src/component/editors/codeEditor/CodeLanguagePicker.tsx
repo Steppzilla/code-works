@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./stylePicker/CodeStylePicker.css";
 import { codeLanguage } from "../../../enum/codeLanguages";
 
 type CodeLanguagePickerProps = {

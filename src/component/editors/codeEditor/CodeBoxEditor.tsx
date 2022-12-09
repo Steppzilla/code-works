@@ -4,7 +4,6 @@ import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import { codeLanguage } from "../../../enum/codeLanguages";
 import { styleArray, styleNames } from "../../../static/themes";
-import CodeStylePicker from "./stylePicker/CodeStylePicker";
 import { CodeData } from "../../../model/CodeData";
 import SubmitResetButton from "../SubmitResetButton";
 
@@ -69,8 +68,7 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
             <h3><input value={title} onChange={(event) => setTitle(event.target.value)} /></h3>
             <CodeLanguagePicker setActualLanguage={setActualLanguage}
                 actualLanguage={actualLanguage} />
-            <CodeStylePicker setActualStyle={setActualStyle} setActualStyleName={setActualStyleName}
-                actualChosen={actualStyle} />
+            
             <div className={"codeBox " + actualStyleName}>
                 <SyntaxHighlighter language={actualLanguage} style={actualStyle} wrapLines={true}
                     showLineNumbers={showNumbers}>
