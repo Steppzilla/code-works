@@ -146,7 +146,7 @@ export default function TableEditor(props: TableEditorProps) {
                             }
                         </tbody>
                     </table>
-                            <SubmitResetButton disabledReset={false} disabledSubmit={false}/>
+                    <SubmitResetButton disabledReset={false} disabledSubmit={false} />
                 </div>
             </div>
         </form >

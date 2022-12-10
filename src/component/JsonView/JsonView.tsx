@@ -6,6 +6,7 @@ import { isCodeType, isDiagramType, isListType, isTableType, isTextType } from "
 import StringArray from "./StringArray";
 import { MouseEventHandler, useState } from "react";
 import { jSonFromArticleData } from "../../static/codeStringExamples";
+import copyImg from "../../icons/copy.png";
 
 type JsonViewProps = {
     article: ArticleData,
@@ -27,8 +28,7 @@ export default function JsonView({ article }: JsonViewProps) {
 
     return (
         <div id={"AE"} aria-selected={selected}>
-            <button className="saveJsonButton" onClick={copyText}>JSON-String kopieren</button>
-            <h2> JSON - Ansicht: </h2>
+            <h2> JSON - Ansicht:  <button className="saveJsonButton" onClick={copyText}><img src={copyImg} alt="copy" /></button></h2>
             <div className={"box"}>
                 <span className={"structure"}>&#123;</span>
                 <div className={"box"}>

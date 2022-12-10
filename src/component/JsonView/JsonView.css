@@ -77,14 +77,17 @@
 }
 
 .saveJsonButton{
-    width:100vw;
+    width:35px;
+    float:right;
     background-color:inherit;
-    text-shadow: 1px 1px grey;
-    box-shadow: 0 0 2px 2px rgb(187, 171, 171);
+    box-shadow: 0 0 1px 1px grey;
     border:none;
     margin:0 0 0 0;
     padding:0;
-    line-height:50px;
-    font-size:50px;
     color:inherit;
+}
+
+.saveJsonButton img{
+    height:25px;
+    filter: brightness(0) saturate(100%) invert(90%) sepia(2%) saturate(0%) hue-rotate(99deg) brightness(91%) contrast(91%);
 }
