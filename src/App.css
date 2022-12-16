@@ -10,6 +10,10 @@
 
 .right{
   float:right;
+  width:0px;
+  overflow: visible;
+  position: relative;
+  right:150px;
 }
 
 input{

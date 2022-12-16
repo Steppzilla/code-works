@@ -1,18 +1,20 @@
 h1 {
     font-size: 20px;
     text-align: center;
-    background-color: var(--darkdarkred);
+    background-color: inherit;
     margin:9px;
     line-height:35px;
-    box-shadow: 0 0 3px 3px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 3px 2px -2px #5465a1 ;
+    margin: 3px;
 }
 
 h2 {
     font-size: 16px;
+    line-height: 26px;
     text-align: center;
-    background-color: rgba(95, 30, 38, 0.33);
-    margin:12px 6px 6px 6px;
-    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.25);
+   /* background-color: rgba(95, 30, 38, 0.33);*/
+    margin:0px 4px 0 6px;
+    box-shadow: 0 2px 2px -2px rgba(255, 255, 255, 0.25);
 }
 
 h3 {

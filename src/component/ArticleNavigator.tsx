@@ -18,7 +18,7 @@ export default function ArticleNaviagator({ setActualArticle, articles }: Articl
 
     return (
         <nav>
-            Java:<br />
+            <div>Java</div>
             {articles.map(
                 (singleArticle, sI) => {
                     if (singleArticle.h1 === "Java") {
