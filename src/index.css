@@ -14,20 +14,25 @@ code {
 }*/
 :root {
     --verydarkblue: #2c303f;
+    --darkShadow: #1e212b;
+    --lightShadow: #3a3f53;
     --mediumblue: rgba(66, 73, 112, 0.55);
     --blue: #2F3878;
     --light: #7991BD;
     --grey: #8c909C;
-    --lightred: rgba(188, 96, 100, 0.66);
+    --lightred: rgba(188, 96, 101, 0.795);
     --darkred: rgba(157, 43, 48, 0.41);
     --darkdarkred: rgba(116, 42, 45, 0.41);
     --lightgreen: rgba(109, 146, 97, 0.79);
     --darkgreen: rgba(64, 140, 38, 0.16);
     --darkdarkgreen: rgba(47, 80, 36, 0.16);
-    --codeBackground: rgb(45, 45, 45);
+
+    --codeBackgroundBlack: rgb(45, 45, 45);
     --codeColor:rgb(204, 204, 204);
-    --codeClass: rgb(248, 197, 85);
-    --codeAccess:rgb(204, 153, 205);
-    --codeMethode: rgb(240, 141, 73);
-    --codeString: rgb(126, 198, 153);
+    --codeClassYellow: rgb(248, 197, 85);
+    --codeAccessLilac:rgb(204, 153, 205);
+    --codeMethodOrange: rgb(240, 141, 73);
+    --codeStringGreen: rgb(126, 198, 153);
+    --codeBlue: rgb(102, 217, 239);
+    --codeNoteGrey: rgb(153, 153, 153);
 }
