@@ -16,7 +16,7 @@ type SingleBoxProps = {
 export default function SingleBox({data, element}: SingleBoxProps) {
 
     return (
-        <div className={"classDiagram"} style={{boxShadow: "10px 10px 20px #1e212b, -10px -10px 20px #3a3f53"}}>
+        <div className={"classDiagram"}>
             <h4 style={{color: element.color}}>
                 {element.title}
             </h4>
