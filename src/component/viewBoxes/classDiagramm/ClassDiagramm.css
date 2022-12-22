@@ -3,13 +3,17 @@
     margin: 5px;
     border-radius: 5px;
     padding: 5px;
-    line-height:16px;
+    line-height:20px;
     text-align:left;
+    box-shadow: 10px 10px 20px #1e212b,
+    -10px -10px 20px #3a3f53;
 }
 
 .classDiagram h4 {
     text-align:center;
-    margin: 0;
+    margin: 2px;
+    padding-bottom:4px;
+    border-bottom:1px var(--mediumblue) solid;
 }
 
 .classDiagram p {
@@ -24,8 +28,9 @@
 .diagramBox{
     border-radius:8px;
     padding:5px;
-    display: table;
+    display: flex;
     margin-left:auto;
     margin-right:auto;
-    max-width: 800px;
+    max-width: 1200px;
+    justify-content:center;
 }

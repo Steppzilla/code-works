@@ -1,48 +1,56 @@
-.codeTable{
-    padding:5px;
+.codeTable {
+    padding: 5px;
     max-width: 95vw;
     margin: 0 auto 10px auto;
-    box-shadow: 0 0 2px 2px var(--verydarkblue),
-    0 0 3px 3px var(--mediumblue);
+     box-shadow: 10px 10px 20px #1e212b,
+    -10px -10px 20px #3a3f53;
     background-color: var(--verydarkblue);
     border-radius: 5px;
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 
-.codeTable th{
-    color:var(--grey);
+.codeTable th {
+    color: var(--codeColor);
+    text-shadow:1px 1px var(--grey);
     font-weight: normal;
-    line-height:13px;
-    font-size:11px;
-    padding:1px 4px 1px 4px;
+    line-height: 13px;
+    font-size: 13px;
+    padding-left: 30px;
+    padding:10px;
     text-align: center;
-    border-bottom:1px var(--mediumblue) solid;
-    background-color: var(--darkdarkred);
+   /* background-color: var(--darkdarkred);*/
     min-height: 25px;
-    min-width:20px;
-}
-
-.codeTable th:nth-child(1){
-    border-top-left-radius: 5px;
-}
-
-.codeTable th:nth-last-child(1){
-    border-top-right-radius: 5px;
-}
-
-.codeTable td{
-    border-top: 1px var(--codeBackground) solid;
-    padding: 0 4px;
-    text-align: center;
-    line-height:20px;
-    min-height: 14px;
     min-width: 20px;
 }
 
-.codeTable td:nth-child(n+2){
-    border-left:1px var(--codeBackground) dotted;
+.codeTable th:nth-child(1),
+.codeTable th:nth-child(2) {
+    border-top-left-radius: 5px;
+    min-width: 200px;
 }
 
-form h3{min-height: 20px;}
+.codeTable th:nth-child(n+3) {
+    width: 50vw;
+}
+
+.codeTable th:nth-last-child(1) {
+    border-top-right-radius: 5px;
+}
+
+.codeTable td {
+    border-top: 1px var(--mediumblue) solid;
+    padding-left: 14px;
+    text-align: left;
+    line-height: 30px;
+    min-height: 14px;
+}
 
 
+
+.codeTable td:nth-child(n+2) {
+    border-left: 1px var(--mediumblue) dotted;
+}
+
+form h3 {
+    min-height: 20px;
+}

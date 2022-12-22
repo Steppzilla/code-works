@@ -19,20 +19,26 @@
 
 .box .codeBox{
     max-height:45vh;
-    margin-top:-7px;
 }
 
 .codeBox {
     height: auto;
     margin: 0 auto 10px auto;
-    box-shadow: 0 0 2px 2px var(--codeBackground),
-    0 0 3px 3px var(--mediumblue);
     border-radius: 5px;
-    width: 98vw;
-    max-width: 800px;
-    background-color: green;
+    width: 95vw;
+    max-width: 1200px;  
+    margin:20px;
 }
 
 .codeBox.light {
     box-shadow: 0 0 2px 2px #e3e3e3;
+}
+
+.codeBox pre{
+border-radius:15px;
+border:none;
+  /*  box-shadow:  1px 1px 1px 1px #5d616e80;*/
+  box-shadow: 10px 10px 20px #1e212b,
+  -10px -10px 20px #3a3f53;
+
 }
