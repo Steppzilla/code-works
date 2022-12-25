@@ -14,7 +14,7 @@ type CodeBoxProps = {
 export default function CodeBox({title,actualStyleName, actualStyle, inputString, language, showLineNumbers}: CodeBoxProps) {
 
     return (
-        <div className={"box"}>
+        <>
             {(title.length>=1)&&<h3>{title}</h3>}
             <div className={"codeBox " + actualStyleName}>
                 <SyntaxHighlighter
@@ -25,5 +25,5 @@ export default function CodeBox({title,actualStyleName, actualStyle, inputString
                     {inputString}
                 </SyntaxHighlighter>
             </div>
-        </div>)
+        </>)
 }

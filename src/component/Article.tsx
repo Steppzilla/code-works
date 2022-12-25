@@ -21,10 +21,13 @@ export default function Article({ articles }: ArticleProps) {
         data: []
     };
 
+    const [showNav, setShowNav] = useState<boolean>(true)
+
     const [actualArticle, setActualArticle] = useState<ArticleData>(newArticle)
 
     const changeActualArticle = (index: number | undefined) => {
         (typeof index === "number") ? setActualArticle(articles[index]) : setActualArticle(newArticle);
+        setShowNav(false);
     }
 
     const onH1Change = (event: ChangeEvent<HTMLInputElement>) => {
@@ -50,10 +53,12 @@ export default function Article({ articles }: ArticleProps) {
 
     return (
         <>
-            <ArticleNaviagator
+            {!showNav && <button onClick={() => setShowNav(true)}>Artikel wählen</button>}
+            {showNav && <ArticleNaviagator
                 articles={articles}
                 setActualArticle={changeActualArticle} />
-            <article>
+            }
+            <article className={showNav ? "blur hide" : ""}>
                 {(actualArticle.h1) ?
                     <h1> {actualArticle.h1}
                         <div className={"right"}><DateComp date={actualArticle.date} /></div>

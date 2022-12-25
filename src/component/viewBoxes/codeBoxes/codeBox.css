@@ -1,44 +1,42 @@
-.box{
-    text-align: center;
-    overflow: hidden;
-}
 
-.box .textEditField{
-    color:inherit;
-    padding:5px;
-    width:90vw;
-    max-width:100vw;
-    max-height:45vh;
-    min-height:150px;
-    line-height:20px;
+ .textEditField {
+    color: inherit;
+    padding: 5px;
+    width: 90vw;
+    max-width: 100vw;
+    max-height: 45vh;
+    min-height: 150px;
+    line-height: 20px;
     border-radius: 5px;
-    border:none;
+    border: none;
     box-shadow: 0 0 2px 2px var(--darkdarkred);
     background-color: var(--codeBackground);
 }
 
-.box .codeBox{
-    max-height:45vh;
-}
-
 .codeBox {
+    max-height: 45vh;
     height: auto;
     margin: 0 auto 10px auto;
     border-radius: 5px;
     width: 95vw;
-    max-width: 1200px;  
-    margin:20px;
+    max-width: 1200px;
+    text-align: center;
 }
 
 .codeBox.light {
     box-shadow: 0 0 2px 2px #e3e3e3;
 }
 
-.codeBox pre{
-border-radius:15px;
-border:none;
-  /*  box-shadow:  1px 1px 1px 1px #5d616e80;*/
-  box-shadow: 10px 10px 20px #1e212b,
-  -10px -10px 20px #3a3f53;
-
+.codeBox pre {
+    width: 95vw;
+    max-width: 1200px;
+    margin: 0 auto 10px auto;
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    border-radius: 15px;
+    border: none;
+    /*  box-shadow:  1px 1px 1px 1px #5d616e80;*/
+    box-shadow: 10px 10px 20px #1e212b,
+        -10px -10px 20px #3a3f53;
 }

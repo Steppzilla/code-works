@@ -55,7 +55,7 @@ export default function ArticleEditor({ data, changeComponent, innerIndex, actua
                     )}
                 </div>}
             {
-                <article id={"articleEditor"}>
+                <div id={"articleEditor"}>
                     {
                         (data && isTextType(data)) &&
                         <EditTextBox editData={handleEditDataAttribute} data={data} cancel={cancel} setShowEditor={setShowEditor} />}
@@ -91,7 +91,7 @@ export default function ArticleEditor({ data, changeComponent, innerIndex, actua
                         (!data && chosenEditor === "Diagramm") &&
                         <ClassDiagrammEditor editData={handleEditDataAttribute} data={undefined} cancel={cancel} setShowEditor={setShowEditor} />
                     }
-                </article>
+                </div>
             }
         </>
     )

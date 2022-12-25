@@ -1,12 +1,11 @@
 {
-    "h1": "Java",
-    "h2": "Mein zweites Programm",
-    "date": "04 Dec 1995 00:12:00 GMT",
+    "h1": "React",
+    "h2": "Mein REACT",
+    "date": "2011-10-05T14:48:00.000Z",
     "data": [
         {
             "type": "text",
             "title": "Beispiel",
-            "collections": ["teletuppies", "babybären"],
             "paragraphs": ["Das erste Beispiel bla saddf sfsdafadö sdffsadfjöasfjasf sfjöasdf fas jsadfö asjf sadfja ösdf asfö öjjöjjjöj jjkljkjö ökjöjköjköjk",
             "asföjsajöfasd fds fdsa fa fsad fsda fsa fsad fa fsda fsdasfda  fa afs fasd sfd fsda asfd safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."]
         },
@@ -59,7 +58,7 @@
                     "attributes": [
                         {"attribute": "eins", "type": "string"}
                     ],
-                    "color": "rgb(213, 189, 137)"
+                    "color": "rgba(109, 146, 97, 0.79)"
                 },
                 {
                     "title": "Klasse2",
@@ -68,14 +67,14 @@
                         {"attribute": "zwei", "type": "number"},
                         {"attribute": "drei", "type": "Klasse3"}
                     ],
-                    "color": "rgb(208, 213, 137)"
+                    "color": "#5b67a7"
                 },
                 {
                     "title": "Klasse3",
                     "attributes": [
                         {"attribute": "eins", "type": "string"}
                     ],
-                    "color": "rgba(109, 146, 97, 0.952)"
+                    "color": "rgba(188,154,81,0.74)"
                 },
                 {
                     "title": "Klasse4",
@@ -84,7 +83,7 @@
                         {"attribute": "zwei", "type": "Klasse2"},
                         {"attribute": "drei", "type": "Klasse1"}
                     ],
-                    "color": "rgba(164, 223, 144, 0.952)"
+                    "color": "rgba(188, 96, 101, 0.795)"
                 }
             ]
         }

@@ -5,7 +5,7 @@ import JsonComponent from "./JsonComponent";
 import { isCodeType, isDiagramType, isListType, isTableType, isTextType } from "../../model/ComponentData";
 import StringArray from "./StringArray";
 import { MouseEventHandler, useState } from "react";
-import { jSonFromArticleData } from "../../static/codeStringExamples";
+import { jSonFromArticleData } from "../../static/articleIndexing";
 import copyImg from "../../icons/copy.png";
 
 type JsonViewProps = {

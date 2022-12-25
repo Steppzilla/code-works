@@ -13,6 +13,10 @@
     margin:4px;
  }
 
+ article{
+   min-height:80vh;
+ } 
+
  .editorChooser{
     height:60px;
     line-height:50px;

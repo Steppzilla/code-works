@@ -29,6 +29,15 @@ h3 {
     border-bottom:1px white, 2px grey 3px yellow;
 }
 
+.blur{
+    filter: blur(1px) opacity(0.2);
+}
+
+.hide{
+    pointer-events: none;
+    z-index: -1;
+}
+
 @media screen and (max-width: 500px) {
     * {
         font-size: 11px;

@@ -2,7 +2,7 @@ import "../Article.css";
 import {ArticleData} from "../../model/ArticleData";
 import "./JsonViewEditor.css";
 import {ChangeEvent} from "react";
-import {jSonToArticleData} from "../../static/codeStringExamples";
+import {jSonToArticleData} from "../../static/articleIndexing";
 
 type JsonViewProps = {
     setArticle: (article: ArticleData) => void,
