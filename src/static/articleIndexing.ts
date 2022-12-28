@@ -16,18 +16,7 @@ export const jSonToArticleData = (js: any) => {
 }
 
 export const jSonFromArticleData = (article: ArticleData) => {
-    const isoDate = article.date.toISOString();
+    const isoDate = article.date?.toISOString();
     return JSON.stringify({...article, date: isoDate});
 }
 
-const article1: ArticleData = jSonToArticleData(siteJson1);
-const article2: ArticleData = jSonToArticleData(siteJson2);
-const article3: ArticleData = jSonToArticleData(siteJson3);
-const article4: ArticleData = jSonToArticleData(siteJson4);
-const article5: ArticleData = jSonToArticleData(siteJson5);
-const article6: ArticleData = jSonToArticleData(siteJson6);
-const article8: ArticleData = jSonToArticleData(siteJson8);
-
-//const article7: ArticleData = jSonToArticleData(siteJson7);
-
-export const articles = [article5, article6,article4,article1, article2,article3, article8];

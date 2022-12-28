@@ -1,15 +1,18 @@
-import {ComponentData} from "./ComponentData";
+import {ComponentData, ComponentDataXXL} from "./ComponentData";
 
 export type ArticleData = {
-    date: Date,
-    h1: string,
-    h2: string,
-    collections?:string[],
-    data: (ComponentData) [],
-    tasks?: {dataIndex: number, task: TaskSheet, answer: TaskSheet}
+    id?: number,
+    date?: Date,
+    category: string,
+    title: string,
+
+    dataBlock: (ComponentData) [],
+    tasks?: {dataIndex: number, taskTitle?:string, task: ComponentData[], answer: ComponentData[]}[]
+}
+export type NewArticleData = {
+    category: string,
+    title: string,
+    dataBlock: (ComponentDataXXL) [],
+    tasks?: {dataIndex: number, taskTitle:string, task: ComponentDataXXL[], answer: ComponentDataXXL[]}[]
 }
 
-type TaskSheet =
-    {
-        data: ComponentData[],
-    }

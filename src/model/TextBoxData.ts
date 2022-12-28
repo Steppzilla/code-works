@@ -1,5 +1,5 @@
 export type TextBoxData = {
-    type: "text",
-    title: string | undefined,
-    paragraphs: string[],
+    dataType: "text",
+    subTitle: string | undefined,
+    dataText: string,
 }

@@ -5,40 +5,45 @@ import {TableData} from "./TableData";
 import {TextBoxData} from "./TextBoxData";
 
 export type ComponentDataXXL = {
-    type: "diagram" | "code" | "list" | "table" | "text",
+    dataType: "diagram" | "code" | "list" | "table" | "text",
+
+    subTitle?: string,
+    titles?: string[],
+    collections?:string[],
+    dataText?: string,
+    code?: string,
+    codeLanguage?: string,
+     sortedList?: boolean,
+
+    paragraphs?: string[],
+    tableTitles: string[],
+    tableRows?: object[],
+    tableWidths?:string[],
     diagramData?: {
         color: string,
         title: string,
-        attributes: { attribute: string, type: string | undefined }[]
+        attributeList: { attributeName: string, attributeType: string | undefined }[]
     }[],
-    title?: string,
-    titles?: string[],
-    data?: string,
-    language?: string,
-    paragraphs?: string[],
-    sorted?: boolean,
-    rows?: object[],
-    collections?:string[],
 }
 
 export type ComponentData = ClassDiagramData | CodeData | ListData | TableData | TextBoxData;
 
 export const isDiagramType = (data: ComponentData): data is ClassDiagramData => {
-    return data.type === "diagram";
+    return data.dataType === "diagram";
 }
 
 export const isCodeType = (data: ComponentData): data is CodeData => {
-    return data.type === "code";
+    return data.dataType === "code";
 }
 
 export const isListType = (data: ComponentData): data is ListData => {
-    return data.type === "list";
+    return data.dataType === "list";
 }
 
 export const isTableType = (data: ComponentData): data is TableData => {
-    return data.type === "table";
+    return data.dataType === "table";
 }
 
 export const isTextType = (data: ComponentData): data is TextBoxData => {
-    return data.type === "text";
+    return data.dataType === "text";
 }
