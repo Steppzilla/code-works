@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { ArticleData } from "../model/ArticleData";
-import { allThemaArray, getAllThemas } from "../static/themes";
+import {useEffect, useState} from "react";
+import {ArticleData} from "../model/ArticleData";
 import "./ArticleNavigator.css";
 
 type ArticleNavigatorProps = {
     articles: ArticleData[],
     setActualArticle: (index: number | undefined) => void,
+    allCategories: string[],
 }
 
-export default function ArticleNaviagator({ setActualArticle, articles }: ArticleNavigatorProps) {
+export default function ArticleNaviagator({setActualArticle, articles, allCategories}: ArticleNavigatorProps) {
 
     const handleEdit = () => {
         setActualArticle(undefined);
@@ -18,24 +18,21 @@ export default function ArticleNaviagator({ setActualArticle, articles }: Articl
         setActualArticle(articleIndex);
     }
 
-    useEffect(()=>{
-        getAllThemas();
-    })
-
-    const [actualThematic, setActualThematic] = useState<string>("Java");
+    const [actualThematic, setActualThematic] = useState<string>("f");
 
     return (
         <nav>
             <div className="topBar">
-                {allThemaArray.map(thema => <button key={thema} onClick={() => setActualThematic(thema)}>{thema}</button>)}
+                {allCategories.map(thema => <button key={thema}
+                                                    onClick={() => setActualThematic(thema)}>{thema}</button>)}
             </div>
             <h1>{actualThematic}</h1>
             {articles.map(
                 (singleArticle, sI) => {
-                    if (singleArticle.h1 === actualThematic) {
+                    if (singleArticle.category === actualThematic) {
                         return <button key={sI}
-                            onClick={() => chooseArticle(sI)}
-                        >{singleArticle.h2}</button>
+                                       onClick={() => chooseArticle(sI)}
+                        >{singleArticle.title}</button>
                     }
                 }
             )

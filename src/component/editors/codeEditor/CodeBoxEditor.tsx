@@ -3,9 +3,9 @@ import { ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState, 
 import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
 import { codeLanguage } from "../../../enum/codeLanguages";
-import { styleArray, styleNames } from "../../../static/themes";
 import { CodeData } from "../../../model/CodeData";
 import SubmitResetButton from "../SubmitResetButton";
+import useThemes from "../../../useThemes";
 
 type CodeBoxProps = {
     editData: (data: CodeData, event: FormEvent) => void,
@@ -15,14 +15,15 @@ type CodeBoxProps = {
 }
 
 export default function CodeBoxEditor(props: CodeBoxProps) {
-    const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(styleArray[1]);
+    const {styleNames, themes} = useThemes();
+    const [actualStyle, setActualStyle] = useState<{ [key: string]: CSSProperties; }>(themes[1]);
     const [actualStyleName, setActualStyleName] = useState<string>(styleNames[1]);
 
-    const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
-    const [actualString, setActualString] = useState<string>(props.data ? props.data.data : "")
-    const [actualLanguage, setActualLanguage] = useState<string>(props.data ? props.data.language : Object.values(codeLanguage)[0])
+    const [title, setTitle] = useState<string>(props.data ? props.data.subTitle : "");
+    const [actualString, setActualString] = useState<string>(props.data ? props.data.code : "")
+    const [actualLanguage, setActualLanguage] = useState<string>(props.data ? props.data.codeLanguage : Object.values(codeLanguage)[0])
 
-    const [showNumbers, setShowNumbers] = useState<boolean>(props.data ? props.data.hasLineNumbers : true)
+    const [showNumbers, setShowNumbers] = useState<boolean>(props.data ? props.data.sortedList : true)
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         const element: HTMLTextAreaElement = event.target;
@@ -42,7 +43,7 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
 
     const handleSubmit = (event: FormEvent) => {
         let actualCodeString = getDataTrimmed();
-        const codeData: CodeData = { type: "code", title: title, data: actualCodeString, language: actualLanguage, hasLineNumbers: showNumbers }
+        const codeData: CodeData = { dataType: "code", subTitle: title, code: actualCodeString, codeLanguage: actualLanguage, sortedList: showNumbers }
         props.editData(codeData, event);
         setTitle("");
         setActualString("")

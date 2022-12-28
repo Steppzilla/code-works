@@ -1,17 +1,17 @@
 import "./TextBox.css"
 type TextBoxProps = {
     title: string | undefined,
-    paragraphs: string[],
+    text: string,
 }
 
-export default function TextBox({title, paragraphs}: TextBoxProps) {
+export default function TextBox({title, text}: TextBoxProps) {
 
     return (
         <>
             {title && <h3>{title}</h3>}
             <div className={"textBox"}>
-            {paragraphs.map((str,s) =>
-                <p className="textParagraph" key={s} dangerouslySetInnerHTML={{__html: str}}/>)
+            {
+                <p className="textParagraph"  dangerouslySetInnerHTML={{__html: text}}/>
             }
             </div>
         </>

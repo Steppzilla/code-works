@@ -13,8 +13,8 @@ type ListEditorProps = {
 export default function ListEditor(props: ListEditorProps) {
 
     const [list, setList] = useState<string[]>(props.data ? [...props.data.paragraphs] : [""]);
-    const [sorted, setSorted] = useState<boolean>(props.data ? props.data.sorted : true);
-    const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
+    const [sorted, setSorted] = useState<boolean>(props.data ? props.data.sortedList : true);
+    const [title, setTitle] = useState<string>(props.data ? props.data.subTitle : "");
 
     const handleChange = (index: number, input: string) => {
         const editArr = list;
@@ -30,7 +30,7 @@ export default function ListEditor(props: ListEditorProps) {
     const handleSubmit = (event: FormEvent) => {
         let trimmedList: string[] = list.filter(item => item.length !== 0);
         if (trimmedList.length !== 0) {
-            const listData: ListData = { type: "list", title: title, sorted: sorted, paragraphs: trimmedList }
+            const listData: ListData = { dataType: "list", subTitle: title, sortedList: sorted, paragraphs: trimmedList }
             props.editData(listData, event);
         } else {
             event.preventDefault();

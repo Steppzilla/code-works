@@ -13,9 +13,9 @@ type TableEditorProps = {
 
 export default function TableEditor(props: TableEditorProps) {
 
-    const [titles, setTitles] = useState<string[]>((props.data && props.data.titles) ? [...props.data.titles] : ["", ""]);
-    const [title, setTitle] = useState<string>(props.data ? props.data.title : "");
-    const [rows, setRows] = useState<object[]>(props.data ? [...props.data.rows] : [{ "a": "", "b": "" }, {
+    const [titles, setTitles] = useState<string[]>((props.data && props.data.tableTitles) ? [...props.data.tableTitles] : ["", ""]);
+    const [title, setTitle] = useState<string>(props.data ? props.data.subTitle : "");
+    const [rows, setRows] = useState<object[]>(props.data ? [...props.data.tableRows] : [{ "a": "", "b": "" }, {
         "a": "",
         "b": ""
     }]);
@@ -87,7 +87,7 @@ export default function TableEditor(props: TableEditorProps) {
     }
 
     const handleSubmit = (event: FormEvent) => {
-        const tableData: TableData = { type: "table", title: title, titles: titles, rows: rows }
+        const tableData: TableData = { dataType: "table", subTitle: title, tableTitles: titles, tableRows: rows }
         props.editData(tableData, event);
         setTitle("");
         setTitles(["", ""])

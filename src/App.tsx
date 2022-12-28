@@ -1,15 +1,17 @@
 import './App.css';
 import Article from "./component/Article";
-import { ArticleData } from "./model/ArticleData";
-import { articles } from "./static/articleIndexing";
+import {ArticleData} from "./model/ArticleData";
+import useArticles from './useArticles';
+import {useEffect} from "react";
+
 
 function App() {
-    const art: ArticleData[] = articles;
-
+    const {allCategories, articles, getArticles, addArticle} = useArticles();
+    
     return (
         <div className="App">
             <Article
-                articles={art}
+                articles={articles} allCategories={allCategories} addArticle={addArticle}
             />
         </div>
     )

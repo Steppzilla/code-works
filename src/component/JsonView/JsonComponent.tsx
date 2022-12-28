@@ -24,11 +24,11 @@ export default function JsonText({val}: JsonCodeParam) {
                         </>}
                         {(typeof Object.values(val)[eleI] === "boolean") &&
                             <>
-                            <span className={"boolean content"}> {val.sorted ? "true" : "false"}
+                            <span className={"boolean content"}> {val.sortedList ? "true" : "false"}
                                 <span className={"structure"}>,</span></span>
                             </>}
                         {(key === "rows")
-                            ? <ObjectArray objects={val.rows}/> : ""
+                            ? <ObjectArray objects={val.tableRows}/> : ""
                         }
                         {(key === "paragraphs" || key === "titles")
                             && <StringArray strings={key === "titles" ? val.titles : val.paragraphs}/>
@@ -52,7 +52,7 @@ export default function JsonText({val}: JsonCodeParam) {
                                                 <div>
                                                     <span className={"key"}>"types":</span>
                                                     &nbsp;
-                                                    <ObjectArray objects={ele.attributes}/>
+                                                    <ObjectArray objects={ele.attributeList}/>
                                                 </div>
                                             </div>
                                             <span className={"structure"}>&#125;</span>

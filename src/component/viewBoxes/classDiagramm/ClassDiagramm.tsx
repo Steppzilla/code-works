@@ -1,3 +1,4 @@
+import { ClassDiagramData } from "../../../model/ClassDiagramData";
 import "./ClassDiagramm.css";
 import SingleBox from "./SingleBox";
 
@@ -5,20 +6,21 @@ type ClassDiagramProps = {
     title: string,
     data: {
         color: string,
-        title: string,
-        attributes: { attribute: string, type: string | undefined }[]
-    }[],
+        diagramTitle: string,
+        attributeList: { attributeName: string, attributeType: string | undefined }[]
+    }[]
 }
 
+   
 export default function ClassDiagramm({data, title}: ClassDiagramProps) {
 
     return (
         <>
             <h3>{title}</h3>
             <div className={"diagramBox"} >
-                {data.map(element =>
+                {data.map((element,e) =>
                     <SingleBox
-                        key={element.title}
+                        key={e}
                         data={data}
                         element={element}/>
                 )}

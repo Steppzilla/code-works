@@ -3,8 +3,8 @@ import { ChangeEvent, useEffect, useState } from "react";
 type TypeAnnotationProps = {
     data: {
         color: string,
-        title: string,
-        attributes: { attribute: string, type: string | undefined }[]
+        diagramTitle: string,
+        attributeList: { attributeName: string, attributeType: string | undefined }[]
     }[],
     type: string | undefined,
     changeAttribute: (classIndex: number, rowIndex: number, type: boolean, event: ChangeEvent<HTMLInputElement>) => void,
@@ -22,14 +22,14 @@ export default function TypeAnnotationEditor({
 
     const [usedClass, setUsedClass] = useState<{
         color: string,
-        title: string,
-        attributes: { attribute: string, type: string | undefined }[]
+        diagramTitle: string,
+        attributeList: { attributeName: string, attributeType: string | undefined }[]
     }>();
 
     useEffect(() => {
         const da = data.filter(element => {
-            const titleLength = element.title.length;
-            if (element.title === type?.slice(0, titleLength))
+            const titleLength = element.diagramTitle.length;
+            if (element.diagramTitle === type?.slice(0, titleLength))
                 return true;
             return false;
         });

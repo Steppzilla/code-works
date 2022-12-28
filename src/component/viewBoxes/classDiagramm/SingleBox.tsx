@@ -1,15 +1,16 @@
+import { ClassDiagramData } from "../../../model/ClassDiagramData";
 import TypeAnnotation from "./TypeAnnotation";
 
 type SingleBoxProps = {
-    data: {
+    data:{
         color: string,
-        title: string,
-        attributes: { attribute: string, type: string|undefined }[]
+        diagramTitle: string,
+        attributeList: { attributeName: string, attributeType: string | undefined }[]
     }[],
     element: {
         color: string,
-        title: string,
-        attributes: { attribute: string, type: string|undefined }[]
+        diagramTitle: string,
+        attributeList: { attributeName: string, attributeType: string | undefined }[]
     }
 }
 
@@ -18,13 +19,13 @@ export default function SingleBox({data, element}: SingleBoxProps) {
     return (
         <div className={"classDiagram"}>
             <h4 style={{color: element.color}}>
-                {element.title}
+                {element.diagramTitle}
             </h4>
-            {element.attributes.map((type,t) =>
+            {element.attributeList.map((type,t) =>
                 <p key={t}>
-                    <span className={"attribute"}> {type.attribute} </span>
+                    <span className={"attribute"}> {type.attributeName} </span>
                     :
-                    {type.type&&<TypeAnnotation type={type.type} data={data}/>}
+                    {type.attributeType&&<TypeAnnotation type={type.attributeType} data={data}/>}
                 </p>
             )}
         </div>

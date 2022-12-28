@@ -1,6 +1,6 @@
-import { FormEvent, useState, useEffect } from "react";
+import {FormEvent, useState, useEffect} from "react";
 import "./EditTextBox.css";
-import { TextBoxData } from "../../model/TextBoxData";
+import {TextBoxData} from "../../model/TextBoxData";
 import SubmitResetButton from "./SubmitResetButton";
 
 type EditTextBoxProps = {
@@ -14,35 +14,22 @@ export default function EditTextBox(props: EditTextBoxProps) {
 
     useEffect(() => {
         if (props.data) {
-            setText([...props.data.paragraphs]);
-            props.data.title && setTitle(props.data.title);
+            setText(props.data.dataText);
+            props.data.subTitle && setTitle(props.data.subTitle);
         }
     }, [props.data])
 
-    const [text, setText] = useState<string[]>([""]);
+    const [text, setText] = useState<string>("");
     const [title, setTitle] = useState<string>("");
 
-    const handleEdit = (s: number, value: string) => {
-        const editText = text;
-        if (s === text.length - 1) {
-            editText.push("");
-        }
-        editText[s] = value;
-        setText([...editText])
+    const handleEdit = (value: string) => {
+        setText(value)
     }
 
     const handleSubmit = (event: FormEvent) => {
-        let cleanedEmptyParagraphs: string[] = text.filter(par => par.length !== 0);
-        const addedObject: TextBoxData = { title: title, type: "text", paragraphs: cleanedEmptyParagraphs }
-        if (cleanedEmptyParagraphs.length !== 0) {
-            props.editData(addedObject, event
-            )
-        }
-        else {
-            event.preventDefault();
-        }
+        const addedObject: TextBoxData = {subTitle: title, dataType: "text", dataText: text}
         setTitle("");
-        setText([""])
+        setText("");
     }
 
     const handleReset = (event: FormEvent) => {
@@ -52,20 +39,17 @@ export default function EditTextBox(props: EditTextBoxProps) {
 
     return (
         <form className={"editorBox"}
-            onSubmit={handleSubmit} onReset={handleReset}>
+              onSubmit={handleSubmit} onReset={handleReset}>
             <h3 className={"titleTextEdit"}>
-                <input value={title} onChange={(event) => setTitle(event.target.value)} />
+                <input value={title} onChange={(event) => setTitle(event.target.value)}/>
             </h3>
             <div className={"textBoxEditor"}>
-                {text.map((str, s) =>
                     <textarea
-                        key={s}
-                        value={str}
-                        onChange={(event) => handleEdit(s, event.target.value)}
+                        value={text}
+                        onChange={(event) => handleEdit( event.target.value)}
                     />
-                )}
             </div>
-            <SubmitResetButton disabledReset={false} disabledSubmit={text[0].length === 0} />
+            <SubmitResetButton disabledReset={false} disabledSubmit={text.length === 0}/>
         </form>
     )
 }

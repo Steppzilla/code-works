@@ -13,27 +13,27 @@ type ClassDiagramProps = {
 
 type SingleClassDiagram = {
     color: string,
-    title: string,
-    attributes: { attribute: string, type: string | undefined }[],
+    diagramTitle: string,
+    attributeList: { attributeName: string, attributeType: string | undefined }[]
 }
 
 export default function ClassDiagrammEditor(props: ClassDiagramProps) {
     const emptySingleDiagram: SingleClassDiagram = {
         color: "green",
-        title: "",
-        attributes: [{ attribute: "", type: undefined }]
+        diagramTitle: "",
+        attributeList: [{ attributeName: "", attributeType: undefined }]
     }
     const [data, setData] = useState<SingleClassDiagram[] | undefined>(
         props.data ? [...props.data.diagramData] : [emptySingleDiagram]
     )
-    const [title, setTitle] = useState<string>(props.data ? props.data.title : "Klassen-Diagramm")
+    const [title, setTitle] = useState<string>(props.data ? props.data.subTitle : "Klassen-Diagramm")
 
     const handleDiagramCounter = (add: boolean, event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
         if (add) {
             const newObject: SingleClassDiagram = {
-                color: "green", title: "klasse", attributes: [
-                    { attribute: "", type: "" }
+                color: "green", diagramTitle: "klasse", attributeList: [
+                    { attributeName: "", attributeType: "" }
                 ]
             }
             data && setData([...data, newObject]);
@@ -48,7 +48,7 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
         const val = event.target as HTMLFormElement;
         if (data) {
             const editClass = data[index];
-            editClass.title = val.value;
+            editClass.diagramTitle = val.value;
             const newData: SingleClassDiagram[] = [...data];
             newData[index] = { ...editClass };
             setData([...newData]);
@@ -58,18 +58,18 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
     const changeAttribute = (classIndex: number, rowIndex: number, type: boolean, event: ChangeEvent<HTMLInputElement>) => {
         if (data) {
             const editData = data;
-            const actualAttributes = editData[classIndex].attributes
+            const actualAttributes = editData[classIndex].attributeList
             // Wenn letztes Inputfeld beschrieben wird, neues Element anlegen:
             if (actualAttributes.length - 1 === rowIndex) {
-                actualAttributes.push({ attribute: "", type: "" });
+                actualAttributes.push({ attributeName: "", attributeType: "" });
             }
             //
             if (type) {
-                editData[classIndex].attributes[rowIndex].type = event.target.value;
+                editData[classIndex].attributeList[rowIndex].attributeType = event.target.value;
                 setData([...editData])
                 return
             }
-            editData[classIndex].attributes[rowIndex].attribute = event.target.value;
+            editData[classIndex].attributeList[rowIndex].attributeName = event.target.value;
             setData([...editData])
         }
     }
@@ -82,12 +82,12 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
         event.preventDefault();
         if (data) {
             if (add) {
-                data[index].attributes.push({ attribute: "", type: "" });
+                data[index].attributeList.push({ attributeName: "", attributeType: "" });
                 setData([...data]);
             } else {
-                const attributes = data[index].attributes;
+                const attributes = data[index].attributeList;
                 if (attributes.length > 1) {
-                    data[index].attributes = attributes.slice(0, data[index].attributes.length - 1);
+                    data[index].attributeList = attributes.slice(0, data[index].attributeList.length - 1);
                     setData([...data]);
                 } else if (attributes.length === 1) {
                     const editData = data;
@@ -111,7 +111,7 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
             const cleanedData = data.filter(ele => isValidClassElement(ele))
             if (cleanedData.length > 0) {
                 const diagramData: ClassDiagramData = {
-                    type: "diagram", title: title, diagramData: cleanedData
+                    dataType: "diagram", subTitle: title, diagramData: cleanedData
                 }
                 props.editData(diagramData, event);
                 setTitle("");
@@ -128,12 +128,12 @@ export default function ClassDiagrammEditor(props: ClassDiagramProps) {
     }
 
     const isValidClassElement = (classElement: SingleClassDiagram) => {
-        classElement.attributes = classElement.attributes.filter(attr => isValidRow(attr));
-        return (classElement.title.length > 0 && classElement.attributes.length > 0 && classElement.color.length > 0);
+        classElement.attributeList = classElement.attributeList.filter(attr => isValidRow(attr));
+        return (classElement.diagramTitle.length > 0 && classElement.attributeList.length > 0 && classElement.color.length > 0);
     }
 
-    const isValidRow = (row: { attribute: string, type: string | undefined }) => {
-        return (row.attribute.length > 0);
+    const isValidRow = (row: { attributeName: string, attributeType: string | undefined }) => {
+        return (row.attributeName.length > 0);
     }
 
     return (
