@@ -11,17 +11,20 @@ export default function useArticles() {
         getArticles();
     }, [])
     const getArticles = () => {
-        axios.get("/api").then(data => setArticles(data.data))
-            .then(() => getAllThemas())
+        axios.get("/api").then(data => {
+            setArticles(data.data);
+            return data.data;
+        })
+            .then(result => getAllThemas(result))
     }
+
 
     const addArticle = (newArticle: NewArticleData) => {
         axios.post("/api", newArticle).then(() => console.log("posted!"))
     }
 
-
-    const getAllThemas = () => {
-        const themaArray: string[]  = articles.map((article: ArticleData) => article.category);
+    const getAllThemas = (data:ArticleData[]) => {
+        const themaArray: string[]  = data.map((article: ArticleData) => article.category);
         let newArray: string[] = [];
         themaArray?.forEach(element => {
             if (!newArray.includes(element)) {

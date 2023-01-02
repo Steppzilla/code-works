@@ -27,7 +27,9 @@ export default function EditTextBox(props: EditTextBoxProps) {
     }
 
     const handleSubmit = (event: FormEvent) => {
+        event.preventDefault();
         const addedObject: TextBoxData = {subTitle: title, dataType: "text", dataText: text}
+        props.editData(addedObject, event);
         setTitle("");
         setText("");
     }
@@ -46,7 +48,7 @@ export default function EditTextBox(props: EditTextBoxProps) {
             <div className={"textBoxEditor"}>
                     <textarea
                         value={text}
-                        onChange={(event) => handleEdit( event.target.value)}
+                        onChange={(event) => handleEdit(event.target.value)}
                     />
             </div>
             <SubmitResetButton disabledReset={false} disabledSubmit={text.length === 0}/>

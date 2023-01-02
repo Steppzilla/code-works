@@ -6,12 +6,14 @@ type ArticleNavigatorProps = {
     articles: ArticleData[],
     setActualArticle: (index: number | undefined) => void,
     allCategories: string[],
+    setEdit: (edit:boolean) => void,
 }
 
-export default function ArticleNaviagator({setActualArticle, articles, allCategories}: ArticleNavigatorProps) {
+export default function ArticleNaviagator({setEdit,setActualArticle, articles, allCategories}: ArticleNavigatorProps) {
 
     const handleEdit = () => {
         setActualArticle(undefined);
+        setEdit(true);
     }
 
     const chooseArticle = (articleIndex: number) => {

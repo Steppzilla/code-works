@@ -63,6 +63,7 @@ export default function Article({articles, allCategories, addArticle}: ArticlePr
     const toggleEditable = () => {
         editable? setEditable(false):setEditable(true);
     }
+
     return (
         <>
             {!showNav&&<button onClick={toggleEditable}> {editable?"Leser-Ansicht": "bearbeiten"}</button>}
@@ -71,6 +72,7 @@ export default function Article({articles, allCategories, addArticle}: ArticlePr
                 articles={articles}
                 setActualArticle={changeActualArticle}
                 allCategories={allCategories}
+                setEdit = {setEditable}
             />
             }
             <article className={showNav ? "blur hide" : ""}>
