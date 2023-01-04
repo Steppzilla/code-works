@@ -60,7 +60,7 @@ export default function ArticleItem({content, innerIndex, editComponent, deleteC
                         <List data={content.paragraphs} sorted={content.sortedList} title={content.subTitle}/>}
                     {
                         (!showEditor&&content && isTableType(content)) &&
-                        <Table columns={content.tableRows} titles={content.tableTitles} title={content.subTitle}/>
+                        <Table columns={content.tableRows} titles={content.tableTitles} title={content.subTitle} widths={content.tableWidths}/>
                     }
                     {(!showEditor&&content && isDiagramType(content)) &&
                         <ClassDiagramm title={content.subTitle} data={content.diagramData}/>}

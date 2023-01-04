@@ -1,7 +1,7 @@
 import "../viewBoxes/Table.css";
-import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
+import {ChangeEvent, FormEvent, MouseEvent, useState} from "react";
 import "./TableEditor.css";
-import { TableData } from "../../model/TableData";
+import {TableData} from "../../model/TableData";
 import SubmitResetButton from "./SubmitResetButton";
 
 type TableEditorProps = {
@@ -15,10 +15,11 @@ export default function TableEditor(props: TableEditorProps) {
 
     const [titles, setTitles] = useState<string[]>((props.data && props.data.tableTitles) ? [...props.data.tableTitles] : ["", ""]);
     const [title, setTitle] = useState<string>(props.data ? props.data.subTitle : "");
-    const [rows, setRows] = useState<object[]>(props.data ? [...props.data.tableRows] : [{ "a": "", "b": "" }, {
+    const [rows, setRows] = useState<object[]>(props.data ? [...props.data.tableRows] : [{"a": "", "b": ""}, {
         "a": "",
         "b": ""
     }]);
+    const [widths, setWiths] = useState<string[]>((props.data && props.data.tableWidths != undefined) ? props.data.tableWidths : []);
 
     const keysX = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
 
@@ -33,7 +34,7 @@ export default function TableEditor(props: TableEditorProps) {
             const firstObj = rows[0]
             let newObject = {};
             Object.keys(firstObj).forEach(key => {
-                newObject = { ...newObject, [key]: "" };
+                newObject = {...newObject, [key]: ""};
             })
             setRows([...rows, newObject])
         } else {
@@ -50,7 +51,7 @@ export default function TableEditor(props: TableEditorProps) {
         const nextKey = keysX[maxIndex];
         if (add) {
             const newArray = rows.map(obj => {
-                return { ...obj, [nextKey]: "" };
+                return {...obj, [nextKey]: ""};
             });
             setRows(newArray);
             setTitles([...titles, ""])
@@ -71,7 +72,7 @@ export default function TableEditor(props: TableEditorProps) {
         const key = Object.keys(editRow)[c];
         const html = event.target as HTMLFormElement;
         // @ts-ignore
-        rows[r] = { ...editRow, [key]: html.value };
+        rows[r] = {...editRow, [key]: html.value};
         setRows([...rows])
     }
 
@@ -87,22 +88,30 @@ export default function TableEditor(props: TableEditorProps) {
     }
 
     const handleSubmit = (event: FormEvent) => {
-        const tableData: TableData = { dataType: "table", subTitle: title, tableTitles: titles, tableRows: rows }
+        const tableData: TableData = {dataType: "table", subTitle: title, tableTitles: titles, tableRows: rows, tableWidths:widths}
         props.editData(tableData, event);
         setTitle("");
         setTitles(["", ""])
-        setRows([{ "a": "", "b": "" }, {
+        setRows([{"a": "", "b": ""}, {
             "a": "",
             "b": ""
         }])
     }
 
+    const changeWidths = (event: ChangeEvent<HTMLInputElement>, index: number) => {
+        let widthsArray: string[] = [...widths];
+        const newValue = event.target.value;
+        widthsArray[index] = newValue;
+        console.log(widths)
+        setWiths(widthsArray);
+    }
+
     return (
         <form id={"editTableForm"} className={"editorBox"}
-            onSubmit={handleSubmit}
-            onReset={(event) => handleReset(event)}>
-            <h3><input onChange={changeTitle} value={title} /></h3>
-            <div>
+              onSubmit={handleSubmit}
+              onReset={(event) => handleReset(event)}>
+            <h3><input onChange={changeTitle} value={title}/></h3>
+            <div className={"tableBox"}>
                 <div>
                     <button type={"button"} onClick={(event) => {
                         handleTableCells(false, event)
@@ -126,29 +135,37 @@ export default function TableEditor(props: TableEditorProps) {
                     </div>
                     <table className={"codeTable"}>
                         <tbody>
-                            <tr>
-                                {titles.map((oneTitle, t) => <td key={keysX[t]}>
-                                    <input name={"header"} value={titles[t]} onChange={
-                                        (event) => changeTitles(t, event)} />
-                                </td>)
-                                }
-                            </tr>
-
-                            {rows.map((rowObj, r) =>
-                                <tr key={keysX[r] + r}>
-                                    {Object.keys(rowObj).map((cell, c) =>
-                                        <td key={"" + r + c}>
-                                            <input value={Object.values(rows[r])[c]}
-                                                onChange={(event) => editTable(r, c, event)} />
-                                        </td>
-                                    )}
-                                </tr>)
+                        <tr>
+                            {titles.map((oneTitle, t) => <td key={keysX[t]}>
+                                <input name={"header"} value={titles[t]} onChange={
+                                    (event) => changeTitles(t, event)}/>
+                            </td>)
                             }
+                        </tr>
+
+                        {rows.map((rowObj, r) =>
+                            <tr key={keysX[r] + r}>
+                                {Object.keys(rowObj).map((cell, c) =>
+                                    <td key={"" + r + c}>
+                                        <input value={Object.values(rows[r])[c]}
+                                               onChange={(event) => editTable(r, c, event)}/>
+                                    </td>
+                                )}
+                            </tr>)
+                        }
                         </tbody>
+                        <tfoot>
+                        <tr>
+                            {titles.map((oneTitle, z) => <td key={keysX[z]}>
+                                <input value={widths[z]} onChange={event => changeWidths(event, z)}/>
+                            </td>)}
+                        </tr>
+                        </tfoot>
                     </table>
-                    <SubmitResetButton disabledReset={false} disabledSubmit={false} />
                 </div>
+                <SubmitResetButton disabledReset={false} disabledSubmit={false}/>
             </div>
-        </form >
+        </form>
     )
 }
+

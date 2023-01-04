@@ -39,7 +39,7 @@ export default function ListEditor(props: ListEditorProps) {
         setSorted(true);
         setList([""])
     }
-    const handleReset = (event: MouseEvent) => {
+    const handleReset = (event: FormEvent) => {
         props.cancel();
 
         setTitle("");
@@ -50,7 +50,7 @@ export default function ListEditor(props: ListEditorProps) {
     return (
         <form
             onSubmit={handleSubmit}
-            onClick={(event) => handleReset(event)}
+            onReset={(event) => handleReset(event)}
             className={"editorBox"}>
             <button type="button" onClick={() => toggleSorted()}> {
                 sorted ? "unsortiert" : "sortieren"}

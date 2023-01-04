@@ -5,8 +5,9 @@
     color: var(--codeColor);
     line-height: 18px;
     font-size: 15px;
-    text-align: center;
+    text-align: left;
     margin: 4px;
+    width:100%;
 }
 
 .listEditTitle input {

@@ -15,7 +15,6 @@
     font-weight: normal;
     line-height: 13px;
     font-size: 13px;
-    padding-left: 30px;
     padding:10px;
     text-align: center;
    /* background-color: var(--darkdarkred);*/
@@ -26,7 +25,7 @@
 .codeTable th:nth-child(1),
 .codeTable th:nth-child(2) {
     border-top-left-radius: 5px;
-    min-width: 200px;
+    min-width: 50px;
 }
 
 .codeTable th:nth-child(n+3) {
@@ -44,8 +43,6 @@
     line-height: 30px;
     min-height: 14px;
 }
-
-
 
 .codeTable td:nth-child(n+2) {
     border-left: 1px var(--mediumblue) dotted;
