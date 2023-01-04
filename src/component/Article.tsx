@@ -103,7 +103,6 @@ export default function Article({articles, allCategories, addArticle}: ArticlePr
                              innerIndex={undefined}
                              editComponent={editArticle}
                              deleteComponent={deleteComponent}/>
-                <JsonView article={actualArticle}/>
                 <button onClick={() => handleAddArticle()}> addArticle</button>
             </article>
         </>

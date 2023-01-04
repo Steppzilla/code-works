@@ -38,7 +38,7 @@ export default function JsonView({article}: JsonViewProps) {
                              <span className={"key"}>"{articleAttribute}":</span>
                             &nbsp;
                             <span className={"content date"}>
-                                {!Object.values(article)[artI] &&<>null</>
+                                {Object.values(article)[artI]==null &&<>null</>
                                 }
                                 {(articleAttribute === "date") && <>
                                     "{(article.date)?.toISOString()}"
@@ -49,13 +49,13 @@ export default function JsonView({article}: JsonViewProps) {
                                     <>"{Object.values(article)[artI]}"<span className={"structure"}>,</span></>
                                 }
                                 {(typeof Object.values(article)[artI] === "number") &&
-                                    <>"{Object.values(article)[artI]}"<span className={"structure"}>,</span></>
+                                    <>{Object.values(article)[artI]}<span className={"structure"}>,</span></>
                                 }
                                 {(
                                         !(typeof Object.values(article)[artI] === "string")
                                         && !(typeof Object.values(article)[artI] === "number")
-                                        && !(articleAttribute === "collections")
-                                        && !(articleAttribute === "date")
+                                        && !(articleAttribute === "category")
+                                        && !(articleAttribute === "created")
                                     ) &&
                                     <>  <span className={"structure"}>[</span>
                                         <div className={"box"}>
