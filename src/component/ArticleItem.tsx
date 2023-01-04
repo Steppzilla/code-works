@@ -1,5 +1,5 @@
-import { CSSProperties, useState } from "react";
-import { ComponentData, isCodeType, isDiagramType, isListType, isTableType, isTextType } from "../model/ComponentData";
+import {CSSProperties, useState} from "react";
+import {ComponentData, isCodeType, isDiagramType, isListType, isTableType, isTextType} from "../model/ComponentData";
 import "./ArticleItem.css";
 import ArticleEditor from "./ArticleEditor";
 import ClassDiagramm from "./viewBoxes/classDiagramm/ClassDiagramm";
@@ -18,9 +18,9 @@ type ArticleItemProps = {
     deleteComponent: (index: number) => void,
 }
 
-export default function ArticleItem({ content, innerIndex, editComponent, deleteComponent }: ArticleItemProps) {
+export default function ArticleItem({content, innerIndex, editComponent, deleteComponent}: ArticleItemProps) {
     const {styleNames, themes} = useThemes();
-    
+
     const actualStyle: { [key: string]: CSSProperties; } = themes[1];
     const actualStyleName: string = styleNames[1];
     const [showEditor, setShowEditor] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export default function ArticleItem({ content, innerIndex, editComponent, delete
     }
 
     const handleDelete = () => {
-        if (innerIndex!==undefined) deleteComponent(innerIndex)
+        if (innerIndex !== undefined) deleteComponent(innerIndex)
     }
 
     const cancel = () => {
@@ -39,52 +39,54 @@ export default function ArticleItem({ content, innerIndex, editComponent, delete
     }
 
     return (<>
-        <div className="articleItem">
-            <div>
-                {
-                    (content && isTextType(content)) &&
-                    <TextBox title={content.subTitle} text={content.dataText} />
-                }
-                {
-                    (content && isCodeType(content)) &&
-                    <CodeBox title={content.subTitle}
-                        language={content.codeLanguage}
-                        actualStyle={actualStyle}
-                        actualStyleName={actualStyleName}
-                        inputString={content.code}
-                        showLineNumbers={content.sortedList}
-                    />
-                }
-                {
-                    (content && isListType(content)) &&
-                    <List data={content.paragraphs} sorted={content.sortedList} title={content.subTitle} />}
-                {
-                    (content && isTableType(content)) &&
-                    <Table columns={content.tableRows} titles={content.tableTitles} title={content.subTitle} />
-                }
-                {(content && isDiagramType(content)) &&
-                    <ClassDiagramm title={content.subTitle} data={content.diagramData} />}
-                {
-                    (showEditor || !content) && <ArticleEditor
-                        actualEditor={content ? content.dataType : undefined}
-                        changeComponent={editComponent}
-                        cancel={cancel}
-                        data={content}
-                        innerIndex={innerIndex}
-                        setShowEditor={setShowEditor} />}
-            </div>
+            <div className="articleItem">
+                <div>
+                    {
+                        (!showEditor&&content && isTextType(content)) &&
+                        <TextBox title={content.subTitle} text={content.dataText}/>
+                    }
+                    {
+                        (!showEditor&&content && isCodeType(content)) &&
+                        <CodeBox title={content.subTitle}
+                                 language={content.codeLanguage}
+                                 actualStyle={actualStyle}
+                                 actualStyleName={actualStyleName}
+                                 inputString={content.code}
+                                 showLineNumbers={content.sortedList}
+                        />
+                    }
+                    {
+                        (!showEditor&&content && isListType(content)) &&
+                        <List data={content.paragraphs} sorted={content.sortedList} title={content.subTitle}/>}
+                    {
+                        (!showEditor&&content && isTableType(content)) &&
+                        <Table columns={content.tableRows} titles={content.tableTitles} title={content.subTitle}/>
+                    }
+                    {(!showEditor&&content && isDiagramType(content)) &&
+                        <ClassDiagramm title={content.subTitle} data={content.diagramData}/>}
+                    {
+                        (showEditor || !content) &&
+                        <ArticleEditor
+                            actualEditor={content ? content.dataType : undefined}
+                            changeComponent={editComponent}
+                            cancel={cancel}
+                            data={content}
+                            innerIndex={innerIndex}
+                            setShowEditor={setShowEditor}
+                        />}
+                </div>
 
-            {(!showEditor && content) && <div>
-                <button onClick={handleEdit}
-                    className="editButton">
-                    <img src={editImage} alt="editIcon" />
-                </button>
-                <button onClick={handleDelete} className="deleteButton">
-                    <img src={deleteImage} alt="deleteIcon" />
-                </button>
+                {(!showEditor && content) && <div>
+                    <button onClick={handleEdit}
+                            className="editButton">
+                        <img src={editImage} alt="editIcon"/>
+                    </button>
+                    <button onClick={handleDelete} className="deleteButton">
+                        <img src={deleteImage} alt="deleteIcon"/>
+                    </button>
+                </div>
+                }
             </div>
-            }
-        </div >
-    </>
+        </>
     )
 }

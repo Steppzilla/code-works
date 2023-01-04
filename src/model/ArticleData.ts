@@ -12,7 +12,7 @@ export type ArticleData = {
 export type NewArticleData = {
     category: string,
     title: string,
-    dataBlock: (ComponentDataXXL) [],
+    dataBlock: (ComponentData) [],
     tasks?: {dataIndex: number, taskTitle:string, task: ComponentDataXXL[], answer: ComponentDataXXL[]}[]
 }
 

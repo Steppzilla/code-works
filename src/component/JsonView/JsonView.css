@@ -64,6 +64,9 @@
 .boolean {
     color: orange;
 }
+.empty{
+    color:grey;
+}
 
 .notJsonPrefix{
 }
