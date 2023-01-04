@@ -1,9 +1,9 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState, MouseEvent } from "react";
+import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
+import {ChangeEvent, CSSProperties, FormEvent, KeyboardEventHandler, useState} from "react";
 import "../../viewBoxes/codeBoxes/codeBox.css";
 import CodeLanguagePicker from "./CodeLanguagePicker";
-import { codeLanguage } from "../../../enum/codeLanguages";
-import { CodeData } from "../../../model/CodeData";
+import {codeLanguage} from "../../../enum/codeLanguages";
+import {CodeData} from "../../../model/CodeData";
 import SubmitResetButton from "../SubmitResetButton";
 import useThemes from "../../../useThemes";
 
@@ -43,7 +43,13 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
 
     const handleSubmit = (event: FormEvent) => {
         let actualCodeString = getDataTrimmed();
-        const codeData: CodeData = { dataType: "code", subTitle: title, code: actualCodeString, codeLanguage: actualLanguage, sortedList: showNumbers }
+        const codeData: CodeData = {
+            dataType: "code",
+            subTitle: title,
+            code: actualCodeString,
+            codeLanguage: actualLanguage,
+            sortedList: showNumbers
+        }
         props.editData(codeData, event);
         setTitle("");
         setActualString("")
@@ -60,24 +66,30 @@ export default function CodeBoxEditor(props: CodeBoxProps) {
     }
 
     return (
-        <form 
-        onSubmit={handleSubmit} 
-        className={"editorBox"}
-        onReset={(event) => handleReset(event)}>
-            <button type={"button"}
-                onClick={() => toggleNumbers()}> {showNumbers ? "Zahlen ausblenden" : "Zahlen einblenden"}</button>
-            <h3><input value={title} onChange={(event) => setTitle(event.target.value)} /></h3>
-            <CodeLanguagePicker setActualLanguage={setActualLanguage}
-                actualLanguage={actualLanguage} />
-            
-            <div className={"codeBox " + actualStyleName}>
+        <form
+            onSubmit={handleSubmit}
+            className={"editorBox"}
+            onReset={(event) => handleReset(event)}>
+
+            {(title.length >= 1) && <h3>{title}</h3>}
+            <div className={"codeBox " + actualStyleName} style={{opacity: 0.5}}>
                 <SyntaxHighlighter language={actualLanguage} style={actualStyle} wrapLines={true}
-                    showLineNumbers={showNumbers}>
+                                   showLineNumbers={showNumbers}>
                     {actualString}
                 </SyntaxHighlighter>
             </div>
+
+
+            <button type={"button"}
+                    onClick={() => toggleNumbers()}> {showNumbers ? "Zahlen ausblenden" : "Zahlen einblenden"}</button>
+            <CodeLanguagePicker setActualLanguage={setActualLanguage}
+                                actualLanguage={actualLanguage}/>
+            <h3><input value={title} onChange={(event) => setTitle(event.target.value)}/></h3>
+
+            <div className={"textFieldFrame"}>
             <textarea className={"textEditField"} onChange={handleChange} onKeyDown={handleKeyDown}
-                value={actualString} />
-            <SubmitResetButton disabledReset={false} disabledSubmit={actualString.length === 0} />
+                      value={actualString}/>
+            </div>
+            <SubmitResetButton disabledReset={false} disabledSubmit={actualString.length === 0}/>
         </form>)
 }
