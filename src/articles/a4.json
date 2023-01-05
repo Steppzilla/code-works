@@ -1,0 +1,30 @@
+{
+   "articleId":4,
+   "category":"Java",
+   "title":"Vorbereitung",
+   "created ":"2023-01-05 14:46:34.349021",
+   "dataBlock":
+   [
+      {
+         "dataBlockId":18, 
+         "articleId":4, 
+         "dataType":"text", 
+         "subTitle":"Java installieren", 
+         "dataText":"Java kannst du am besten direkt von der Oracle-Site downloaden: <a href=\"https://www.oracle.com/java/technologies/downloads/#jdk19-windows\"> Oracle-Download-Site </a>. Dort beachte, dass du das richtige System auswählst, auf dem du aktuell arbeitest (Linux/MacOS/Windows) und dann eine File herunterlädtst, die du dann auch öffnen kannst (Bei Windows z.B. die Datei mit der Endung .exe)."
+      }, 
+      {
+         "dataBlockId":19, 
+         "articleId":4, 
+         "dataType":"text", 
+         "subTitle":"Editor installieren", 
+         "dataText":"Bei der Wahl eines Editors bist du im Prinzip frei und kannst auch einen Texteditor verwenden, doch praktisch wäre das nicht. Du möchtest eine Umgebung haben bzw. eine Art Programm, dass dir ein ausführbares Standardprojekt, meist ein \"Hello World-Programm\" erstellt, also ein Programm, dass lediglich den Text \"Hello World\" in der Konsole ausgibt. Du kannst dann weitere Textzeilen bzw. Code hinzufügen und es von deiner IDE ausführen lassen. Diese Programme bzw. Umgebungen, die dies und noch vieles weiteres können und nur dazu dienen, dir als Programmierer das Leben zu erleichtern, nennt man IDE's oder auch SEU (Softwareentwicklungsumgebung). Ein paar IDE's, die ich selbst schon verwendet habe liste ich hier auf:"
+      }, 
+      {
+         "dataBlockId":20, 
+         "articleId":4, 
+         "dataType":"list", 
+         "subTitle":"IDE's", 
+         "paragraphs":["IntelliJ IDEA (Ultimate) - häufigstes Tool für Java-Entwickler","IntelliJ Community Edition - hat etwas weniger Funktionen und Hilfen","Visual Studio Code - für viele Sprachen","gut personalisierbar per Plugins"], 
+         "sortedList":true
+      }] 
+}

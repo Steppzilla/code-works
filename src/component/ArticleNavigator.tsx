@@ -30,19 +30,23 @@ export default function ArticleNaviagator({setActualArticle, articles, allCatego
     return (
         <nav>
             <div className="topBar">
-                {allCategories.map(thema => <button key={thema}
-                                                    className={(actualThematic === thema) ? "chosen" : "notChosen"}
-                                                    onClick={() => newThematic(thema)}>{thema}</button>)}
+                {allCategories.map(thema =>
+                    <button key={thema}
+                            className={(actualThematic === thema) ? "chosen" : "notChosen"}
+                            onClick={() => newThematic(thema)}>{thema}
+                    </button>)}
             </div>
             {actualArticles?.map(
                 (singleArticle, sI) =>
                     <button key={sI}
                             onClick={() => chooseArticle(sI)}
-                    >{singleArticle.title}</button>
+                    >{singleArticle.title}
+                    </button>
             )
             }
             {!actualArticles || actualArticles.length === 0 &&
-                <div>keine Artikel in dem Thema "{actualThematic}" gefunden</div>}
+                <div>keine Artikel in dem Thema "{actualThematic}" gefunden
+                </div>}
 
         </nav>
     )
