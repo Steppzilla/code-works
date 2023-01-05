@@ -6,10 +6,18 @@ type ArticleNavigatorProps = {
     articles: ArticleData[],
     setActualArticle: (index: number | undefined) => void,
     allCategories: string[],
-    setEdit: (edit:boolean) => void,
+    setEdit: (edit: boolean) => void,
 }
 
-export default function ArticleNaviagator({setEdit,setActualArticle, articles, allCategories}: ArticleNavigatorProps) {
+export default function ArticleNaviagator({setEdit, setActualArticle, articles, allCategories}: ArticleNavigatorProps) {
+    const [actualArticles, setActualArticles] = useState<ArticleData[] | undefined>(undefined)
+    const [actualThematic, setActualThematic] = useState<string>("Java");
+
+
+    useEffect(() => {
+        chooseTheme(actualThematic);
+    }, [actualArticles])
+
 
     const handleEdit = () => {
         setActualArticle(undefined);
@@ -19,26 +27,28 @@ export default function ArticleNaviagator({setEdit,setActualArticle, articles, a
     const chooseArticle = (articleIndex: number) => {
         setActualArticle(articleIndex);
     }
+    const chooseTheme = (thema: string) => {
+        const filteredArray = articles.filter(element => element.category === thema);
+        setActualArticles(filteredArray);
+    }
 
-    const [actualThematic, setActualThematic] = useState<string>("f");
 
     return (
         <nav>
             <div className="topBar">
                 {allCategories.map(thema => <button key={thema}
+                                                    className={(actualThematic===thema)?"chosen":"notChosen"}
                                                     onClick={() => setActualThematic(thema)}>{thema}</button>)}
             </div>
-            <h1>{actualThematic}</h1>
-            {articles.map(
-                (singleArticle, sI) => {
-                    if (singleArticle.category === actualThematic) {
-                        return <button key={sI}
-                                       onClick={() => chooseArticle(sI)}
-                        >{singleArticle.title}</button>
-                    }
-                }
+            {/*<h1>{actualThematic}</h1>*/}
+            {actualArticles?.map(
+                (singleArticle, sI) =>
+                    <button key={sI}
+                            onClick={() => chooseArticle(sI)}
+                    >{singleArticle.title}</button>
             )
             }
+            {!actualArticles||actualArticles.length===0 && <div>keine Artikel in dem Thema "{actualThematic}" gefunden</div>}
 
             <button onClick={() => handleEdit()}> Neuer Artikel</button>
         </nav>

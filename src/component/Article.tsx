@@ -96,14 +96,16 @@ export default function Article({articles, allCategories, addArticle}: ArticlePr
                                  content={block}
                                  innerIndex={b}
                                  editComponent={editArticle}
-                                 deleteComponent={deleteComponent}/>
+                                 deleteComponent={deleteComponent}
+                    editable={editable}/>
                 )}
                 <ArticleItem key={crypto.randomUUID()}
                              content={undefined}
                              innerIndex={undefined}
                              editComponent={editArticle}
-                             deleteComponent={deleteComponent}/>
-                <button onClick={() => handleAddArticle()}> addArticle</button>
+                             deleteComponent={deleteComponent}
+                editable={editable}/>
+                {editable&&<button onClick={() => handleAddArticle()}> addArticle</button>}
             </article>
         </>
     )

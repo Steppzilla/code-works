@@ -1,7 +1,0 @@
-{"h1":"Java","h2":"Eine erste Ausgabe in der Konsole",
-  "collections":[],"date":"2022-12-04T12:48:32.993Z",
-  "data":[{"title":"","type":"text",
-    "paragraphs":
-    ["Jedes Java-Programm führt die Befehle aus der main-Methode, also der Hauptmethode aus und, wenn es alle ausgeführt hat, hört es auf zu laufen und ist beendet. Wie diese genau aussieht schauen wir später genauer an. Wir schreiben als Java-Programmierer die Befehle in diese main-Methode, die ausgeführt werden sollen. Es gibt Befehle, die dazu führen, dass der Code erneut abgerufen wird, oder dass auf Nutzereingaben gewartet wird, sodass der Ablauf etwas komplexer wird, doch zunächst einmal lernen wir eine einfache Konsolenausgabe zu machen, die \"Hello World\" ausgibt. So eine Konsolenausgabe ist weit verbreitet, um eine neue Umgebung zu testen bzw. ob das Programm auch ausführbar ist. Diese Ausgabe ist aber nur für den Programmierer gedacht, kein Benutzer sieht diese. Daher dient diese Ausgabe hauptsächlich zur Analyse des Programmes insbesondere für Fehlermeldungen, sogenannte \"Stack-Traces\". Der Befehl in unserer \"Main-Methode\" ist der folgende: "]},{"type":"code","title":"main-Methode in der Main-Klasse",
-  "data":"System.out.println(\"Hello World\");",
-  "language":"java","hasLineNumbers":true}]}

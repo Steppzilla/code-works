@@ -16,9 +16,10 @@ type ArticleItemProps = {
     innerIndex: number | undefined,
     editComponent: (data: ComponentData, innerIndex: number | undefined) => void,
     deleteComponent: (index: number) => void,
+    editable:boolean
 }
 
-export default function ArticleItem({content, innerIndex, editComponent, deleteComponent}: ArticleItemProps) {
+export default function ArticleItem({content, innerIndex, editComponent, deleteComponent, editable}: ArticleItemProps) {
     const {styleNames, themes} = useThemes();
 
     const actualStyle: { [key: string]: CSSProperties; } = themes[1];
@@ -73,10 +74,11 @@ export default function ArticleItem({content, innerIndex, editComponent, deleteC
                             data={content}
                             innerIndex={innerIndex}
                             setShowEditor={setShowEditor}
+                            editable={editable}
                         />}
                 </div>
 
-                {(!showEditor && content) && <div>
+                {(!showEditor && content&&editable) && <div>
                     <button onClick={handleEdit}
                             className="editButton">
                         <img src={editImage} alt="editIcon"/>

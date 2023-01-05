@@ -15,9 +15,10 @@ type ArticleEditorProps = {
     actualEditor: string | undefined,
     cancel: () => void,
     setShowEditor: (showEdit: boolean) => void,
+    editable:boolean,
 }
 
-export default function ArticleEditor({ data, changeComponent, innerIndex, actualEditor, cancel, setShowEditor }: ArticleEditorProps) {
+export default function ArticleEditor({ data, changeComponent, innerIndex, actualEditor, cancel, setShowEditor, editable }: ArticleEditorProps) {
 
     const typesString = ["Text", "Code", "Liste", "Tabelle", "Diagramm"];
     const [chosenEditor, setChosenEditor] = useState<string | undefined>(undefined)
@@ -42,7 +43,7 @@ export default function ArticleEditor({ data, changeComponent, innerIndex, actua
 
     return (
         <>
-            {!data &&
+            {(!data&&editable )&&
                 <div className="editorChooser" onClick={toggleShowChooser}>
                     {!showChooser &&
                         <div className="toggleEditorButton"> + </div>
