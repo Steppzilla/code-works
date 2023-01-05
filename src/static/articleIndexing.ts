@@ -6,7 +6,6 @@ import siteJson3 from "../articles/a3.json";
 import siteJson4 from "../articles/a4.json";
 import siteJson5 from "../articles/a5.json";
 import siteJson6 from "../articles/a6.json";
-import { ArticleDataJSON } from "../model/ArticleDataJSON";
 //import siteJson8 from "../articles/a7.json";
 //import siteJson7 from "../articles/site7.json";
 
