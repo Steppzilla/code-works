@@ -1,73 +1,66 @@
 {
-  "articleId": 6,
-  "category": "Java",
-  "title": "Spring Boot aufsetzen",
-  "created ": "2023-01-04 17:06:00.49995",
-  "dataBlock": [
-    {
-      "dataBlockId": 35,
-      "articleId": 6,
-      "dataType": "text",
-      "subTitle": "Maven Dependency",
-      "dataText": "First, we'll need the <span style='color:var(--greenColor)'> spring-boot-starter-web</span> dependency:"
-    },
-    {
-      "dataBlockId": 36,
-      "articleId": 6,
-      "dataType": "code",
-      "code": "<dependency>\n    <groupId>org.springframework.boot</groupId>\n    <artifactId>spring-boot-starter-web</artifactId> {/*Name der Dependency bzw. ID*/}\n    <version>2.7.2</version>\n</dependency>",
-      "codeLanguage": "tsx",
-      "sortedList": true
-    },
-    {
-      "dataBlockId": 37,
-      "articleId": 6,
-      "dataType": "text",
-      "dataText": "This starter includes:"
-    },
-    {
-      "dataBlockId": 38,
-      "articleId": 6,
-      "dataType": "list",
-      "paragraphs": [
-        "spring-web and the spring-webmvc module that we need for our Spring web application",
-        "a Tomcat starter so that we can run our web application directly without explicitly installing any server"
-      ]
-    },
-    {
-      "dataBlockId": 39,
-      "articleId": 6,
-      "dataType": "text",
-      "subTitle": "Creating a Spring Boot Application",
-      "dataText": "The most straightforward way to get started using Spring Boot is to create a main class and annotate it with @SpringBootApplication:"
-    },
-    {
-      "dataBlockId": 40,
-      "articleId": 6,
-      "dataType": "code",
-      "code": "@SpringBootApplication\npublic class SpringBootRestApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(SpringBootRestApplication.class, args);\n    }\n}",
-      "codeLanguage": "java",
-      "sortedList": true
-    },
-    {
-      "dataBlockId": 41,
-      "articleId": 6,
-      "dataType": "text",
-      "dataText": "This single annotation is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan.\nBy default, it will scan all the components in the same package or below.\nNext, for Java-based configuration of Spring beans, we need to create a config class and annotate it with @Configuration annotation:"
-    },
-    {
-      "dataBlockId": 42,
-      "articleId": 6,
-      "dataType": "code",
-      "code": "@Configuration\npublic class WebConfig {\n\n}",
-      "codeLanguage": "java",
-      "sortedList": true
-    },
-    {
-      "dataBlockId": 43,
-      "articleId": 6,
-      "dataType": "text",
-      "dataText": "This annotation is the main artifact used by the Java-based Spring configuration; it is itself meta-annotated with @Component, which makes the annotated classes standard beans and as such, also candidates for component-scanning.\nThe main purpose of @Configuration classes is to be sources of bean definitions for the Spring IoC Container. For a more detailed description, see the official docs.\nLet's also have a look at a solution using the core spring-webmvc library."
-    }
-  ]
+   "articleId":6,
+   "category":"Java",
+   "title":"Das Terminal",
+   "created":"2023-01-05 18:35:59.885871",
+   "dataBlock":
+   [
+      {
+         "dataBlockId":39, 
+         "articleId":6, 
+         "dataType":"text", 
+         "subTitle":"Terminal", 
+         "dataText":"Nach dem Öffnen des Terminals kannst du Befehle darin eingeben und zwar hinter einen davor gegebenen Pfad. Dieser ist meist"
+      }, 
+      {
+         "dataBlockId":40, 
+         "articleId":6, 
+         "dataType":"code", 
+         "subTitle":"", 
+         "code":"c:\\Users\\Ich>", 
+         "codeLanguage":"bash", 
+         "sortedList":true
+      }, 
+      {
+         "dataBlockId":41, 
+         "articleId":6, 
+         "dataType":"text", 
+         "subTitle":"", 
+         "dataText":"Dort schreibst du folgenden Befehl rein:"
+      }, 
+      {
+         "dataBlockId":42, 
+         "articleId":6, 
+         "dataType":"code", 
+         "subTitle":"", 
+         "code":"java -version", 
+         "codeLanguage":"java", 
+         "sortedList":true
+      }, 
+      {
+         "dataBlockId":43, 
+         "articleId":6, 
+         "dataType":"text", 
+         "subTitle":"", 
+         "dataText":"und drückst Enter."
+      }, 
+      {
+         "dataBlockId":44, 
+         "articleId":6, 
+         "dataType":"text", 
+         "dataText":"In den folgenden Zeilen wirst du deine installierte Java-Version sehen und überprüfen können, ob sie nun auf einem aktuellen Stand ist. Falls nichts gefunden wird oder die Version sehr alt ist, solltest du deine Installation überprüfen. Dieser Befehl ist an jedem Pfad ausführbar, egal in welchem Ordner du dich befindest."
+      }, 
+      {
+         "dataBlockId":45, 
+         "articleId":6, 
+         "dataType":"code", 
+         "code":"java version \"18.0.2\" 2022-07-19\nJava(TM) SE Runtime Environment (build 18.0.2+9-61)                       \nJava HotSpot(TM) 64-Bit Server VM (build 18.0.2+9-61, mixed mode, sharing)\nPS H:\\2022\\code-works>", 
+         "codeLanguage":"bash"
+      }, 
+      {
+         "dataBlockId":46, 
+         "articleId":6, 
+         "dataType":"text", 
+         "dataText":"Es lohnt sich weitere praktische Befehle für die Konsole kennenzulernen. Du wirst auch in deinem Editor manchmal Befehle ausführen wollen und wirst es dann leichter haben, diese zu verstehen und richtig anzuwenden. Dennoch kannst du das Kapitel auch später bearbeiten."
+      }] 
 }

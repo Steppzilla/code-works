@@ -6,17 +6,18 @@ import siteJson3 from "../articles/a3.json";
 import siteJson4 from "../articles/a4.json";
 import siteJson5 from "../articles/a5.json";
 import siteJson6 from "../articles/a6.json";
+import { ArticleDataJSON } from "../model/ArticleDataJSON";
 //import siteJson8 from "../articles/a7.json";
 //import siteJson7 from "../articles/site7.json";
 
 export const jSonToArticleData = (js: any) => {
-    const newDate = new Date(Date.parse(js.date));
-    const newArticleObj = {...js, "date": newDate}
+    const newDate = new Date(Date.parse(js.created));
+    const newArticleObj = {...js, "created": newDate}
     return newArticleObj as ArticleData;
 }
 
 export const jSonFromArticleData = (article: ArticleData) => {
-    const isoDate = article.date?.toISOString();
+    const isoDate = article.created?.toISOString();
     return JSON.stringify({...article, date: isoDate});
 }
 

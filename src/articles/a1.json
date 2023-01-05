@@ -2,7 +2,7 @@
    "articleId":1,
    "category":"React",
    "title":"Mein erstes Programm",
-   "created ":"2023-01-05 14:46:20.112348",
+   "created":"2023-01-05 18:35:55.451869",
    "dataBlock":
    [
       {
@@ -10,7 +10,7 @@
          "articleId":1, 
          "dataType":"text", 
          "subTitle":"Beispiel", 
-         "dataText":"Das erste Beispiel bla saddf sfsdafadö sdffsadfjöasfjasf sfjöasdf fas jsadfö asjf sadfja ösdf asfö öjjöjjjöj jjkljkjö ökjöjköjköjk asföjsajöfasd fds fdsa fa fsad fsda fsa fsad fa fsda fsdasfda  fa afs fasd sfd fsda asfd safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."
+         "dataText":"Das erste Beispiel bla saddf sfsdafadö sdffsadfjöasfjasf sfjöasdf fas jsadfö asjf sadfja ösdf asfö öjjöjjjöj jjkljkjö kjöjköjköjk asföjsajöfasd fds fdsa fa fsad fsda fsa fsad fa fsda fsdasfda  fa afs fasd sfd fsda asfd safd saf asf sfad afsd fa ds <span style='color:blue'> blauuuuuu </span> asffa fdsa asdf..."
       }, 
       {
          "dataBlockId":2, 

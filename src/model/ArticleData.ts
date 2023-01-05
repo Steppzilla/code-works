@@ -2,7 +2,7 @@ import {ComponentData, ComponentDataXXL} from "./ComponentData";
 
 export type ArticleData = {
     id?: number,
-    date?: Date,
+    created?: Date,
     category: string,
     title: string,
 

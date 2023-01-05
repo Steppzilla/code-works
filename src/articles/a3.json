@@ -1,24 +1,66 @@
 {
    "articleId":3,
    "category":"Java",
-   "title":"Ausgabe in der Konsole",
-   "created ":"2023-01-05 14:46:30.5921",
+   "title":"Das Terminal",
+   "created":"2023-01-05 18:35:57.936869",
    "dataBlock":
    [
       {
-         "dataBlockId":16, 
+         "dataBlockId":15, 
          "articleId":3, 
          "dataType":"text", 
+         "subTitle":"Terminal", 
+         "dataText":"Nach dem Öffnen des Terminals kannst du Befehle darin eingeben und zwar hinter einen davor gegebenen Pfad. Dieser ist meist"
+      }, 
+      {
+         "dataBlockId":16, 
+         "articleId":3, 
+         "dataType":"code", 
          "subTitle":"", 
-         "dataText":"Jedes Java-Programm führt die Befehle aus der main-Methode, also der Hauptmethode aus und, wenn es alle ausgeführt hat, hört es auf zu laufen und ist beendet. Wie diese genau aussieht schauen wir später genauer an. Wir schreiben als Java-Programmierer die Befehle in diese main-Methode, die ausgeführt werden sollen. Es gibt Befehle, die dazu führen, dass der Code erneut abgerufen wird, oder dass auf Nutzereingaben gewartet wird, sodass der Ablauf etwas komplexer wird, doch zunächst einmal lernen wir eine einfache Konsolenausgabe zu machen, die \"Hello World\" ausgibt. So eine Konsolenausgabe ist weit verbreitet, um eine neue Umgebung zu testen bzw. ob das Programm auch ausführbar ist. Diese Ausgabe ist aber nur für den Programmierer gedacht, kein Benutzer sieht diese. Daher dient diese Ausgabe hauptsächlich zur Analyse des Programmes insbesondere für Fehlermeldungen, sogenannte \"Stack-Traces\". Der Befehl in unserer \"Main-Methode\" ist der folgende: "
+         "code":"c:\\Users\\Ich>", 
+         "codeLanguage":"bash", 
+         "sortedList":true
       }, 
       {
          "dataBlockId":17, 
          "articleId":3, 
+         "dataType":"text", 
+         "subTitle":"", 
+         "dataText":"Dort schreibst du folgenden Befehl rein:"
+      }, 
+      {
+         "dataBlockId":18, 
+         "articleId":3, 
          "dataType":"code", 
-         "subTitle":"main-Methode in der Main-Klasse", 
-         "code":"System.out.println(\"Hello World\");", 
+         "subTitle":"", 
+         "code":"java -version", 
          "codeLanguage":"java", 
          "sortedList":true
+      }, 
+      {
+         "dataBlockId":19, 
+         "articleId":3, 
+         "dataType":"text", 
+         "subTitle":"", 
+         "dataText":"und drückst Enter."
+      }, 
+      {
+         "dataBlockId":20, 
+         "articleId":3, 
+         "dataType":"text", 
+         "dataText":"In den folgenden Zeilen wirst du deine installierte Java-Version sehen und überprüfen können, ob sie nun auf einem aktuellen Stand ist. Falls nichts gefunden wird oder die Version sehr alt ist, solltest du deine Installation überprüfen. Dieser Befehl ist an jedem Pfad ausführbar, egal in welchem Ordner du dich befindest."
+      }, 
+      {
+         "dataBlockId":21, 
+         "articleId":3, 
+         "dataType":"code", 
+         "code":"java version \"18.0.2\" 2022-07-19\nJava(TM) SE Runtime Environment (build 18.0.2+9-61)                       \nJava HotSpot(TM) 64-Bit Server VM (build 18.0.2+9-61, mixed mode, sharing)\nPS H:\\2022\\code-works>", 
+         "codeLanguage":"bash"
+      }, 
+      {
+         "dataBlockId":22, 
+         "articleId":3, 
+         "dataType":"text", 
+         "dataText":"Es lohnt sich weitere praktische Befehle für die Konsole kennenzulernen. Du wirst auch in deinem Editor manchmal Befehle ausführen wollen und wirst es dann leichter haben, diese zu verstehen und richtig anzuwenden. Dennoch kannst du das Kapitel auch später bearbeiten."
       }] 
 }

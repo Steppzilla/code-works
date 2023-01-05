@@ -1,0 +1,66 @@
+{
+   "articleId":7,
+   "category":"Java",
+   "title":"Das Terminal",
+   "created":"2023-01-05 18:36:00.554869",
+   "dataBlock":
+   [
+      {
+         "dataBlockId":47, 
+         "articleId":7, 
+         "dataType":"text", 
+         "subTitle":"Terminal", 
+         "dataText":"Nach dem Öffnen des Terminals kannst du Befehle darin eingeben und zwar hinter einen davor gegebenen Pfad. Dieser ist meist"
+      }, 
+      {
+         "dataBlockId":48, 
+         "articleId":7, 
+         "dataType":"code", 
+         "subTitle":"", 
+         "code":"c:\\Users\\Ich>", 
+         "codeLanguage":"bash", 
+         "sortedList":true
+      }, 
+      {
+         "dataBlockId":49, 
+         "articleId":7, 
+         "dataType":"text", 
+         "subTitle":"", 
+         "dataText":"Dort schreibst du folgenden Befehl rein:"
+      }, 
+      {
+         "dataBlockId":50, 
+         "articleId":7, 
+         "dataType":"code", 
+         "subTitle":"", 
+         "code":"java -version", 
+         "codeLanguage":"java", 
+         "sortedList":true
+      }, 
+      {
+         "dataBlockId":51, 
+         "articleId":7, 
+         "dataType":"text", 
+         "subTitle":"", 
+         "dataText":"und drückst Enter."
+      }, 
+      {
+         "dataBlockId":52, 
+         "articleId":7, 
+         "dataType":"text", 
+         "dataText":"In den folgenden Zeilen wirst du deine installierte Java-Version sehen und überprüfen können, ob sie nun auf einem aktuellen Stand ist. Falls nichts gefunden wird oder die Version sehr alt ist, solltest du deine Installation überprüfen. Dieser Befehl ist an jedem Pfad ausführbar, egal in welchem Ordner du dich befindest."
+      }, 
+      {
+         "dataBlockId":53, 
+         "articleId":7, 
+         "dataType":"code", 
+         "code":"java version \"18.0.2\" 2022-07-19\nJava(TM) SE Runtime Environment (build 18.0.2+9-61)                       \nJava HotSpot(TM) 64-Bit Server VM (build 18.0.2+9-61, mixed mode, sharing)\nPS H:\\2022\\code-works>", 
+         "codeLanguage":"bash"
+      }, 
+      {
+         "dataBlockId":54, 
+         "articleId":7, 
+         "dataType":"text", 
+         "dataText":"Es lohnt sich weitere praktische Befehle für die Konsole kennenzulernen. Du wirst auch in deinem Editor manchmal Befehle ausführen wollen und wirst es dann leichter haben, diese zu verstehen und richtig anzuwenden. Dennoch kannst du das Kapitel auch später bearbeiten."
+      }] 
+}

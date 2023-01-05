@@ -47,7 +47,7 @@ export default function Article({articles, allCategories}: ArticleProps) {
 
     return (
         <>
-            {!showNav && <button onClick={() => setShowNav(true)}>Artikel wählen</button>}
+            {!showNav && <button id={"showTOC"} onClick={() => setShowNav(true)}>Artikel wählen</button>}
             {showNav && <ArticleNaviagator
                 articles={articles}
                 setActualArticle={changeActualArticle}
@@ -56,7 +56,7 @@ export default function Article({articles, allCategories}: ArticleProps) {
             }
             <article className={showNav ? "blur hide" : ""}>
                 <h1> {actualArticle.category}
-                    {actualArticle.date && <div className={"right"}><DateComp date={actualArticle.date}/></div>}
+                    {actualArticle.created && <div className={"right"}><DateComp date={actualArticle.created}/></div>}
                 </h1>
                 {<h2>{actualArticle.title}</h2>
                 }

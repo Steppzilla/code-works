@@ -41,7 +41,7 @@ export default function JsonView({article}: JsonViewProps) {
                                 {Object.values(article)[artI]==null &&<>null</>
                                 }
                                 {(articleAttribute === "date") && <>
-                                    "{(article.date)?.toISOString()}"
+                                    "{(article.created)?.toISOString()}"
                                     <span className={"structure"}>,</span>
                                 </>
                                 }
