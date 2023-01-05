@@ -15,7 +15,7 @@ export default function CodeBox({title,actualStyleName, actualStyle, inputString
 
     return (
         <>
-            {(title.length>=1)&&<h3>{title}</h3>}
+            {(title?.length>=1)&&<h3>{title}</h3>}
             <div className={"codeBox " + actualStyleName}>
                 <SyntaxHighlighter
                     language={language}
